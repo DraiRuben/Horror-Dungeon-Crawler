@@ -30,10 +30,26 @@ public class PlayerMovement : MonoBehaviour
             var MoveDir = GetMoveDir();
             var RelativeMoveDir = MapGrid.Instance.GetRelativeDir(MoveDir, m_transform.rotation.eulerAngles.y);
             var NextCell = MapGrid.Instance.GetCellInDir(m_currentFloor, m_currentRow, m_currentColumn, RelativeMoveDir);
-            if (NextCell != null && NextCell.Center !=null && MapGrid.Instance.ValidMovement(m_currentFloor, m_currentRow, m_currentColumn, RelativeMoveDir)) 
+            if(MapGrid.Instance.ValidMovement(m_currentFloor, m_currentRow, m_currentColumn, RelativeMoveDir))
             {
-                m_transform.position = NextCell.Center.position;
-                UpdateGridPos();
+                if (NextCell != null && NextCell.Center != null)
+                {
+                    m_transform.position = NextCell.Center.position;
+                    m_transform.position += Vector3.up * 1.5f;
+                    UpdateGridPos();
+                }
+                else if (NextCell == null || NextCell.Center == null)
+                {
+                    var ConnectedFloorInfo = MapGrid.Instance.GetConnectedFloor(new Vector2Int(m_currentRow, m_currentColumn), m_currentFloor);
+                    if (ConnectedFloorInfo != null)
+                    {
+                        m_currentRow = ConnectedFloorInfo.GridPos.x;
+                        m_currentColumn = ConnectedFloorInfo.GridPos.y;
+                        m_currentFloor = ConnectedFloorInfo.FloorIndex;
+                        m_transform.position = MapGrid.Instance.GetCell(m_currentFloor, m_currentRow, m_currentColumn).Center.position;
+                        m_transform.position += Vector3.up * 1.5f;
+                    }
+                }
             }
         }
     }

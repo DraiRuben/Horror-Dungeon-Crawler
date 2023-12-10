@@ -36,11 +36,42 @@ public class MapGrid : SerializedMonoBehaviour
     [TableMatrix(SquareCells = true, DrawElementMethod = "DrawElement", HorizontalTitle = "Attic Cells")]
     public Cell[,] AtticCells;
 
+
+    public List<FloorConnection> Connections;
+
     [Serializable]
     public class Cell
     {
         public Transform Center;
         public AllowedMovesMask AllowedMoves;
+    }
+
+    [Serializable]
+    public struct FloorConnection
+    {
+        public Point Pos1;
+        public Point Pos2;
+        [Serializable]
+        public class Point
+        {
+            public Vector2Int GridPos;
+            public int FloorIndex;
+        }
+    }
+    public FloorConnection.Point GetConnectedFloor(Vector2Int _currentGridPos, int _currentFloor)
+    {
+        foreach(var Connection in Connections)
+        {
+            if(_currentGridPos == Connection.Pos1.GridPos && _currentFloor == Connection.Pos1.FloorIndex)
+            {
+                return Connection.Pos2;
+            }
+            else if (_currentGridPos == Connection.Pos2.GridPos && _currentFloor == Connection.Pos2.FloorIndex)
+            {
+                return Connection.Pos1;
+            }
+        }
+        return null;
     }
     [System.Flags]
     public enum AllowedMovesMask
@@ -104,6 +135,11 @@ public class MapGrid : SerializedMonoBehaviour
     public AllowedMovesMask GetRelativeDir(AllowedMovesMask _moveDir, float _rotationY =0)
     {
         return Moves[(Moves.IndexOf(_moveDir) + (int)_rotationY / 90)%4];
+    }
+    public Cell GetCell(int _floor, int _row, int _column)
+    {
+        var CurrentFloor = GetFloor(_floor);
+        return CurrentFloor[_column, _row];
     }
     public Cell GetCellInDir(int _floor, int _row, int _column, AllowedMovesMask _dir)
     {
