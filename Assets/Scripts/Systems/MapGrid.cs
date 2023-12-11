@@ -108,12 +108,16 @@ public class MapGrid : SerializedMonoBehaviour
         {
             for(int u = 0;u< floor.GetLength(1);u++)
             {
-                float Dist = Vector2.Distance(_worldPos, floor[i, u].Center.position);
-                if (Dist < closestDistance)
+                if (floor[i,u].Center != null)
                 {
-                    closestDistance = Dist;
-                    returnValue.Set(i, u);
+                    float Dist = Vector2.Distance(_worldPos, floor[i, u].Center.position);
+                    if (Dist < closestDistance)
+                    {
+                        closestDistance = Dist;
+                        returnValue.Set(i, u);
+                    }
                 }
+                
             }
         }
         return returnValue;

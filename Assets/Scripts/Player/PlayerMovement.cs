@@ -15,8 +15,10 @@ public class PlayerMovement : MonoBehaviour
     public int CurrentFloor;
 
     private Transform m_transform;
+    public static PlayerMovement Instance;
     private void Awake()
     {
+        Instance = this;
         m_transform = GetComponent<Transform>();
     }
     public void Move(InputAction.CallbackContext _ctx)
