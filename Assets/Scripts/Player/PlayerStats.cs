@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class PlayerStats : EntityStats
 {
-    private int m_curStress;
+    private int m_currentStress;
     [SerializeField] private int m_maxStress= 100;
-    [SerializeField] private int
     
     void Start()
     {
-        m_curStress = m_maxStress;
+        m_currentStress = m_maxStress;
     }
 
     /*public void TakeStress(int stress)

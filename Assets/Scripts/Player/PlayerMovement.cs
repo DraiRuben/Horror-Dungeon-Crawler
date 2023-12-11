@@ -11,9 +11,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float m_movementFrequency;
     private float m_timeSinceMovement;
 
-    [SerializeField] private int m_currentRow;
-    [SerializeField] private int m_currentColumn;
-    [SerializeField] private int m_currentFloor;
+    public Vector2Int GridPos;
+    public int CurrentFloor;
 
     private Transform m_transform;
     private void Awake()
@@ -26,27 +25,28 @@ public class PlayerMovement : MonoBehaviour
         
         if(m_movementInput.magnitude > 0 && m_timeSinceMovement>= m_movementFrequency)
         {
-            m_timeSinceMovement = 0;
+            
             var MoveDir = GetMoveDir();
             var RelativeMoveDir = MapGrid.Instance.GetRelativeDir(MoveDir, m_transform.rotation.eulerAngles.y);
-            var NextCell = MapGrid.Instance.GetCellInDir(m_currentFloor, m_currentRow, m_currentColumn, RelativeMoveDir);
-            if(MapGrid.Instance.ValidMovement(m_currentFloor, m_currentRow, m_currentColumn, RelativeMoveDir))
+            if(MapGrid.Instance.ValidMovement(CurrentFloor, GridPos.x, GridPos.y, RelativeMoveDir))
             {
+                var NextCell = MapGrid.Instance.GetCellInDir(CurrentFloor, GridPos.x, GridPos.y, RelativeMoveDir);
                 if (NextCell != null && NextCell.Center != null)
                 {
+                    m_timeSinceMovement = 0;
                     m_transform.position = NextCell.Center.position;
                     m_transform.position += Vector3.up * 1.5f;
                     UpdateGridPos();
                 }
                 else if (NextCell == null || NextCell.Center == null)
                 {
-                    var ConnectedFloorInfo = MapGrid.Instance.GetConnectedFloor(new Vector2Int(m_currentRow, m_currentColumn), m_currentFloor);
+                    var ConnectedFloorInfo = MapGrid.Instance.GetConnectedFloor(GridPos, CurrentFloor);
                     if (ConnectedFloorInfo != null)
                     {
-                        m_currentRow = ConnectedFloorInfo.GridPos.x;
-                        m_currentColumn = ConnectedFloorInfo.GridPos.y;
-                        m_currentFloor = ConnectedFloorInfo.FloorIndex;
-                        m_transform.position = MapGrid.Instance.GetCell(m_currentFloor, m_currentRow, m_currentColumn).Center.position;
+                        m_timeSinceMovement = 0;
+                        GridPos.Set(ConnectedFloorInfo.GridPos.x, ConnectedFloorInfo.GridPos.y);
+                        CurrentFloor = ConnectedFloorInfo.FloorIndex;
+                        m_transform.position = MapGrid.Instance.GetCell(CurrentFloor, GridPos.x,GridPos.y).Center.position;
                         m_transform.position += Vector3.up * 1.5f;
                     }
                 }
@@ -101,16 +101,16 @@ public class PlayerMovement : MonoBehaviour
         switch (ResultChange)
         {
             case 0:
-                m_currentRow--;
+                GridPos.y--;
                 break;
             case 1:
-                m_currentColumn++;
+                GridPos.x++;
                 break;
             case 2:
-                m_currentRow++;
+                GridPos.y++;
                 break;
             case 3:
-                m_currentColumn--;
+                GridPos.x--;
                 break;
         }
     }

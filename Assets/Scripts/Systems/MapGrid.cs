@@ -84,19 +84,64 @@ public class MapGrid : SerializedMonoBehaviour
     }
 
     private List<AllowedMovesMask> Moves = new List<AllowedMovesMask>{ AllowedMovesMask.Top, AllowedMovesMask.Right, AllowedMovesMask.Bottom, AllowedMovesMask.Left };
-    private Cell[,] GetFloor(int level)
+    private Cell[,] GetFloor(int _floor)
     {
-        switch(level)
+        switch (_floor)
         {
-            case 0:return DungeonCells;
+            case 0: return DungeonCells;
             case 1: return BasementCells;
             case 2: return Floor0Cells;
             case 3: return Floor1Cells;
             case 4: return AtticCells;
+            default:
+                break;
         }
         return null;
     }
+    public Vector2Int GetClosestCell(int _floor,Vector2 _worldPos)
+    {
+        var floor = GetFloor(_floor);
 
+        Vector2Int returnValue = new();
+        float closestDistance = 9999999;
+        for(int i = 0; i < floor.GetLength(0); i++)
+        {
+            for(int u = 0;u< floor.GetLength(1);u++)
+            {
+                float Dist = Vector2.Distance(_worldPos, floor[i, u].Center.position);
+                if (Dist < closestDistance)
+                {
+                    closestDistance = Dist;
+                    returnValue.Set(i, u);
+                }
+            }
+        }
+        return returnValue;
+    }
+    public Vector2Int GetClosestCell(int _floor,Vector2 _worldPos, Vector2Int _gridPos)
+    {
+        Vector2Int returnValue = new();
+        float smallestDist = 99999;
+        var floor = GetFloor(_floor);
+        //checks all cells around gridpos and gets the one closest to the world pos
+        for(int i = 0; i < 3; i++)
+        {
+            for(int u = 0; u< 3; u++)
+            {
+                float dist = Vector2.Distance(floor[_gridPos.x-1 + i,_gridPos.y -1 + u].Center.position, _worldPos);
+                if (dist < smallestDist)
+                {
+                    smallestDist = dist;
+                    returnValue.Set(i, u);
+                }
+            }
+        }
+        return returnValue;
+    }
+    public Vector2Int DistanceBetweenCells(Vector2Int Cell1Pos, Vector2Int Cell2Pos) 
+    {
+        return new Vector2Int(Mathf.Abs(Cell1Pos.x - Cell2Pos.x), Mathf.Abs(Cell1Pos.y - Cell2Pos.y));
+    }
 #if UNITY_EDITOR // Editor-related code must be excluded from builds
     [OnInspectorInit]
     private void CreateData()
@@ -126,7 +171,7 @@ public class MapGrid : SerializedMonoBehaviour
     }
     private static Cell DrawElement(Rect rect, Cell value)
     {
-        value.Center = (Transform)SirenixEditorFields.UnityObjectField(rect.VerticalPadding(10), value == null ? null : value.Center, typeof(Transform), true);
+        value.Center = (Transform)SirenixEditorFields.UnityObjectField(rect.VerticalPadding(10), value?.Center, typeof(Transform), true);
         value.AllowedMoves = (AllowedMovesMask)SirenixEditorFields.EnumDropdown(rect, value.AllowedMoves);
         
         return value;
@@ -136,12 +181,22 @@ public class MapGrid : SerializedMonoBehaviour
     {
         return Moves[(Moves.IndexOf(_moveDir) + (int)_rotationY / 90)%4];
     }
-    public Cell GetCell(int _floor, int _row, int _column)
+    public Cell GetCell(int _floor,int _column, int _row)
     {
         var CurrentFloor = GetFloor(_floor);
         return CurrentFloor[_column, _row];
     }
-    public Cell GetCellInDir(int _floor, int _row, int _column, AllowedMovesMask _dir)
+    public Cell GetCellInDir(int _floor,int _column, int _row, AllowedMovesMask _dir)
+    {
+        var NextCellPos = GetCellPosInDir(_column,_row, _dir);
+        var CurrentFloor = GetFloor(_floor);
+        if (NextCellPos.x >= 0 && NextCellPos.y >=0 && NextCellPos.x < CurrentFloor.GetLength(0) && NextCellPos.y < CurrentFloor.GetLength(1))
+        {
+            return CurrentFloor[NextCellPos.x, NextCellPos.y];
+        }
+        else return null;
+    }
+    public Vector2Int GetCellPosInDir(int _column,int _row,  AllowedMovesMask _dir, int _distance =1)
     {
         int NextRow = _row;
         int NextColumn = _column;
@@ -149,26 +204,21 @@ public class MapGrid : SerializedMonoBehaviour
         switch (_dir)
         {
             case AllowedMovesMask.Left:
-                NextColumn--;
+                NextColumn-=_distance;
                 break;
             case AllowedMovesMask.Right:
-                NextColumn++;
+                NextColumn+= _distance;
                 break;
             case AllowedMovesMask.Top:
-                NextRow--;
+                NextRow-= _distance;
                 break;
             case AllowedMovesMask.Bottom:
-                NextRow++;
+                NextRow+= _distance;
                 break;
         }
-        var CurrentFloor = GetFloor(_floor);
-        if (NextRow >=0 && NextColumn >=0 && NextRow < CurrentFloor.GetLength(1) && NextColumn < CurrentFloor.GetLength(0))
-        {
-            return CurrentFloor[NextColumn, NextRow];
-        }
-        else return null;
+        return new Vector2Int(NextColumn,NextRow);
     }
-    public bool ValidMovement(int _floor, int _row, int _column, AllowedMovesMask _relativeMovementDir)
+    public bool ValidMovement(int _floor, int _column,int _row,  AllowedMovesMask _relativeMovementDir)
     {
         return (GetFloor(_floor)[_column,_row].AllowedMoves & _relativeMovementDir) == _relativeMovementDir;
     }
