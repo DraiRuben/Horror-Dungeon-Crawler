@@ -7,7 +7,7 @@ public class MouseFollower : MonoBehaviour
 {
     [SerializeField] private Canvas canvas;
     [SerializeField] private Camera mainCam;
-    [SerializeField] private UIInventoryItem item;
+    public UIInventoryItem item;
 
     public void Awake()
     {

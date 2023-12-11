@@ -76,13 +76,16 @@ namespace Inventory.UI
 
         private void HandleSwap(UIInventoryItem inventoryItemUI)
         {
-            int index = listOfUIItems.IndexOf(inventoryItemUI);
-            if (index == -1)
+            if(mouseFollower.isActiveAndEnabled)
             {
-                return;
+                int index = listOfUIItems.IndexOf(inventoryItemUI);
+                if (index == -1)
+                {
+                    return;
+                }
+                OnSwapItems?.Invoke(currentlyDraggedItemIndex, index);
+                HandleItemSelection(inventoryItemUI);
             }
-            OnSwapItems?.Invoke(currentlyDraggedItemIndex, index);
-            HandleItemSelection(inventoryItemUI);
         }
 
         private void ResetDraggedItem()

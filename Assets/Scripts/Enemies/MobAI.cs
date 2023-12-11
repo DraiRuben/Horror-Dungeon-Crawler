@@ -24,15 +24,17 @@ public class MobAI : MonoBehaviour
         {
             var dist = MapGrid.Instance.DistanceBetweenCells(m_gridPos, PlayerMovement.Instance.GridPos);
             var totalDist = dist.x + dist.y;
-           
+            m_gridPos = MapGrid.Instance.GetClosestCell(m_floor, transform.position, m_gridPos);
             // if attack is CQC check if distance to player is <= 1 or if attack is Ranged, check if distance to player <= Reach and both are aligned
-            if (m_attackReach <= 1 && totalDist <= 1 || (m_attackReach > 1 && m_attackReach >= totalDist && dist.x == 0 || dist.y == 0))    
+            if (m_attackReach <= 1 && totalDist <= 1 || (m_attackReach > 1 && m_attackReach >= totalDist && (dist.x == 0 || dist.y == 0)))    
             {
                 m_agent.SetDestination(MapGrid.Instance.GetCell(m_floor, m_gridPos.x, m_gridPos.y).Center.position);
                 //système d'attaque
+                Debug.Log("CloseEnough");
             }
             else
             {
+                Debug.Log(m_gridPos);
                 m_agent.SetDestination(PlayerMovement.Instance.transform.position);
             }
         }

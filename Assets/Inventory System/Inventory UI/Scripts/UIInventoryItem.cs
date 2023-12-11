@@ -8,12 +8,12 @@ using UnityEngine.UI;
 
 namespace Inventory.UI
 {
-    public class UIInventoryItem : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IEndDragHandler, IDropHandler, IDragHandler
+    public class UIInventoryItem : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IEndDragHandler, IDropHandler, IDragHandler, IPointerUpHandler, IPointerDownHandler
     {
         [SerializeField] private Image itemImage;
         [SerializeField] private TMP_Text quantityTxt;
         [SerializeField] private Image borderImage;
-
+        [SerializeField] private bool m_isPlaceholder;
         public event Action<UIInventoryItem> OnItemClicked, OnItemDroppedOn, OnItemBeginDrag, OnItemEndDrag, OnRightMouseBtnClick;
 
         private bool empty = true;
@@ -70,16 +70,25 @@ namespace Inventory.UI
         public void OnEndDrag(PointerEventData eventData)
         {
             OnItemEndDrag?.Invoke(this);
+            Debug.Log("dragged " + name);
+        }
+        public void OnDrag(PointerEventData eventData)
+        {
+
+        }
+
+        public void OnPointerUp(PointerEventData eventData)
+        {
+            if(!m_isPlaceholder)
+                OnItemDroppedOn?.Invoke(eventData.pointerEnter.GetComponent<UIInventoryItem>());
         }
 
         public void OnDrop(PointerEventData eventData)
         {
-            OnItemDroppedOn?.Invoke(this);
         }
 
-        public void OnDrag(PointerEventData eventData)
+        public void OnPointerDown(PointerEventData eventData)
         {
-
         }
     }
 }
