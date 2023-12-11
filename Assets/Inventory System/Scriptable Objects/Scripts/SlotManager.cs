@@ -39,7 +39,6 @@ namespace Inventory.Model
                 }
             }
         }
-
         public void AddItem(InventoryItem item)
         {
             AddItem(item.item, item.quantity);

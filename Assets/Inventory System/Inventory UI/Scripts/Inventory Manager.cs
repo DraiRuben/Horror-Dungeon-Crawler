@@ -14,7 +14,12 @@ namespace Inventory
         [SerializeField] private SlotManager inventoryData;
 
         public List<InventoryItem> initialItems = new List<InventoryItem>();
-
+        public static InventoryManager Instance;
+        private void Awake()
+        {
+            if (Instance == null) Instance = this;
+            else Destroy(gameObject);
+        }
         private void Start()
         {
             PrepareUI();
@@ -81,22 +86,11 @@ namespace Inventory
             inventoryUI.UpdateDescription(itemIndex, item.ItemImage, item.name, item.Description);
         }
 
-        public void Update()
+        public void UpdateData()
         {
-            if (Input.GetKeyDown(KeyCode.I))
+            foreach (var item in inventoryData.GetCurrentInventoryState())
             {
-                if (inventoryUI.isActiveAndEnabled == false)
-                {
-                    inventoryUI.Show();
-                    foreach (var item in inventoryData.GetCurrentInventoryState())
-                    {
-                        inventoryUI.UpdateData(item.Key, item.Value.item.ItemImage, item.Value.quantity);
-                    }
-                }
-                else
-                {
-                    inventoryUI.Hide();
-                }
+                inventoryUI.UpdateData(item.Key, item.Value.item.ItemImage, item.Value.quantity);
             }
         }
     }

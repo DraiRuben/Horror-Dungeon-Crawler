@@ -22,7 +22,7 @@ namespace Inventory.UI
 
         private void Awake()
         {
-            Hide();
+            ShowHide();
             mouseFollower.Toggle(false);
             itemDescription.ResetDescription();
         }
@@ -31,9 +31,9 @@ namespace Inventory.UI
         {
             for (int i = 0; i < inventorySize; i++)
             {
-                UIInventoryItem uiItem = Instantiate(itemPrefab, Vector3.zero, Quaternion.identity);
-                uiItem.transform.SetParent(contentPanel);
+                UIInventoryItem uiItem = Instantiate(itemPrefab, Vector3.zero, Quaternion.identity,contentPanel);
                 listOfUIItems.Add(uiItem);
+                uiItem.transform.localPosition = Vector3.zero;
                 uiItem.OnItemClicked += HandleItemSelection;
                 uiItem.OnItemBeginDrag += HandleBeginDrag;
                 uiItem.OnItemDroppedOn += HandleSwap;
@@ -101,10 +101,19 @@ namespace Inventory.UI
 
         }
 
-        public void Show()
+        public void ShowHide()
         {
-            gameObject.SetActive(true);
-            ResetSelection();
+            if(gameObject.activeSelf)
+            {
+                gameObject.SetActive(false);
+                ResetDraggedItem();
+            }
+            else
+            {
+                InventoryManager.Instance.UpdateData();
+                gameObject.SetActive(true);
+                ResetSelection();
+            }
         }
 
         public void ResetSelection()
@@ -119,12 +128,6 @@ namespace Inventory.UI
             {
                 item.Deselect();
             }
-        }
-
-        public void Hide()
-        {
-            gameObject.SetActive(false);
-            ResetDraggedItem();
         }
 
         public void UpdateDescription(int itemIndex, Sprite itemImage, string name, string description)
