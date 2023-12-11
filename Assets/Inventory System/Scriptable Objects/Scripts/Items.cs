@@ -2,11 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item : ScriptableObject
+namespace Inventory.Model
 {
-    [Header("Item Info")]
-    public Sprite ItemIcon;
-    public string ItemName;
-    public GameObject prefab;
-    public ParticleSystem particle;
+    [CreateAssetMenu]
+    public class Item : ScriptableObject
+    {
+        [field: SerializeField]
+        public bool IsStackable { get; set; }
+
+
+        public int ID => GetInstanceID();
+
+
+        [field: SerializeField]
+        public int MaxStackSize { get; set; } = 1;
+
+
+        [field: SerializeField]
+        public string Name { get; set; }
+
+
+        [field: SerializeField]
+        [field: TextArea]
+        public string Description { get; set; }
+
+
+        [field: SerializeField]
+        public Sprite ItemImage { get; set; }
+
+        [field: SerializeField]
+
+        public GameObject GameObject;
+    }
 }
