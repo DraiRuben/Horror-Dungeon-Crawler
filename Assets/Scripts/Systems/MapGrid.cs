@@ -122,26 +122,32 @@ public class MapGrid : SerializedMonoBehaviour
         }
         return returnValue;
     }
-    public Vector2Int GetClosestCell(int _floor,Vector2 _worldPos, Vector2Int _gridPos)
+    public Vector2Int GetClosestCell(int _floor, Vector2 _worldPos, Vector2Int _gridPos)
     {
         Vector2Int returnValue = new();
         float smallestDist = 99999;
         var floor = GetFloor(_floor);
         //checks all cells around gridpos and gets the one closest to the world pos
-        for(int i = 0; i < 3; i++)
+        for (int i = 0; i < 3; i++)
         {
-            for(int u = 0; u< 3; u++)
+            for (int u = 0; u < 3; u++)
             {
-                float dist = Vector2.Distance(floor[_gridPos.x-1 + i,_gridPos.y -1 + u].Center.position, _worldPos);
-                if (dist < smallestDist)
+                int x = _gridPos.x - 1 + i;
+                int y = _gridPos.y - 1 + u;
+                if (x >= 0 && y >= 0 && x < floor.GetLength(0) && y < floor.GetLength(1) && floor[x, y].Center != null)
                 {
-                    smallestDist = dist;
-                    returnValue.Set(i, u);
+                    float dist = Vector2.Distance(floor[x, y].Center.position, _worldPos);
+                    if (dist < smallestDist)
+                    {
+                        smallestDist = dist;
+                        returnValue.Set(x, y);
+                    }
                 }
             }
         }
         return returnValue;
     }
+
     public Vector2Int DistanceBetweenCells(Vector2Int Cell1Pos, Vector2Int Cell2Pos) 
     {
         return new Vector2Int(Mathf.Abs(Cell1Pos.x - Cell2Pos.x), Mathf.Abs(Cell1Pos.y - Cell2Pos.y));
