@@ -122,7 +122,7 @@ public class MapGrid : SerializedMonoBehaviour
         }
         return returnValue;
     }
-    public Vector2Int GetClosestCell(int _floor,Vector2 _worldPos, Vector2Int _gridPos)
+    public Vector2Int GetClosestCell(int _floor,Vector3 _worldPos, Vector2Int _gridPos)
     {
         Vector2Int returnValue = new();
         float smallestDist = 99999;
@@ -136,8 +136,8 @@ public class MapGrid : SerializedMonoBehaviour
                 int y = _gridPos.y - 1 + u;
                 if (x>=0 && y>=0 && x<floor.GetLength(0) && y<floor.GetLength(1) && floor[x, y].Center != null)
                 {
-                    float dist = Vector2.Distance(floor[x, y].Center.position, _worldPos);
-                    if (dist <= smallestDist)
+                    float dist = Vector3.Distance(floor[x, y].Center.position, _worldPos);
+                    if (dist < smallestDist)
                     {
                         smallestDist = dist;
                         returnValue.Set(x, y);
