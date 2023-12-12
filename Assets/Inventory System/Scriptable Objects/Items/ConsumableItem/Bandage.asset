@@ -10,13 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 451b6fb3603c92a49bcbff2f92ff0444, type: 3}
-  m_Name: PIPI
+  m_Name: Bandage
   m_EditorClassIdentifier: 
+  index: 1
   <IsStackable>k__BackingField: 1
   <MaxStackSize>k__BackingField: 10
-  <Name>k__BackingField: PIPI
-  <Description>k__BackingField: 'pipipoupou
-
-'
-  <ItemImage>k__BackingField: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  GameObject: {fileID: 0}
+  <Name>k__BackingField: Bandage
+  <Description>k__BackingField: It has already been used many times.
+  <ItemImage>k__BackingField: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}

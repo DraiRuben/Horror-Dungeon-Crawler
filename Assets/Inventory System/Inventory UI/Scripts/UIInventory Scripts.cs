@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Inventory.UI
@@ -11,6 +12,7 @@ namespace Inventory.UI
         [SerializeField] private RectTransform contentPanel;
         [SerializeField] private UIInventoryDescription itemDescription;
         [SerializeField] private MouseFollower mouseFollower;
+        public static UIInventoryScript Instance;
 
         List<UIInventoryItem> listOfUIItems = new List<UIInventoryItem>();
 
@@ -22,6 +24,9 @@ namespace Inventory.UI
 
         private void Awake()
         {
+            if (Instance == null) Instance = this;
+            else Destroy(gameObject);
+
             ShowHide();
             mouseFollower.Toggle(false);
             itemDescription.ResetDescription();
@@ -106,14 +111,14 @@ namespace Inventory.UI
 
         public void ShowHide()
         {
-            if(gameObject.activeSelf)
+            if (gameObject.activeSelf)
             {
                 gameObject.SetActive(false);
                 ResetDraggedItem();
             }
             else
             {
-                InventoryManager.Instance.UpdateData();
+                InventoryManager.Instance.UpdateUI(); 
                 gameObject.SetActive(true);
                 ResetSelection();
             }
