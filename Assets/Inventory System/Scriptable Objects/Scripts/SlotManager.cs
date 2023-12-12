@@ -95,31 +95,6 @@ namespace Inventory.Model
             OnInventoryUpdated?.Invoke(GetCurrentInventoryState());
             OnInventoryChanged?.Invoke();
         }
-
-        public int GetDuplicateSlotIndex(Item item)
-        {
-            for (int i = 0; i < inventoryItems.Count; i++)
-            {
-                if (inventoryItems[i].item != null && inventoryItems[i].item.ItemImage == item.ItemImage)
-                {
-                    return i;
-                }
-            }
-            return -1;
-        }
-        public int GetFirstEmptySlotIndex()
-        {
-            for (int i = 0; i < inventoryItems.Count; i++)
-            {
-                if (inventoryItems[i].isEmpty)
-                {
-                    return i;
-                }
-            }
-            return -1;
-        }
-
-
     }
 
     [Serializable]
