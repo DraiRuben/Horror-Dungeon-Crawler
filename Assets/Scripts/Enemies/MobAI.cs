@@ -15,6 +15,7 @@ public class MobAI : MonoBehaviour
     {
         m_agent = GetComponent<NavMeshAgent>();
         m_gridPos = MapGrid.Instance.GetClosestCell(m_floor,transform.position);
+        MapGrid.Instance.GetCell(m_floor, m_gridPos.x, m_gridPos.y).OccupyingObject = gameObject;
     }
 
     // Update is called once per frame
@@ -24,21 +25,29 @@ public class MobAI : MonoBehaviour
         {
             var dist = MapGrid.Instance.DistanceBetweenCells(m_gridPos, PlayerMovement.Instance.GridPos);
             var totalDist = dist.x + dist.y;
+
+            //updates grid pos only if it's not occupied by anything else, also empty previously occupied cell
+            var newGridPos = MapGrid.Instance.GetClosestCell(m_floor, transform.position, m_gridPos);
+            if (newGridPos != m_gridPos)
+            {
+                MapGrid.Instance.GetCell(m_floor, m_gridPos.x, m_gridPos.y).OccupyingObject = null;
+                var newCell = MapGrid.Instance.GetCell(m_floor, newGridPos.x, newGridPos.y);
+                if (newCell.OccupyingObject == null)
+                {
+                    newCell.OccupyingObject = gameObject;
+                }
+                m_gridPos = newGridPos;
+            }
             // if attack is CQC check if distance to player is <= 1 or if attack is Ranged, check if distance to player <= Reach and both are aligned
             if (m_attackReach <= 1 && totalDist <= 1 || (m_attackReach > 1 && m_attackReach >= totalDist && (dist.x == 0 || dist.y == 0)))
             {
-                m_gridPos = MapGrid.Instance.GetClosestCell(m_floor, transform.position, m_gridPos);
-
                 m_agent.SetDestination(MapGrid.Instance.GetCell(m_floor, m_gridPos.x, m_gridPos.y).Center.position);
                 //système d'attaque
-
             }
             else
             {
-                m_gridPos = MapGrid.Instance.GetClosestCell(m_floor, transform.position, m_gridPos);
                 m_agent.SetDestination(PlayerMovement.Instance.transform.position);
             }
         }
     }
-    
 }
