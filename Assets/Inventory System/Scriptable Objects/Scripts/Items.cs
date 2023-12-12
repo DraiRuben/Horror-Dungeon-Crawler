@@ -10,8 +10,8 @@ namespace Inventory.Model
         [field: SerializeField]
         public bool IsStackable { get; set; }
 
-
-        public int ID => GetInstanceID();
+        [SerializeField]
+        public int index;
 
 
         [field: SerializeField]
@@ -29,9 +29,5 @@ namespace Inventory.Model
 
         [field: SerializeField]
         public Sprite ItemImage { get; set; }
-
-        [field: SerializeField]
-
-        public GameObject GameObject;
     }
 }

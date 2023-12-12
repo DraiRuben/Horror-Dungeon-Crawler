@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Diagnostics.Eventing.Reader;
 
 
 namespace Inventory.Model
@@ -10,10 +11,10 @@ namespace Inventory.Model
     public class SlotManager : ScriptableObject
     {
         [SerializeField] private List<InventoryItem> inventoryItems;
-
         [field: SerializeField] public int Size { get; private set; } = 10;
 
         public event Action<Dictionary<int, InventoryItem>> OnInventoryUpdated;
+        public event Action OnInventoryChanged;
 
         public void Initialize()
         {
@@ -26,19 +27,19 @@ namespace Inventory.Model
 
         public void AddItem(Item item, int quantity)
         {
-            for (int i = 0; i < inventoryItems.Count; i++)
+            int slotIndex = GetFirstEmptySlotIndex();
+            if (slotIndex != -1)
             {
-                if (inventoryItems[i].isEmpty)
+                inventoryItems[slotIndex] = new InventoryItem
                 {
-                    inventoryItems[i] = new InventoryItem
-                    {
-                        item = item,
-                        quantity = quantity
-                    };
-                    return;
-                }
+                    item = item,
+                    quantity = quantity
+                };
+
+                InformAboutChange();
             }
         }
+
         public void AddItem(InventoryItem item)
         {
             AddItem(item.item, item.quantity);
@@ -49,9 +50,10 @@ namespace Inventory.Model
             Dictionary<int, InventoryItem> returnValue = new Dictionary<int, InventoryItem>();
             for (int i = 0; i < inventoryItems.Count; i++)
             {
-                if (inventoryItems[i].isEmpty)
-                    continue;
-                returnValue[i] = inventoryItems[i];
+                if (!inventoryItems[i].isEmpty)
+                {
+                    returnValue[i] = inventoryItems[i];
+                }
             }
             return returnValue;
         }
@@ -72,7 +74,33 @@ namespace Inventory.Model
         private void InformAboutChange()
         {
             OnInventoryUpdated?.Invoke(GetCurrentInventoryState());
+            OnInventoryChanged?.Invoke();
         }
+
+        public int GetDuplicateSlotIndex(Item item)
+        {
+            for (int i = 0; i < inventoryItems.Count; i++)
+            {
+                if (inventoryItems[i].item != null && inventoryItems[i].item.ItemImage == item.ItemImage)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+        public int GetFirstEmptySlotIndex()
+        {
+            for (int i = 0; i < inventoryItems.Count; i++)
+            {
+                if (inventoryItems[i].isEmpty)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+
     }
 
     [Serializable]

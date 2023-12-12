@@ -93,5 +93,13 @@ namespace Inventory
                 inventoryUI.UpdateData(item.Key, item.Value.item.ItemImage, item.Value.quantity);
             }
         }
+
+        public void UpdateUI()
+        {
+            foreach (var item in inventoryData.GetCurrentInventoryState())
+            {
+                inventoryUI.UpdateData(item.Key, item.Value.item.ItemImage, item.Value.quantity);
+            }
+        }
     }
 }
