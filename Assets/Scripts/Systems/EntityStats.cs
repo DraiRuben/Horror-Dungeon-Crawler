@@ -7,7 +7,8 @@ using UnityEngine.UI;
 public class EntityStats : MonoBehaviour
 {
     [SerializeField] protected int m_maxHealth = 100;
-    protected int m_currentHealth{  get { return m_currentHealth; } set {  m_currentHealth = value; OnHealthChanged.Invoke(); } }
+    protected int m_health;
+    protected int m_currentHealth{  get { return m_health; } set {  m_health = value; OnHealthChanged.Invoke(); } }
 
     [SerializeField] protected bool m_isBoss;
 
