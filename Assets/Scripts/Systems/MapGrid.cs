@@ -1,12 +1,15 @@
 using Sirenix.OdinInspector;
 using Sirenix.Utilities;
-using Sirenix.Utilities.Editor;
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+#if UNITY_EDITOR
+using Sirenix.Utilities.Editor;
+#endif
 public class MapGrid : SerializedMonoBehaviour
 {
 
@@ -44,6 +47,7 @@ public class MapGrid : SerializedMonoBehaviour
     {
         public Transform Center;
         public AllowedMovesMask AllowedMoves;
+        [NonSerialized] public GameObject OccupyingObject;
     }
 
     [Serializable]
@@ -193,7 +197,11 @@ public class MapGrid : SerializedMonoBehaviour
     public Cell GetCell(int _floor,int _column, int _row)
     {
         var CurrentFloor = GetFloor(_floor);
-        return CurrentFloor[_column, _row];
+        if (_column<CurrentFloor.GetLength(0) && _row <CurrentFloor.GetLength(1))
+        {
+            return CurrentFloor[_column, _row];
+        }
+        return null;
     }
     public Cell GetCellInDir(int _floor,int _column, int _row, AllowedMovesMask _dir)
     {

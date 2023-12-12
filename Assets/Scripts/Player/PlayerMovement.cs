@@ -35,21 +35,34 @@ public class PlayerMovement : MonoBehaviour
                 var NextCell = MapGrid.Instance.GetCellInDir(CurrentFloor, GridPos.x, GridPos.y, RelativeMoveDir);
                 if (NextCell != null && NextCell.Center != null)
                 {
-                    m_timeSinceMovement = 0;
-                    m_transform.position = NextCell.Center.position;
-                    m_transform.position += Vector3.up * 1.5f;
-                    UpdateGridPos();
+                    if(NextCell.OccupyingObject == null)
+                    {
+                        MapGrid.Instance.GetCell(CurrentFloor, GridPos.x, GridPos.y).OccupyingObject = null;
+                        NextCell.OccupyingObject = gameObject;
+                        m_timeSinceMovement = 0;
+                        m_transform.position = NextCell.Center.position;
+                        m_transform.position += Vector3.up * 1.5f;
+                        UpdateGridPos();
+                    }
+                    
                 }
                 else if (NextCell == null || NextCell.Center == null)
                 {
                     var ConnectedFloorInfo = MapGrid.Instance.GetConnectedFloor(GridPos, CurrentFloor);
                     if (ConnectedFloorInfo != null)
                     {
-                        m_timeSinceMovement = 0;
-                        GridPos.Set(ConnectedFloorInfo.GridPos.x, ConnectedFloorInfo.GridPos.y);
-                        CurrentFloor = ConnectedFloorInfo.FloorIndex;
-                        m_transform.position = MapGrid.Instance.GetCell(CurrentFloor, GridPos.x,GridPos.y).Center.position;
-                        m_transform.position += Vector3.up * 1.5f;
+                        var Cell = MapGrid.Instance.GetCell(ConnectedFloorInfo.FloorIndex, ConnectedFloorInfo.GridPos.x, ConnectedFloorInfo.GridPos.y);
+                        if(Cell.OccupyingObject == null)
+                        {
+                            MapGrid.Instance.GetCell(CurrentFloor, GridPos.x, GridPos.y).OccupyingObject = null;
+                            Cell.OccupyingObject = gameObject;
+                            m_timeSinceMovement = 0;
+                            GridPos.Set(ConnectedFloorInfo.GridPos.x, ConnectedFloorInfo.GridPos.y);
+                            CurrentFloor = ConnectedFloorInfo.FloorIndex;
+                            m_transform.position = MapGrid.Instance.GetCell(CurrentFloor, GridPos.x,GridPos.y).Center.position;
+                            m_transform.position += Vector3.up * 1.5f;
+                        }
+
                     }
                 }
             }

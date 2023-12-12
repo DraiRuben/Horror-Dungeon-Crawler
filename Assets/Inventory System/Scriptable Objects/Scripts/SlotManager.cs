@@ -23,7 +23,28 @@ namespace Inventory.Model
                 inventoryItems.Add(InventoryItem.GetEmptyItem());
             }
         }
-
+        public int GetDuplicateSlotIndex(Item item)
+        {
+            for (int i = 0; i < inventoryItems.Count; i++)
+            {
+                if (inventoryItems[i].item !=null && inventoryItems[i].item.ItemImage == item.ItemImage)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+        public int GetFirstEmptySlotIndex()
+        {
+            for(int i  = 0; i < inventoryItems.Count; i++)
+            {
+                if (inventoryItems[i].isEmpty)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
         public void AddItem(Item item, int quantity)
         {
             for (int i = 0; i < inventoryItems.Count; i++)
@@ -63,9 +84,7 @@ namespace Inventory.Model
 
         public void SwapItems(int itemIndex_1, int itemIndex_2)
         {
-            InventoryItem item1 = inventoryItems[itemIndex_1];
-            inventoryItems[itemIndex_1] = inventoryItems[itemIndex_2];
-            inventoryItems[itemIndex_2] = item1;
+            (inventoryItems[itemIndex_2], inventoryItems[itemIndex_1]) = (inventoryItems[itemIndex_1], inventoryItems[itemIndex_2]);
             InformAboutChange();
         }
 

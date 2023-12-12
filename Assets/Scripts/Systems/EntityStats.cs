@@ -18,6 +18,8 @@ public class EntityStats : MonoBehaviour
     public void TakeDamage(int damage)
     {
         m_currentHealth -= damage;
-        BossHealthUI.Instance.BossUpdateFill( (float)m_currentHealth / m_maxHealth);
+
+        if(m_isBoss)
+            BossHealthUI.Instance.BossUpdateFill( (float)m_currentHealth / m_maxHealth);
     }
 }
