@@ -11,21 +11,26 @@ public class PlayerStatsManager : SerializedMonoBehaviour
 
     public void TakeDamage(int _damage, GameObject _damageOrigin)
     {
+        //gets angle between player looking forward and attack origin
         float AngleY = Quaternion.LookRotation(PlayerMovement.Instance.transform.position - _damageOrigin.transform.position).eulerAngles.y;
+        
+        //gets side of the attack's hit, 0 is in front, 1 on the right, 2 in the back, 3 on the left
         int attackRelativePos = (int)AngleY % 90;
-        int randChar = UnityEngine.Random.Range(0, 2);
 
+        //gets pos in position grid of the two characters in the line directly hit by the attack
         var firstFormationPos = m_formationPositions[attackRelativePos];
-        var secondFormationPos = m_formationPositions[(attackRelativePos+1)%4];
+        var secondFormationPos = m_formationPositions[(attackRelativePos + 1) % 4];
 
-        //gets first two non null characters in the line on the side of the attack
+        //gets first two non null characters in the line on the side of the attack (null means dead)
         List<PlayerStats> CharactersToHit = new List<PlayerStats>()
         { Characters[firstFormationPos.x, firstFormationPos.y],
             Characters[secondFormationPos.x, secondFormationPos.y] }.Where(x => x != null).ToList();
         
-        if (CharactersToHit.Count<=0)
+        
+        //if both the characters directly in line of the attack are dead
+        if (CharactersToHit.Count <= 0)
         {
-            //if both the characters directly in line of the attack are dead, choose the 2 in the back instead
+            //choose the 2 in the back instead
             firstFormationPos = m_formationPositions[(attackRelativePos + 2) % 4];
             secondFormationPos = m_formationPositions[(attackRelativePos + 3) % 4];
 
@@ -33,13 +38,16 @@ public class PlayerStatsManager : SerializedMonoBehaviour
             { Characters[firstFormationPos.x, firstFormationPos.y],
             Characters[secondFormationPos.x, secondFormationPos.y] }.Where(x => x != null).ToList();
         }
-        CharactersToHit[Random.Range(0, CharactersToHit.Count)].TakeDamage(_damage); 
+        //choose randomly one character between the ones that can get hit and apply the damage to it
+        CharactersToHit[Random.Range(0, CharactersToHit.Count)].TakeDamage(_damage);
     }
-    private readonly static List<Vector2Int> m_formationPositions = new List<Vector2Int>() 
+
+    //positions of characters in formation
+    private readonly static Vector2Int[] m_formationPositions = 
     {
-        new Vector2Int(0,0),
-        new Vector2Int(1,0),
-        new Vector2Int(0,1),
-        new Vector2Int(1,1),
+        new(0,0),
+        new(1,0),
+        new(0,1),
+        new(1,1),
     };
 }

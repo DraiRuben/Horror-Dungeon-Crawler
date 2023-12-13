@@ -45,7 +45,9 @@ public class MapGrid : SerializedMonoBehaviour
     [Serializable]
     public class Cell
     {
+        //waypoint
         public Transform Center;
+        //movement directions allowed from this cell
         public AllowedMovesMask AllowedMoves;
         [NonSerialized] public GameObject OccupyingObject;
     }
@@ -53,6 +55,7 @@ public class MapGrid : SerializedMonoBehaviour
     [Serializable]
     public struct FloorConnection
     {
+        //has two cell positions along with their floor
         public Point Pos1;
         public Point Pos2;
         [Serializable]
@@ -64,6 +67,7 @@ public class MapGrid : SerializedMonoBehaviour
     }
     public FloorConnection.Point GetConnectedFloor(Vector2Int _currentGridPos, int _currentFloor)
     {
+        //finds cell connected to a certain other cell on a certain floor if there's one
         foreach(var Connection in Connections)
         {
             if(_currentGridPos == Connection.Pos1.GridPos && _currentFloor == Connection.Pos1.FloorIndex)
@@ -87,7 +91,7 @@ public class MapGrid : SerializedMonoBehaviour
         All = Left | Right | Top | Bottom
     }
 
-    private List<AllowedMovesMask> Moves = new List<AllowedMovesMask>{ AllowedMovesMask.Top, AllowedMovesMask.Right, AllowedMovesMask.Bottom, AllowedMovesMask.Left };
+    private readonly static AllowedMovesMask[] Moves = { AllowedMovesMask.Top, AllowedMovesMask.Right, AllowedMovesMask.Bottom, AllowedMovesMask.Left };
     private Cell[,] GetFloor(int _floor)
     {
         switch (_floor)
@@ -108,6 +112,7 @@ public class MapGrid : SerializedMonoBehaviour
 
         Vector2Int returnValue = new();
         float closestDistance = 9999999;
+        //loops through all cells and gets the grid position of the one with the closest waypoint
         for(int i = 0; i < floor.GetLength(0); i++)
         {
             for(int u = 0;u< floor.GetLength(1);u++)
@@ -131,7 +136,8 @@ public class MapGrid : SerializedMonoBehaviour
         Vector2Int returnValue = new();
         float smallestDist = 99999;
         var floor = GetFloor(_floor);
-        //checks all cells around gridpos and gets the one closest to the world pos
+        //Instead of looping through all cells, loops through the surrounding 8 cells and the current one
+        //to find the grid pos of the one with the closest waypoint
         for(int i = 0; i < 3; i++)
         {
             for(int u = 0; u< 3; u++)
@@ -153,9 +159,10 @@ public class MapGrid : SerializedMonoBehaviour
     }
     public Vector2Int DistanceBetweenCells(Vector2Int Cell1Pos, Vector2Int Cell2Pos) 
     {
+        //Gets non diagonal distance in grid (non pythagorean dist)
         return new Vector2Int(Mathf.Abs(Cell1Pos.x - Cell2Pos.x), Mathf.Abs(Cell1Pos.y - Cell2Pos.y));
     }
-#if UNITY_EDITOR // Editor-related code must be excluded from builds
+#if UNITY_EDITOR //Initialization of mapgrids on script added to object, this is for the Odin Inspector
     [OnInspectorInit]
     private void CreateData()
     {
@@ -182,6 +189,7 @@ public class MapGrid : SerializedMonoBehaviour
             }
         }
     }
+    //Odin inspector, this is needed as odin can't natively display my custom class in the grid so I need to tell it how to
     private static Cell DrawElement(Rect rect, Cell value)
     {
         value.Center = (Transform)SirenixEditorFields.UnityObjectField(rect.VerticalPadding(10), value?.Center, typeof(Transform), true);
@@ -190,9 +198,10 @@ public class MapGrid : SerializedMonoBehaviour
         return value;
     }
 #endif
+    //rotates a direction depending on the rotation given
     public AllowedMovesMask GetRelativeDir(AllowedMovesMask _moveDir, float _rotationY =0)
     {
-        return Moves[(Moves.IndexOf(_moveDir) + (int)_rotationY / 90)%4];
+        return Moves[(Array.IndexOf(Moves,_moveDir) + (int)_rotationY / 90)%4];
     }
     public Cell GetCell(int _floor,int _column, int _row)
     {
@@ -237,6 +246,7 @@ public class MapGrid : SerializedMonoBehaviour
     }
     public bool ValidMovement(int _floor, int _column,int _row,  AllowedMovesMask _relativeMovementDir)
     {
+        //does a bitwise & operation on the the allowed moves flag of a cell to check if a direction is in it 
         return (GetFloor(_floor)[_column,_row].AllowedMoves & _relativeMovementDir) == _relativeMovementDir;
     }
 }
