@@ -31,7 +31,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
@@ -119,6 +119,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9edc38371816f654f9cfa4bca09fe86a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemPrefab: {fileID: 0}
-  location: {fileID: 0}
-  itemSO: {fileID: 0}
+  itemSO: {fileID: 11400000, guid: 341e180f075fa6a4fa66e98f0d14f6cf, type: 2}

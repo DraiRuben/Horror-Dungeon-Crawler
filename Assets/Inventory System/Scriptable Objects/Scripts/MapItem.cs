@@ -8,8 +8,6 @@ namespace Inventory.Model
 {
     public class MapItem : MonoBehaviour
     {
-        public GameObject itemPrefab;
-        public Transform location;
         public Item itemSO;
 
         private int itemQuantity = 1;

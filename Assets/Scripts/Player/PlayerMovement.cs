@@ -92,12 +92,12 @@ public class PlayerMovement : MonoBehaviour
             if (m_rotationInput > 0)
             {
                 m_timeSinceMovement = 0;
-                m_transform.rotation = Quaternion.Euler(0, m_transform.rotation.eulerAngles.y +90, 0);
+                m_transform.rotation = Quaternion.Euler(10, m_transform.rotation.eulerAngles.y +90, 0);
             }
             else if (m_rotationInput < 0)
             {
                 m_timeSinceMovement = 0;
-                m_transform.rotation = Quaternion.Euler(0, m_transform.rotation.eulerAngles.y - 90, 0);
+                m_transform.rotation = Quaternion.Euler(10, m_transform.rotation.eulerAngles.y - 90, 0);
             }
         }
     }
