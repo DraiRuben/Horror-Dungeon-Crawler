@@ -9,15 +9,21 @@ public class MobAI : MonoBehaviour
     protected Vector2Int m_gridPos;
     [SerializeField] protected int m_floor;
     [SerializeField] protected int m_attackReach;
-
+    [SerializeField] protected bool m_projectileAttacks;
+    protected bool m_isCloseEnough;
+    protected EntityStats m_entityStats;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         m_agent = GetComponent<NavMeshAgent>();
-        m_gridPos = MapGrid.Instance.GetClosestCell(m_floor,transform.position);
+        m_entityStats = GetComponent<EntityStats>();
+        StartCoroutine(AttackRoutine());
+    }
+    private void Start()
+    {
+        m_gridPos = MapGrid.Instance.GetClosestCell(m_floor, transform.position);
         MapGrid.Instance.GetCell(m_floor, m_gridPos.x, m_gridPos.y).OccupyingObject = gameObject;
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -25,7 +31,7 @@ public class MobAI : MonoBehaviour
         {
             var dist = MapGrid.Instance.DistanceBetweenCells(m_gridPos, PlayerMovement.Instance.GridPos);
             var totalDist = dist.x + dist.y;
-
+            transform.rotation = Quaternion.Euler(0,Quaternion.LookRotation(PlayerMovement.Instance.transform.position- transform.position).eulerAngles.y,0);
             //updates grid pos only if it's not occupied by anything else, also empty previously occupied cell
             var newGridPos = MapGrid.Instance.GetClosestCell(m_floor, transform.position, m_gridPos);
             if (newGridPos != m_gridPos)
@@ -43,11 +49,39 @@ public class MobAI : MonoBehaviour
             {
                 m_agent.SetDestination(MapGrid.Instance.GetCell(m_floor, m_gridPos.x, m_gridPos.y).Center.position);
                 //système d'attaque
+                m_isCloseEnough = true;
             }
             else
             {
+                m_isCloseEnough = false;
                 m_agent.SetDestination(PlayerMovement.Instance.transform.position);
             }
+        }
+    }
+
+    protected IEnumerator AttackRoutine()
+    {
+        float timeSincePreviousAttack = 0;
+        while (true)
+        {
+            yield return new WaitUntil(() => m_isCloseEnough);
+            if (timeSincePreviousAttack > (1f / m_entityStats.Dexterity))
+            {
+                timeSincePreviousAttack = 0;
+                var AttackDir = MapGrid.Instance.GetRelativeDir(MapGrid.AllowedMovesMask.Top, transform.rotation.eulerAngles.y);
+                if (!m_projectileAttacks)
+                {
+                    
+                    AttackSystem.Instance.CQCAttack(m_gridPos,m_floor,AttackDir,m_entityStats.Strength,gameObject);
+                }
+                else
+                {
+                    AttackSystem.Instance.RangedAttack(m_gridPos,m_floor,AttackDir,m_entityStats.Strength,m_attackReach,m_entityStats.Dexterity,gameObject);
+                }
+            }
+
+            timeSincePreviousAttack += Time.deltaTime;
+            yield return null;
         }
     }
 }

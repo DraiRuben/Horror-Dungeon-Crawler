@@ -2,6 +2,7 @@ using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerStatsManager : SerializedMonoBehaviour
@@ -13,9 +14,14 @@ public class PlayerStatsManager : SerializedMonoBehaviour
     {
         //gets angle between player looking forward and attack origin
         float AngleY = Quaternion.LookRotation(PlayerMovement.Instance.transform.position - _damageOrigin.transform.position).eulerAngles.y;
-        
+
         //gets side of the attack's hit, 0 is in front, 1 on the right, 2 in the back, 3 on the left
-        int attackRelativePos = (int)AngleY % 90;
+        Vector3 PlayerLookDir = PlayerMovement.Instance.transform.forward;
+        PlayerLookDir.Set(PlayerLookDir.x, 0, PlayerLookDir.z);
+        Vector3 OriginLookDir = -_damageOrigin.transform.forward;
+        OriginLookDir.Set(OriginLookDir.x, 0, OriginLookDir.z);
+
+        int attackRelativePos = ((int)Mathf.Round(Vector3.Angle(PlayerLookDir, OriginLookDir)/ 90))%4;
 
         //gets pos in position grid of the two characters in the line directly hit by the attack
         var firstFormationPos = m_formationPositions[attackRelativePos];
@@ -47,7 +53,7 @@ public class PlayerStatsManager : SerializedMonoBehaviour
     {
         new(0,0),
         new(1,0),
+        new(1,1),        
         new(0,1),
-        new(1,1),
     };
 }

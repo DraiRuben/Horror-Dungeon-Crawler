@@ -2,6 +2,7 @@ using Inventory.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MouseFollower : MonoBehaviour
 {
@@ -24,8 +25,8 @@ public class MouseFollower : MonoBehaviour
     void Update()
     {
         Vector2 position;
-        RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform)canvas.transform, Input.mousePosition, canvas.worldCamera, out position);
-        transform.position = canvas.transform.TransformPoint(position); 
+        RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform)canvas.transform, Mouse.current.position.ReadValue(), canvas.worldCamera, out position);
+        transform.position = canvas.transform.TransformPoint(position);
     }
 
     public void Toggle(bool val)
