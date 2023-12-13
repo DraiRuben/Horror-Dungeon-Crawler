@@ -20,13 +20,14 @@ public class Settings_Menu : MonoBehaviour
         {
             SetMasterVolume();
         }
+        gameObject.SetActive(false);
     }
 
 
     public void SetMasterVolume()
     {
         float volume = m_slider.value;
-        m_mixer.SetFloat("master",Mathf.Log10(volume)*20);
+        //m_mixer.SetFloat("master",Mathf.Log10(volume)*20);
         PlayerPrefs.SetFloat("masterVolume", volume);
     }
 

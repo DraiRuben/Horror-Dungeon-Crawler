@@ -5,40 +5,34 @@ using UnityEngine.InputSystem;
 
 public class Pause_Menu : MonoBehaviour
 {
-    public GameObject pause_Menu;
-
-    private static bool isPaused = false;
-
-
-    private void Start()
+    private bool isPaused = false;
+    private void Awake()
     {
         Time.timeScale = 1.0f;
+        gameObject.SetActive(false);
     }
-    public void Update()
+    public void PausePlay()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (isPaused)
         {
-            if (isPaused == true)
-            {
-                ResumeGame();
-            }
-            else
-            {
-                PauseGame();
-            }
+            ResumeGame();
+        }
+        else
+        {
+            PauseGame();
         }
     }
 
     public void PauseGame()
     {
-        pause_Menu.SetActive(true);
+        gameObject.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
     }
 
     public void ResumeGame()
     {
-        pause_Menu.SetActive(false);
+        gameObject.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
     }
