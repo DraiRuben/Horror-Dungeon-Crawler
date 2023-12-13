@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Diagnostics.Eventing.Reader;
+using System.Runtime.Remoting.Messaging;
 
 
 namespace Inventory.Model
@@ -101,6 +102,33 @@ namespace Inventory.Model
             OnInventoryUpdated?.Invoke(GetCurrentInventoryState());
             OnInventoryChanged?.Invoke();
         }
+
+        public void RemoveItem(Item item)
+        {
+            for (int i = 0; i < inventoryItems.Count; i++)
+            {
+                if (inventoryItems[i].item == item)
+                {
+                    inventoryItems[i] = InventoryItem.GetEmptyItem();
+                    InformAboutChange();
+                    break;
+                }
+            }
+        }
+
+        public bool UseItemByIndex(int index)
+        {
+            foreach (InventoryItem inventoryItem in inventoryItems)
+            {
+                if (inventoryItem.item.index == index)
+                {
+                    inventoryItem.ChangeQuantity(inventoryItem.quantity - 1);
+                    return true;
+                }
+            }
+            return false;
+        }
+
     }
 
     [Serializable]
@@ -117,7 +145,6 @@ namespace Inventory.Model
             {
                 item = this.item,
                 quantity = newQuantity,
-
             };
         }
 
