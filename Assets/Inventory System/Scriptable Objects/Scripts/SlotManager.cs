@@ -35,6 +35,12 @@ namespace Inventory.Model
             }
             return -1;
         }
+        public void ChangeAmount(int slotIndex, int amount)
+        {
+            var copy = inventoryItems[slotIndex];
+            copy.quantity += amount;
+            inventoryItems[slotIndex] = copy;
+        }
         public int GetFirstEmptySlotIndex()
         {
             for(int i  = 0; i < inventoryItems.Count; i++)

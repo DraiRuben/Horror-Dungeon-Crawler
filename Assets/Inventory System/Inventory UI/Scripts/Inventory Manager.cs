@@ -11,7 +11,7 @@ namespace Inventory
     public class InventoryManager : MonoBehaviour
     {
         [SerializeField] private UIInventoryScript inventoryUI;
-        [SerializeField] private SlotManager inventoryData;
+        public SlotManager inventoryData;
 
         public List<InventoryItem> initialItems = new List<InventoryItem>();
         public static InventoryManager Instance;

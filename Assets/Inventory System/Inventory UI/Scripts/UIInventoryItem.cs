@@ -70,7 +70,6 @@ namespace Inventory.UI
         public void OnEndDrag(PointerEventData eventData)
         {
             OnItemEndDrag?.Invoke(this);
-            Debug.Log("dragged " + name);
         }
         public void OnDrag(PointerEventData eventData)
         {
