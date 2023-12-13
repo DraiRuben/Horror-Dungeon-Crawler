@@ -1,6 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Ressources/Audio.meta
 guid: 3066f8a641127b8499ebe87f4a4fc9da
 folderAsset: yes
+========
+guid: 2eea87791424a7b4ea4b66ec1af6a490
+>>>>>>>> TestAi:Assets/Scenes/Game 1.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
