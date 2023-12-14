@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Basement Key
   m_EditorClassIdentifier: 
   <IsStackable>k__BackingField: 0
-  index: 15
   <MaxStackSize>k__BackingField: 1
+  index: 15
   <Name>k__BackingField: Basement Key
   <Description>k__BackingField: 'Lorem Ipsum
 
 '
-  <ItemImage>k__BackingField: {fileID: 0}
+  <ItemImage>k__BackingField: {fileID: 21300000, guid: beb70b22a2db9a444a3d12b5ebefaa39, type: 3}
   usesLeft: 1
