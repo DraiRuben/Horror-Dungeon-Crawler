@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using System.Diagnostics.Eventing.Reader;
 using System.Runtime.Remoting.Messaging;
+using Inventory.UI;
 
 
 namespace Inventory.Model
@@ -41,6 +42,7 @@ namespace Inventory.Model
             var copy = inventoryItems[slotIndex];
             copy.quantity += amount;
             inventoryItems[slotIndex] = copy;
+            UIInventoryScript.Instance.UpdateData(slotIndex, inventoryItems[slotIndex].item.ItemImage, inventoryItems[slotIndex].quantity);
         }
         public int GetFirstEmptySlotIndex()
         {
@@ -63,8 +65,6 @@ namespace Inventory.Model
                     item = item,
                     quantity = quantity
                 };
-
-                InformAboutChange();
             }
         }
 
@@ -73,34 +73,9 @@ namespace Inventory.Model
             AddItem(item.item, item.quantity);
         }
 
-        public Dictionary<int, InventoryItem> GetCurrentInventoryState()
-        {
-            Dictionary<int, InventoryItem> returnValue = new Dictionary<int, InventoryItem>();
-            for (int i = 0; i < inventoryItems.Count; i++)
-            {
-                if (!inventoryItems[i].isEmpty)
-                {
-                    returnValue[i] = inventoryItems[i];
-                }
-            }
-            return returnValue;
-        }
-
         public InventoryItem GetItemAt(int itemIndex)
         {
             return inventoryItems[itemIndex];
-        }
-
-        public void SwapItems(int itemIndex_1, int itemIndex_2)
-        {
-            (inventoryItems[itemIndex_2], inventoryItems[itemIndex_1]) = (inventoryItems[itemIndex_1], inventoryItems[itemIndex_2]);
-            InformAboutChange();
-        }
-
-        private void InformAboutChange()
-        {
-            OnInventoryUpdated?.Invoke(GetCurrentInventoryState());
-            OnInventoryChanged?.Invoke();
         }
 
         public void RemoveItem(Item item)
@@ -110,7 +85,6 @@ namespace Inventory.Model
                 if (inventoryItems[i].item == item)
                 {
                     inventoryItems[i] = InventoryItem.GetEmptyItem();
-                    InformAboutChange();
                     break;
                 }
             }
