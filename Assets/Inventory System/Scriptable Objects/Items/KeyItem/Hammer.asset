@@ -9,12 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 451b6fb3603c92a49bcbff2f92ff0444, type: 3}
+  m_Script: {fileID: 11500000, guid: 1f2a1df01f8805144be65e238a198c28, type: 3}
   m_Name: Hammer
   m_EditorClassIdentifier: 
   <IsStackable>k__BackingField: 0
   index: 0
   <MaxStackSize>k__BackingField: 1
   <Name>k__BackingField: Hammer
-  <Description>k__BackingField: Lorem Ipsum
-  <ItemImage>k__BackingField: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  <Description>k__BackingField: It's Hammer time !
+  <ItemImage>k__BackingField: {fileID: 0}
+  usesLeft: 1

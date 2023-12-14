@@ -20,32 +20,26 @@ namespace Inventory.UI
 
         public void Awake()
         {
-            ResetData();
+            itemImage.gameObject.SetActive(!empty);
             Deselect();
-        }
-
-        public void ResetData()
-        {
-            itemImage.gameObject.SetActive(false);
-            empty = true;
         }
 
         public void Deselect()
         {
-            borderImage.enabled = false;
+            if(borderImage !=null) borderImage.enabled = false;
         }
 
         public void SetData(Sprite sprite, int quantity)
         {
             itemImage.gameObject.SetActive(true);
             itemImage.sprite = sprite;
-            quantityTxt.text = quantity + "";
+            if(quantityTxt!=null) quantityTxt.text = quantity + "";
             empty = false;
         }
 
         public void Select()
         {
-            borderImage.enabled = true;
+            if(borderImage !=null) borderImage.enabled = true;
         }
 
         public void OnPointerClick(PointerEventData pointerData)

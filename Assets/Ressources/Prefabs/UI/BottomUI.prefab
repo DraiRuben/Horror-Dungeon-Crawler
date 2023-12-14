@@ -1136,9 +1136,6 @@ MonoBehaviour:
   Dexterity: 0
   Strength: 0
   m_isBoss: 0
-  OnHealthChanged:
-    m_PersistentCalls:
-      m_Calls: []
   m_maxStress: 100
   HealthBarPlayer: {fileID: 1195021171287828359}
 --- !u!1 &2310730620750347454
@@ -1770,9 +1767,6 @@ MonoBehaviour:
   Dexterity: 0
   Strength: 0
   m_isBoss: 0
-  OnHealthChanged:
-    m_PersistentCalls:
-      m_Calls: []
   m_maxStress: 100
   HealthBarPlayer: {fileID: 6206806514969800348}
 --- !u!1 &4629620249702801620
@@ -2146,9 +2140,6 @@ MonoBehaviour:
   Dexterity: 0
   Strength: 0
   m_isBoss: 0
-  OnHealthChanged:
-    m_PersistentCalls:
-      m_Calls: []
   m_maxStress: 100
   HealthBarPlayer: {fileID: 7938122107411463804}
 --- !u!1 &4987530024116443395
@@ -2714,9 +2705,6 @@ MonoBehaviour:
   Dexterity: 0
   Strength: 0
   m_isBoss: 0
-  OnHealthChanged:
-    m_PersistentCalls:
-      m_Calls: []
   m_maxStress: 100
   HealthBarPlayer: {fileID: 9038508820413956135}
 --- !u!1 &5931844346611902097

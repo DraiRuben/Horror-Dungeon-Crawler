@@ -52,6 +52,7 @@ namespace Inventory.UI
             if (listOfUIItems.Count > itemIndex)
             {
                 listOfUIItems[itemIndex].SetData(itemImage, itemQuantity);
+                Debug.Log("updatesData");
             }
         }
 
@@ -88,7 +89,11 @@ namespace Inventory.UI
                 {
                     return;
                 }
-                OnSwapItems?.Invoke(currentlyDraggedItemIndex, index);
+                int siblingIndex1 = inventoryItemUI.transform.GetSiblingIndex();
+                int siblingIndex2 = listOfUIItems[currentlyDraggedItemIndex].transform.GetSiblingIndex();
+
+                inventoryItemUI.transform.SetSiblingIndex(siblingIndex2);
+                listOfUIItems[currentlyDraggedItemIndex].transform.SetSiblingIndex(siblingIndex1);
                 HandleItemSelection(inventoryItemUI);
             }
         }
@@ -118,7 +123,6 @@ namespace Inventory.UI
             }
             else
             {
-                InventoryManager.Instance.UpdateUI(); 
                 gameObject.SetActive(true);
                 ResetSelection();
             }
@@ -143,15 +147,6 @@ namespace Inventory.UI
             itemDescription.SetDescription(itemImage, name, description);
             DeselectAllItems();
             listOfUIItems[itemIndex].Select();
-        }
-
-        public void ResetAllItems()
-        {
-            foreach (var item in listOfUIItems)
-            {
-                item.ResetData();
-                item.Deselect();
-            }
         }
     }
 }

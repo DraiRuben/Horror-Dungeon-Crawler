@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,13 +11,12 @@ namespace Inventory.Model
         [field: SerializeField]
         public bool IsStackable { get; set; }
 
-        [SerializeField]
-        public int index;
-
-
         [field: SerializeField]
         public int MaxStackSize { get; set; } = 1;
 
+
+        [SerializeField]
+        public int index;
 
         [field: SerializeField]
         public string Name { get; set; }
