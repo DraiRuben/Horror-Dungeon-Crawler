@@ -23,13 +23,15 @@ namespace Inventory.Model
 
         public void PickUpItemOnMap()
         {
-            int duplicateSlotIndex = InventoryManager.Instance.inventoryData.GetDuplicateSlotIndex(itemSO);
-            if (duplicateSlotIndex >= 0)
+            if (itemSO.IsStackable)
             {
-                InventoryManager.Instance.inventoryData.ChangeAmount(duplicateSlotIndex, 1);
-                InventoryManager.Instance.UpdateData();
-                Destroy(gameObject);
-                return;
+                int duplicateSlotIndex = InventoryManager.Instance.inventoryData.GetDuplicateSlotIndex(itemSO);
+                if (duplicateSlotIndex >= 0)
+                {
+                    InventoryManager.Instance.inventoryData.ChangeAmount(duplicateSlotIndex, 1);
+                    Destroy(gameObject);
+                    return;
+                }
             }
 
             int newSlotIndex = InventoryManager.Instance.inventoryData.GetFirstEmptySlotIndex();
@@ -37,7 +39,6 @@ namespace Inventory.Model
             {
                 UIInventoryScript.Instance.UpdateData(newSlotIndex, itemSO.ItemImage, itemQuantity);
                 InventoryManager.Instance.inventoryData.AddItem(itemSO, 1);
-                InventoryManager.Instance.UpdateData();
                 Destroy(gameObject);
                 return;
             }

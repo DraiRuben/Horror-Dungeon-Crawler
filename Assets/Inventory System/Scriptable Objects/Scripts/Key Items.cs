@@ -5,9 +5,10 @@ using UnityEngine;
 
 namespace Inventory.Model
 {
+    [CreateAssetMenu]
     public class Key : Item
     {
-        [SerializeField] public int usesLeft;
+        public int usesLeft;
 
         public void UseKey()
         {
