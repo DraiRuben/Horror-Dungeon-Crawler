@@ -1,20 +1,16 @@
 using Inventory.UI;
-using System.Collections;
-using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class MouseFollower : MonoBehaviour
 {
-    [SerializeField] private Canvas canvas;
-    [SerializeField] private Camera mainCam;
+    [SerializeField] private Camera cam; 
     public UIInventoryItem item;
 
     public void Awake()
     {
-        canvas = transform.root.GetComponent<Canvas>();
-        mainCam = Camera.main;
-
+        cam = Camera.main;
     }
 
     public void SetData(Sprite sprite, int quantity)
@@ -24,9 +20,7 @@ public class MouseFollower : MonoBehaviour
 
     void Update()
     {
-        Vector2 position;
-        RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform)canvas.transform, Mouse.current.position.ReadValue(), canvas.worldCamera, out position);
-        transform.position = canvas.transform.TransformPoint(position);
+        transform.position = Input.mousePosition;
     }
 
     public void Toggle(bool val)

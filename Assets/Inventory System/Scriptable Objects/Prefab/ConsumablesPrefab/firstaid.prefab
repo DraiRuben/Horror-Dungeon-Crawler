@@ -119,9 +119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9edc38371816f654f9cfa4bca09fe86a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemPrefab: {fileID: 1987713744733760}
-  location: {fileID: 4792054580643688}
   itemSO: {fileID: 11400000, guid: 062ad223a5d24d04cbb949d64a79866e, type: 2}
+  particle: {fileID: 915475059871046874, guid: fcee7ee6fc580de408bfd75f32bda732, type: 3}
 --- !u!65 &6297501453661051608
 BoxCollider:
   m_ObjectHideFlags: 0

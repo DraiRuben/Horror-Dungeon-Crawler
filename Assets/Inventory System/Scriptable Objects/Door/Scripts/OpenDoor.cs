@@ -19,6 +19,8 @@ public class OpenDoor : MonoBehaviour
     {
         if (inventoryManager.inventoryData.UseItemByIndex(keyIndex))
             Destroy(gameObject);
+        else
+            Debug.Log("No Key");
     }
 
     public void OnMouseDown()
