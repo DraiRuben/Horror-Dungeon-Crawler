@@ -120,7 +120,7 @@ namespace Inventory.Model
         {
             foreach (InventoryItem inventoryItem in inventoryItems)
             {
-                if (inventoryItem.item.index == index)
+                if (inventoryItem.item?.index == index)
                 {
                     inventoryItem.ChangeQuantity(inventoryItem.quantity - 1);
                     return true;

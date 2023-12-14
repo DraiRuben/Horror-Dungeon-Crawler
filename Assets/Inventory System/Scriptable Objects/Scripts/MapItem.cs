@@ -10,16 +10,6 @@ namespace Inventory.Model
     {
         public Item itemSO;
         private int itemQuantity = 1;
-        [SerializeField] ParticleSystem particle;
-
-        private void Start()
-        {
-            ParticleSystem newParticle = Instantiate(particle, transform.position, Quaternion.identity);
-            Vector3 particleRotation = newParticle.transform.rotation.eulerAngles;
-            particleRotation.x = -90; 
-            newParticle.transform.rotation = Quaternion.Euler(particleRotation);
-        }
-
 
         public void PickUpItemOnMap()
         {
@@ -33,7 +23,7 @@ namespace Inventory.Model
             }
 
             int newSlotIndex = InventoryManager.Instance.inventoryData.GetFirstEmptySlotIndex();
-            if(newSlotIndex >= 0) 
+            if (newSlotIndex >= 0)
             {
                 UIInventoryScript.Instance.UpdateData(newSlotIndex, itemSO.ItemImage, itemQuantity);
                 InventoryManager.Instance.inventoryData.AddItem(itemSO, 1);
@@ -41,7 +31,6 @@ namespace Inventory.Model
                 Destroy(gameObject);
                 return;
             }
-            
         }
 
         private void OnMouseDown()
