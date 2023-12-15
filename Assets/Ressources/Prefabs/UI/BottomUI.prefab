@@ -1781,7 +1781,7 @@ GameObject:
   - component: {fileID: 6806486235297550129}
   - component: {fileID: 6866903388106621310}
   - component: {fileID: 3926068031837287787}
-  - component: {fileID: 8127428445907949395}
+  - component: {fileID: 2882846967807023299}
   m_Layer: 0
   m_Name: Attack
   m_TagString: Untagged
@@ -1890,7 +1890,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8127428445907949395}
+      - m_Target: {fileID: 2882846967807023299}
         m_TargetAssemblyTypeName: PlayerUISlot, Assembly-CSharp
         m_MethodName: Use
         m_Mode: 1
@@ -1902,7 +1902,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &8127428445907949395
+--- !u!114 &2882846967807023299
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1914,7 +1914,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c17fadc982bd229418240c80e20fd493, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SlotImage: {fileID: 6866903388106621310}
   CurrentItem: {fileID: 0}
 --- !u!1 &4774294725049331665
 GameObject:
@@ -2301,7 +2300,7 @@ GameObject:
   - component: {fileID: 6257318094097696205}
   - component: {fileID: 1388806973213766067}
   - component: {fileID: 2189813911278291210}
-  - component: {fileID: 9137499834841074425}
+  - component: {fileID: 7248692912468787550}
   m_Layer: 0
   m_Name: Attack
   m_TagString: Untagged
@@ -2410,7 +2409,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9137499834841074425}
+      - m_Target: {fileID: 7248692912468787550}
         m_TargetAssemblyTypeName: PlayerUISlot, Assembly-CSharp
         m_MethodName: Use
         m_Mode: 1
@@ -2422,7 +2421,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &9137499834841074425
+--- !u!114 &7248692912468787550
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2434,7 +2433,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c17fadc982bd229418240c80e20fd493, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SlotImage: {fileID: 1388806973213766067}
   CurrentItem: {fileID: 0}
 --- !u!1 &5090717377161219963
 GameObject:
@@ -3051,7 +3049,7 @@ GameObject:
   - component: {fileID: 3942759760343855955}
   - component: {fileID: 242376296404075455}
   - component: {fileID: 1504501448715406524}
-  - component: {fileID: 5090649329700206583}
+  - component: {fileID: 3599884451914591815}
   m_Layer: 0
   m_Name: Attack
   m_TagString: Untagged
@@ -3160,7 +3158,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5090649329700206583}
+      - m_Target: {fileID: 3599884451914591815}
         m_TargetAssemblyTypeName: PlayerUISlot, Assembly-CSharp
         m_MethodName: Use
         m_Mode: 1
@@ -3172,7 +3170,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &5090649329700206583
+--- !u!114 &3599884451914591815
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3184,7 +3182,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c17fadc982bd229418240c80e20fd493, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SlotImage: {fileID: 242376296404075455}
   CurrentItem: {fileID: 0}
 --- !u!1 &6474758662572166914
 GameObject:
@@ -4162,7 +4159,7 @@ GameObject:
   - component: {fileID: 1115611712347188885}
   - component: {fileID: 3006756633427375582}
   - component: {fileID: 1244378307844420417}
-  - component: {fileID: 10083019050057448}
+  - component: {fileID: 7112661625034771313}
   m_Layer: 0
   m_Name: Attack
   m_TagString: Untagged
@@ -4271,7 +4268,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 7112661625034771313}
         m_TargetAssemblyTypeName: PlayerUISlot, Assembly-CSharp
         m_MethodName: Use
         m_Mode: 1
@@ -4283,7 +4280,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &10083019050057448
+--- !u!114 &7112661625034771313
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4295,7 +4292,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c17fadc982bd229418240c80e20fd493, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SlotImage: {fileID: 3006756633427375582}
   CurrentItem: {fileID: 0}
 --- !u!1 &8604280194147514077
 GameObject:
@@ -4696,7 +4692,11 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 7248692912468787550}
+    - {fileID: 7112661625034771313}
+    - {fileID: 3599884451914591815}
+    - {fileID: 2882846967807023299}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -4729,8 +4729,8 @@ MonoBehaviour:
       Entry: 3
       Data: 1
     - Name: $v
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -4741,8 +4741,8 @@ MonoBehaviour:
       Entry: 3
       Data: 0
     - Name: $v
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -4753,8 +4753,8 @@ MonoBehaviour:
       Entry: 3
       Data: 2
     - Name: $v
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 2
     - Name: 
       Entry: 8
       Data: 
@@ -4765,8 +4765,8 @@ MonoBehaviour:
       Entry: 3
       Data: 3
     - Name: $v
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 3
     - Name: 
       Entry: 8
       Data: 

@@ -15,10 +15,13 @@ MonoBehaviour:
   <IsStackable>k__BackingField: 0
   <MaxStackSize>k__BackingField: 1
   index: 0
-  <Name>k__BackingField: 
+  <Name>k__BackingField: Combat Knife
   <Description>k__BackingField: 
   <ItemImage>k__BackingField: {fileID: 21300000, guid: bc446b19758ee0e4fa2585165dbd9261, type: 3}
-  Damage: 5
-  ReloadTime: 1
   CanUse: 1
   AutoEquip: 1
+  ShootsProjectile: 0
+  ProjectileSpeed: 0
+  Range: 1
+  Damage: 20
+  ReloadTime: 1

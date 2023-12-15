@@ -15,10 +15,13 @@ MonoBehaviour:
   <IsStackable>k__BackingField: 0
   <MaxStackSize>k__BackingField: 1
   index: 0
-  <Name>k__BackingField: 
+  <Name>k__BackingField: Cursed Arms
   <Description>k__BackingField: 
   <ItemImage>k__BackingField: {fileID: 21300000, guid: dbe03a8dfd87352428cc016048814cd8, type: 3}
-  Damage: 5
-  ReloadTime: 0.2
   CanUse: 3
   AutoEquip: 1
+  ShootsProjectile: 0
+  ProjectileSpeed: 0
+  Range: 0
+  Damage: 20
+  ReloadTime: 0.2
