@@ -59,13 +59,13 @@ public class MobAI : MonoBehaviour
         }
     }
 
-    protected IEnumerator AttackRoutine()
+    protected virtual IEnumerator AttackRoutine()
     {
         float timeSincePreviousAttack = 0;
         while (true)
         {
             yield return new WaitUntil(() => m_isCloseEnough);
-            if (timeSincePreviousAttack > (1f / m_entityStats.Dexterity))
+            if (timeSincePreviousAttack > (10f / m_entityStats.Dexterity))
             {
                 timeSincePreviousAttack = 0;
                 var AttackDir = MapGrid.Instance.GetRelativeDir(MapGrid.AllowedMovesMask.Top, transform.rotation.eulerAngles.y);

@@ -12,7 +12,7 @@ public class PlayerStats : EntityStats
    
     void Start()
     {
-        m_currentHealth = m_maxHealth;
+        CurrentHealth = m_maxHealth;
         m_currentStress = m_maxStress;
         HealthBarPlayer.fillAmount = 1;
         OnHealthChanged.AddListener(PlayerUpdateFill);
@@ -28,6 +28,6 @@ public class PlayerStats : EntityStats
     
     public void PlayerUpdateFill()
     {
-        HealthBarPlayer.fillAmount = (float) m_currentHealth / m_maxHealth;
+        HealthBarPlayer.fillAmount = (float) CurrentHealth / m_maxHealth;
     }
 }
