@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class OpenDoor : MonoBehaviour
 {
-    [field: SerializeField] public int keyIndex;
+    public int keyIndex;
     private Inventory.Inventory inventoryManager;
     private MapGrid mapGrid;
     [field: SerializeField] MapGrid.AllowedMovesMask toAddInBack;

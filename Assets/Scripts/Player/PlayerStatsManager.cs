@@ -1,4 +1,5 @@
 using Sirenix.OdinInspector;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,12 @@ public class PlayerStatsManager : SerializedMonoBehaviour
 {
     [TableMatrix(SquareCells = true)]
     public PlayerStats[,] Characters;
-
+    public static PlayerStatsManager Instance;
+    private void Awake()
+    {
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
+    }
     public void TakeDamage(int _damage, GameObject _damageOrigin)
     {
         //gets angle between player looking forward and attack origin
@@ -45,7 +51,7 @@ public class PlayerStatsManager : SerializedMonoBehaviour
             Characters[secondFormationPos.x, secondFormationPos.y] }.Where(x => x != null).ToList();
         }
         //choose randomly one character between the ones that can get hit and apply the damage to it
-        CharactersToHit[Random.Range(0, CharactersToHit.Count)].TakeDamage(_damage);
+        CharactersToHit[UnityEngine.Random.Range(0, CharactersToHit.Count)].TakeDamage(_damage);
     }
 
     //positions of characters in formation
@@ -56,4 +62,6 @@ public class PlayerStatsManager : SerializedMonoBehaviour
         new(1,1),        
         new(0,1),
     };
+
+    
 }

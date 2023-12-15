@@ -65,13 +65,12 @@ public class MobAI : MonoBehaviour
         while (true)
         {
             yield return new WaitUntil(() => m_isCloseEnough);
-            if (timeSincePreviousAttack > (1f / m_entityStats.Dexterity))
+            if (timeSincePreviousAttack > (10f / m_entityStats.Dexterity))
             {
                 timeSincePreviousAttack = 0;
                 var AttackDir = MapGrid.Instance.GetRelativeDir(MapGrid.AllowedMovesMask.Top, transform.rotation.eulerAngles.y);
                 if (!m_projectileAttacks)
                 {
-                    
                     AttackSystem.Instance.CQCAttack(m_gridPos,m_floor,AttackDir,m_entityStats.Strength,gameObject);
                 }
                 else

@@ -78,10 +78,12 @@ namespace Inventory.UI
 
         public void OnDrop(PointerEventData eventData)
         {
+
         }
 
         public void OnPointerDown(PointerEventData eventData)
         {
+
         }
     }
 }
