@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class OpenDoor : MonoBehaviour
 {
+    Animator animator;
     public int keyIndex;
     private Inventory.Inventory inventoryManager;
     private MapGrid mapGrid;
@@ -19,6 +20,7 @@ public class OpenDoor : MonoBehaviour
     [field: SerializeField] int cellInFrontDoorY;
     [field: SerializeField] int floorIndexFront;
     [SerializeField] bool NoKeyRequired;
+    public bool isCadavre;
 
     public void Start()
     {
@@ -29,13 +31,21 @@ public class OpenDoor : MonoBehaviour
 
     public void Opening()
     {
+        
         if (inventoryManager.inventoryData.UseItemByIndex(keyIndex) || NoKeyRequired)
         {
             OpenWaypointBehindDoor();
             OpenWaypointInFrontDoor();
-            animator.SetTrigger("ChangeState");        
+            if (!isCadavre)
+            {
+                animator.SetTrigger("ChangeState");
+            }
+            else
+            {
+                Destroy(gameObject);
+            }    
         }
-        else
+        else 
         {
             Debug.Log("No Key");
         }
