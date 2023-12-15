@@ -10,14 +10,17 @@ public class OpenDoor : MonoBehaviour
     [field: SerializeField] public int keyIndex;
     private InventoryManager inventoryManager;
     private MapGrid mapGrid;
-    public bool isOpen;
+    [field: SerializeField] MapGrid.AllowedMovesMask toAddInBack;
     [field: SerializeField] int cellBehindDoorX;
     [field: SerializeField] int cellBehindDoorY;
-    [field: SerializeField] int floorIndex;
+    [field: SerializeField] int floorIndexBack;
+    [field: SerializeField] MapGrid.AllowedMovesMask toAddInFront;
+    [field: SerializeField] int cellInFrontDoorX;
+    [field: SerializeField] int cellInFrontDoorY;
+    [field: SerializeField] int floorIndexFront;
 
     public void Start()
     {
-        isOpen = false;
         inventoryManager = InventoryManager.Instance;
         mapGrid = MapGrid.Instance;
     }
@@ -26,8 +29,8 @@ public class OpenDoor : MonoBehaviour
     {
         if (inventoryManager.inventoryData.UseItemByIndex(keyIndex))
         {
-            isOpen = true;
-            BlockWaypointBehindDoor();
+            OpenWaypointBehindDoor();
+            OpenWaypointInFrontDoor();
             Destroy(gameObject);
         }
         else
@@ -41,24 +44,21 @@ public class OpenDoor : MonoBehaviour
         Opening();
     }
 
-    private void BlockWaypointBehindDoor()
+    private void OpenWaypointBehindDoor()
     {
-        var cell = mapGrid.GetCell(floorIndex, cellBehindDoorX, cellBehindDoorY);
+        var cell = mapGrid.GetCell(floorIndexBack, cellBehindDoorX, cellBehindDoorY);
         if (cell != null)
         {
-            if (!isOpen)
-            {
-                Debug.Log("Blocking movements behind the door.");
-                cell.AllowedMoves &= MapGrid.AllowedMovesMask.Left;
-                cell.AllowedMoves &= MapGrid.AllowedMovesMask.Right;
-                cell.AllowedMoves &= MapGrid.AllowedMovesMask.Top;
-                cell.AllowedMoves &= MapGrid.AllowedMovesMask.Bottom;
-            }
-            else
-            {
-                Debug.Log("Opening movements behind the door.");
-                cell.AllowedMoves = MapGrid.AllowedMovesMask.All;
-            }
+            cell.AllowedMoves |= toAddInBack;
+        }
+    }
+
+    private void OpenWaypointInFrontDoor()
+    {
+        var cell = mapGrid.GetCell(floorIndexFront, cellInFrontDoorX, cellInFrontDoorY);
+        if (cell != null)
+        {
+            cell.AllowedMoves |= toAddInFront;
         }
     }
 }
