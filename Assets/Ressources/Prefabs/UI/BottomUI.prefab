@@ -4514,6 +4514,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5300508675955998226}
   - component: {fileID: 6024788552487752870}
+  - component: {fileID: 3423416856082034221}
   m_Layer: 5
   m_Name: BottomUI
   m_TagString: Untagged
@@ -4572,3 +4573,301 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &3423416856082034221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8724503835970486795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07bab065201ac1441b8734cbf656ff07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 1388806973213766067}
+    - {fileID: 3006756633427375582}
+    - {fileID: 242376296404075455}
+    - {fileID: 6866903388106621310}
+    - {fileID: 7865119912533713547}
+    - {fileID: 9142134314250962213}
+    - {fileID: 1071803942146353970}
+    - {fileID: 5316836024694225463}
+    - {fileID: 3988327742977431362}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: WeaponSlots
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[Inventory.Model.Weapon+Character,
+        Assembly-CSharp],[PlayerUISlotsManager+PlayerUISlot, Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[Inventory.Model.Weapon+Character,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 4
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 7
+      Data: 2|PlayerUISlotsManager+PlayerUISlot, Assembly-CSharp
+    - Name: SlotImage
+      Entry: 10
+      Data: 0
+    - Name: CurrentItem
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 0
+    - Name: $v
+      Entry: 7
+      Data: 3|PlayerUISlotsManager+PlayerUISlot, Assembly-CSharp
+    - Name: SlotImage
+      Entry: 10
+      Data: 1
+    - Name: CurrentItem
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 7
+      Data: 4|PlayerUISlotsManager+PlayerUISlot, Assembly-CSharp
+    - Name: SlotImage
+      Entry: 10
+      Data: 2
+    - Name: CurrentItem
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 3
+    - Name: $v
+      Entry: 7
+      Data: 5|PlayerUISlotsManager+PlayerUISlot, Assembly-CSharp
+    - Name: SlotImage
+      Entry: 10
+      Data: 3
+    - Name: CurrentItem
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: AbilitySlots
+      Entry: 7
+      Data: 6|System.Collections.Generic.Dictionary`2[[Inventory.Model.Weapon+Character,
+        Assembly-CSharp],[PlayerUISlotsManager+PlayerUISlot, Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 1
+    - Name: 
+      Entry: 12
+      Data: 4
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 0
+    - Name: $v
+      Entry: 7
+      Data: 7|PlayerUISlotsManager+PlayerUISlot, Assembly-CSharp
+    - Name: SlotImage
+      Entry: 10
+      Data: 4
+    - Name: CurrentItem
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 7
+      Data: 8|PlayerUISlotsManager+PlayerUISlot, Assembly-CSharp
+    - Name: SlotImage
+      Entry: 10
+      Data: 5
+    - Name: CurrentItem
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 7
+      Data: 9|PlayerUISlotsManager+PlayerUISlot, Assembly-CSharp
+    - Name: SlotImage
+      Entry: 10
+      Data: 6
+    - Name: CurrentItem
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 3
+    - Name: $v
+      Entry: 7
+      Data: 10|PlayerUISlotsManager+PlayerUISlot, Assembly-CSharp
+    - Name: SlotImage
+      Entry: 10
+      Data: 7
+    - Name: CurrentItem
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: UtilitySlots
+      Entry: 7
+      Data: 11|System.Collections.Generic.Dictionary`2[[Inventory.Model.Weapon+Character,
+        Assembly-CSharp],[PlayerUISlotsManager+PlayerUISlot, Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 1
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 0
+    - Name: $v
+      Entry: 7
+      Data: 12|PlayerUISlotsManager+PlayerUISlot, Assembly-CSharp
+    - Name: SlotImage
+      Entry: 10
+      Data: 4
+    - Name: CurrentItem
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 7
+      Data: 13|PlayerUISlotsManager+PlayerUISlot, Assembly-CSharp
+    - Name: SlotImage
+      Entry: 10
+      Data: 8
+    - Name: CurrentItem
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
