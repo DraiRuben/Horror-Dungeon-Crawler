@@ -5,6 +5,7 @@ using System;
 using System.Diagnostics.Eventing.Reader;
 using System.Runtime.Remoting.Messaging;
 using Inventory.UI;
+using Unity.VisualScripting;
 
 
 namespace Inventory.Model
@@ -65,6 +66,10 @@ namespace Inventory.Model
                     item = item,
                     quantity = quantity
                 };
+            }
+            if (item.GetType() == typeof(Weapon) && ((Weapon)item).AutoEquip)
+            {
+                PlayerUISlotsManager.Instance.TryAutoEquip(((Weapon)item).CanUse, (Weapon)item);
             }
         }
 

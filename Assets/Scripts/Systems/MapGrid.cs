@@ -6,6 +6,10 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using Sirenix.OdinInspector.Editor;
+using UnityEditor;
+
+
 
 #if UNITY_EDITOR
 using Sirenix.Utilities.Editor;
@@ -192,7 +196,7 @@ public class MapGrid : SerializedMonoBehaviour
     //Odin inspector, this is needed as odin can't natively display my custom class in the grid so I need to tell it how to
     private static Cell DrawElement(Rect rect, Cell value)
     {
-        value.Center = (Transform)SirenixEditorFields.UnityObjectField(rect.VerticalPadding(10), value?.Center, typeof(Transform), true);
+        value.Center = (Transform)SirenixEditorFields.UnityObjectField(rect.VerticalPadding(10), value?.Center,typeof(Transform),true);
         value.AllowedMoves = (AllowedMovesMask)SirenixEditorFields.EnumDropdown(rect, value.AllowedMoves);
         
         return value;
