@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boss2AI : MobAI
+public class Boss1AI : MobAI
 {
+    protected int Strength;
+    protected int AttackSpeed;
+
     // Start is called before the first frame update
     void Start()
     {
