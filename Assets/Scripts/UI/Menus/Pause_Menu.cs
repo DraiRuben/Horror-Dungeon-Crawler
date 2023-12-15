@@ -1,0 +1,44 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+public class Pause_Menu : MonoBehaviour
+{
+    private bool isPaused = false;
+    private void Awake()
+    {
+        Time.timeScale = 1.0f;
+        gameObject.SetActive(false);
+    }
+    public void PausePlay()
+    {
+        if (isPaused)
+        {
+            ResumeGame();
+        }
+        else
+        {
+            PauseGame();
+        }
+    }
+
+    public void PauseGame()
+    {
+        gameObject.SetActive(true);
+        Time.timeScale = 0f;
+        isPaused = true;
+    }
+
+    public void ResumeGame()
+    {
+        gameObject.SetActive(false);
+        Time.timeScale = 1f;
+        isPaused = false;
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+}
