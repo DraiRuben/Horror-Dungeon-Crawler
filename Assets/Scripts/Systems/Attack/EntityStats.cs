@@ -29,5 +29,9 @@ public class EntityStats : MonoBehaviour
         {
             BossHealthUI.Instance.BossUpdateFill((float)m_currentHealth / m_maxHealth);
         }
+        if (m_currentHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }

@@ -16,9 +16,6 @@ namespace Inventory.Model
         [SerializeField] private List<InventoryItem> inventoryItems;
         [field: SerializeField] public int Size { get; private set; } = 10;
 
-        public event Action<Dictionary<int, InventoryItem>> OnInventoryUpdated;
-        public event Action OnInventoryChanged;
-
         public void Initialize()
         {
             inventoryItems = new List<InventoryItem>();

@@ -29,5 +29,7 @@ namespace Inventory.Model
 
         [field: SerializeField]
         public Sprite ItemImage { get; set; }
+
+        public virtual bool Use() { return true; }
     }
 }

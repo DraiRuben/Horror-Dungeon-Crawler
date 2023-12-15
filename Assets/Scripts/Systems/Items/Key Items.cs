@@ -10,13 +10,14 @@ namespace Inventory.Model
     {
         public int usesLeft;
 
-        public void UseKey()
+        public override bool Use()
         {
             usesLeft--;
             if (usesLeft <= 0)
             {
                 //SlotManager.RemoveItem(Item item);
             }
+            return true;
         }
     }
 }
