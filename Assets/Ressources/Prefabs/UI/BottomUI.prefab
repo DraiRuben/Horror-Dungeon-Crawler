@@ -1136,9 +1136,6 @@ MonoBehaviour:
   Dexterity: 0
   Strength: 0
   m_isBoss: 0
-  OnHealthChanged:
-    m_PersistentCalls:
-      m_Calls: []
   m_maxStress: 100
   HealthBarPlayer: {fileID: 1195021171287828359}
 --- !u!1 &2310730620750347454
@@ -1770,9 +1767,6 @@ MonoBehaviour:
   Dexterity: 0
   Strength: 0
   m_isBoss: 0
-  OnHealthChanged:
-    m_PersistentCalls:
-      m_Calls: []
   m_maxStress: 100
   HealthBarPlayer: {fileID: 6206806514969800348}
 --- !u!1 &4629620249702801620
@@ -1787,6 +1781,7 @@ GameObject:
   - component: {fileID: 6806486235297550129}
   - component: {fileID: 6866903388106621310}
   - component: {fileID: 3926068031837287787}
+  - component: {fileID: 2882846967807023299}
   m_Layer: 0
   m_Name: Attack
   m_TagString: Untagged
@@ -1894,7 +1889,32 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6866903388106621310}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2882846967807023299}
+        m_TargetAssemblyTypeName: PlayerUISlot, Assembly-CSharp
+        m_MethodName: Use
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2882846967807023299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4629620249702801620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c17fadc982bd229418240c80e20fd493, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentItem: {fileID: 0}
 --- !u!1 &4774294725049331665
 GameObject:
   m_ObjectHideFlags: 0
@@ -2146,9 +2166,6 @@ MonoBehaviour:
   Dexterity: 0
   Strength: 0
   m_isBoss: 0
-  OnHealthChanged:
-    m_PersistentCalls:
-      m_Calls: []
   m_maxStress: 100
   HealthBarPlayer: {fileID: 7938122107411463804}
 --- !u!1 &4987530024116443395
@@ -2283,6 +2300,7 @@ GameObject:
   - component: {fileID: 6257318094097696205}
   - component: {fileID: 1388806973213766067}
   - component: {fileID: 2189813911278291210}
+  - component: {fileID: 7248692912468787550}
   m_Layer: 0
   m_Name: Attack
   m_TagString: Untagged
@@ -2390,7 +2408,32 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1388806973213766067}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7248692912468787550}
+        m_TargetAssemblyTypeName: PlayerUISlot, Assembly-CSharp
+        m_MethodName: Use
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7248692912468787550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4997712435244006974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c17fadc982bd229418240c80e20fd493, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentItem: {fileID: 0}
 --- !u!1 &5090717377161219963
 GameObject:
   m_ObjectHideFlags: 0
@@ -2714,9 +2757,6 @@ MonoBehaviour:
   Dexterity: 0
   Strength: 0
   m_isBoss: 0
-  OnHealthChanged:
-    m_PersistentCalls:
-      m_Calls: []
   m_maxStress: 100
   HealthBarPlayer: {fileID: 9038508820413956135}
 --- !u!1 &5931844346611902097
@@ -3009,6 +3049,7 @@ GameObject:
   - component: {fileID: 3942759760343855955}
   - component: {fileID: 242376296404075455}
   - component: {fileID: 1504501448715406524}
+  - component: {fileID: 3599884451914591815}
   m_Layer: 0
   m_Name: Attack
   m_TagString: Untagged
@@ -3116,7 +3157,32 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 242376296404075455}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3599884451914591815}
+        m_TargetAssemblyTypeName: PlayerUISlot, Assembly-CSharp
+        m_MethodName: Use
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3599884451914591815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6245198245521682856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c17fadc982bd229418240c80e20fd493, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentItem: {fileID: 0}
 --- !u!1 &6474758662572166914
 GameObject:
   m_ObjectHideFlags: 0
@@ -4093,6 +4159,7 @@ GameObject:
   - component: {fileID: 1115611712347188885}
   - component: {fileID: 3006756633427375582}
   - component: {fileID: 1244378307844420417}
+  - component: {fileID: 7112661625034771313}
   m_Layer: 0
   m_Name: Attack
   m_TagString: Untagged
@@ -4200,7 +4267,32 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3006756633427375582}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7112661625034771313}
+        m_TargetAssemblyTypeName: PlayerUISlot, Assembly-CSharp
+        m_MethodName: Use
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7112661625034771313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8229545840602063895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c17fadc982bd229418240c80e20fd493, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentItem: {fileID: 0}
 --- !u!1 &8604280194147514077
 GameObject:
   m_ObjectHideFlags: 0
@@ -4526,6 +4618,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5300508675955998226}
   - component: {fileID: 6024788552487752870}
+  - component: {fileID: 3423416856082034221}
   m_Layer: 5
   m_Name: BottomUI
   m_TagString: Untagged
@@ -4584,3 +4677,206 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &3423416856082034221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8724503835970486795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07bab065201ac1441b8734cbf656ff07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 7248692912468787550}
+    - {fileID: 7112661625034771313}
+    - {fileID: 3599884451914591815}
+    - {fileID: 2882846967807023299}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: WeaponSlots
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[Inventory.Model.Weapon+Character,
+        Assembly-CSharp],[PlayerUISlot, Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[Inventory.Model.Weapon+Character,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 4
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 0
+    - Name: $v
+      Entry: 10
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 10
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 3
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: AbilitySlots
+      Entry: 7
+      Data: 2|System.Collections.Generic.Dictionary`2[[Inventory.Model.Weapon+Character,
+        Assembly-CSharp],[PlayerUISlot, Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 1
+    - Name: 
+      Entry: 12
+      Data: 4
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 0
+    - Name: $v
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 3
+    - Name: $v
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: UtilitySlots
+      Entry: 7
+      Data: 3|System.Collections.Generic.Dictionary`2[[Inventory.Model.Weapon+Character,
+        Assembly-CSharp],[PlayerUISlot, Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 1
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 0
+    - Name: $v
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 

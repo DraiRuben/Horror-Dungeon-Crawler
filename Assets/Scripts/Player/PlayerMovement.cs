@@ -101,7 +101,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
-    private MapGrid.AllowedMovesMask GetMoveDir()
+    public MapGrid.AllowedMovesMask GetMoveDir()
     {
         //translates movment vector input into direction enum
         if (m_movementInput.y > 0)
