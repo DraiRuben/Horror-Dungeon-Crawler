@@ -17,8 +17,11 @@ MonoBehaviour:
   index: 0
   <Name>k__BackingField: 
   <Description>k__BackingField: 
-  <ItemImage>k__BackingField: {fileID: 0}
-  Damage: 0
-  ReloadTime: 0
+  <ItemImage>k__BackingField: {fileID: 21300000, guid: fed0d5f608afe0b489f1f90f2d022d5d, type: 3}
   CanUse: 2
-  AutoEquip: 0
+  AutoEquip: 1
+  ShootsProjectile: 1
+  ProjectileSpeed: 0
+  Range: 3
+  Damage: 20
+  ReloadTime: 0.5

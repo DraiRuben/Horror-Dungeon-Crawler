@@ -14,10 +14,14 @@ namespace Inventory.Model
 
         private void Start()
         {
-            ParticleSystem newParticle = Instantiate(particle, transform.position, Quaternion.identity);
-            Vector3 particleRotation = newParticle.transform.rotation.eulerAngles;
-            particleRotation.x = -90; 
-            newParticle.transform.rotation = Quaternion.Euler(particleRotation);
+            if(particle != null)
+            {
+                ParticleSystem newParticle = Instantiate(particle, transform.position, Quaternion.identity);
+                Vector3 particleRotation = newParticle.transform.rotation.eulerAngles;
+                particleRotation.x = -90;
+                newParticle.transform.rotation = Quaternion.Euler(particleRotation);
+            }
+            
         }
 
 

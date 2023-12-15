@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: Brass Knuckles
   m_EditorClassIdentifier: 
   <IsStackable>k__BackingField: 0
-  index: 0
   <MaxStackSize>k__BackingField: 1
+  index: 0
   <Name>k__BackingField: 
   <Description>k__BackingField: 
-  <ItemImage>k__BackingField: {fileID: 0}
-  usesLeft: 0
+  <ItemImage>k__BackingField: {fileID: 21300000, guid: e9647c36948b60349ab7cce99c9527f9, type: 3}
+  Damage: 5
+  ReloadTime: 0.2
+  CanUse: 0
+  AutoEquip: 1

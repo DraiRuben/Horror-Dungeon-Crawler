@@ -21,18 +21,15 @@ public class PlayerUISlotsManager : SerializedMonoBehaviour
     {
         if (WeaponSlots[_character].CurrentItem == null)
         {
+            _toEquip.previousTimeUsed = Time.time;
             WeaponSlots[_character].CurrentItem = _toEquip;
             WeaponSlots[_character].SlotImage.sprite = _toEquip.ItemImage;
         }
     }
     public void Equip(Weapon.Character _character, Weapon _toEquip)
     {
+        _toEquip.previousTimeUsed = Time.time;
         WeaponSlots[_character].CurrentItem = _toEquip;
         WeaponSlots[_character].SlotImage.sprite = _toEquip.ItemImage;
-    }
-    public class PlayerUISlot
-    {
-        public Image SlotImage;
-        public Item CurrentItem;
     }
 }

@@ -52,7 +52,7 @@ public class AttackSystem : MonoBehaviour
     }
     private IEnumerator RangedAttackBehaviour(Vector2Int _gridAttackPos, int _floor, MapGrid.AllowedMovesMask _attackDir, int _damage, int _range, float _projectileSpeed, GameObject _origin)
     {
-        Vector2Int currentGridPos = _gridAttackPos;
+        Vector2Int currentGridPos = MapGrid.Instance.GetCellPosInDir(_gridAttackPos.x, _gridAttackPos.y, _attackDir);
         int currentCellDistance = 1;
         float timer=0f;
 
