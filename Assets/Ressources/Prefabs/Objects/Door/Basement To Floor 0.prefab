@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 23859350433750196}
   - component: {fileID: 65348102657777264}
   - component: {fileID: -2319906641163885718}
+  - component: {fileID: -1968816806803806368}
   m_Layer: 0
   m_Name: Basement To Floor 0
   m_TagString: Untagged
@@ -118,6 +119,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7386f063ddcdd9d42bff03eaab279882, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorPrefab: {fileID: 0}
-  location: {fileID: 0}
-  doorSO: {fileID: 0}
+  keyIndex: 0
+  toAddInBack: 0
+  cellBehindDoorX: 0
+  cellBehindDoorY: 0
+  floorIndexBack: 0
+  toAddInFront: 0
+  cellInFrontDoorX: 0
+  cellInFrontDoorY: 0
+  floorIndexFront: 0
+--- !u!95 &-1968816806803806368
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243111391846360}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1bfcf3c8eeb16684c8302cff0daf05c3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

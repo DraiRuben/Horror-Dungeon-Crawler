@@ -13,12 +13,13 @@ GameObject:
   - component: {fileID: 3155419854737043520}
   - component: {fileID: 8875897079148627047}
   - component: {fileID: -3016993734740110246}
+  - component: {fileID: -8143118014954475685}
   m_Layer: 0
   m_Name: Little Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4353240740693403605
 Transform:
@@ -127,3 +128,24 @@ MonoBehaviour:
   cellInFrontDoorX: 0
   cellInFrontDoorY: 0
   floorIndexFront: 0
+--- !u!95 &-8143118014954475685
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5396962627458538111}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1bfcf3c8eeb16684c8302cff0daf05c3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
