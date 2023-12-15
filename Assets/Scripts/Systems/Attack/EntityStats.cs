@@ -11,7 +11,7 @@ public class EntityStats : MonoBehaviour
     public int Dexterity;
     public int Strength;
     protected int m_health;
-    protected int m_currentHealth{  get { return m_health; } set {  m_health = value; OnHealthChanged.Invoke(); } }
+    public int CurrentHealth{  get { return m_health; } set {  m_health = value; OnHealthChanged.Invoke(); } }
 
     [SerializeField] protected bool m_isBoss;
 
@@ -19,17 +19,17 @@ public class EntityStats : MonoBehaviour
 
     void Start()
     {
-        m_currentHealth = m_maxHealth;
+        CurrentHealth = m_maxHealth;
     }
 
     public void TakeDamage(int damage)
     {
-        m_currentHealth -= damage;
+        CurrentHealth -= damage;
         if (m_isBoss)
         {
-            BossHealthUI.Instance.BossUpdateFill((float)m_currentHealth / m_maxHealth);
+            BossHealthUI.Instance.BossUpdateFill((float)CurrentHealth / m_maxHealth);
         }
-        if (m_currentHealth <= 0)
+        if (CurrentHealth <= 0)
         {
             Destroy(gameObject);
         }

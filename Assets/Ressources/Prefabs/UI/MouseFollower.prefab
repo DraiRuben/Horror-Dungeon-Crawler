@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3531490643700684654
 RectTransform:
   m_ObjectHideFlags: 0
@@ -64,8 +64,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7b538437480f3c429fdd220cc24c7b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
-  mainCam: {fileID: 0}
   item: {fileID: 8744401120876208672}
 --- !u!1001 &4294631182846832108
 PrefabInstance:
@@ -77,19 +75,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2035443652334216017, guid: d62c11102c0f03044a2599cd21ffccb1, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2035443652334216017, guid: d62c11102c0f03044a2599cd21ffccb1, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2035443652334216017, guid: d62c11102c0f03044a2599cd21ffccb1, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 22.72095
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2035443652334216017, guid: d62c11102c0f03044a2599cd21ffccb1, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -17.79885
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2581587793309862679, guid: d62c11102c0f03044a2599cd21ffccb1, type: 3}
       propertyPath: m_Name

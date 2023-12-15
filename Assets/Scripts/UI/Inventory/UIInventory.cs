@@ -11,7 +11,6 @@ namespace Inventory.UI
         [SerializeField] private UIInventoryItem itemPrefab;
         [SerializeField] private RectTransform contentPanel;
         [SerializeField] private UIItemDescription itemDescription;
-        [SerializeField] private MouseFollower mouseFollower;
         public static UIInventory Instance;
 
         List<UIInventoryItem> listOfUIItems = new List<UIInventoryItem>();
@@ -28,7 +27,7 @@ namespace Inventory.UI
             else Destroy(gameObject);
 
             ShowHide();
-            mouseFollower.Toggle(false);
+            MouseFollower.Instance.Toggle(false);
             itemDescription.ResetDescription();
         }
 
@@ -76,13 +75,13 @@ namespace Inventory.UI
 
         public void CreateDraggedItem(Sprite sprite, int quantity)
         {
-            mouseFollower.Toggle(true);
-            mouseFollower.SetData(sprite, quantity);
+            MouseFollower.Instance.Toggle(true);
+            MouseFollower.Instance.SetData(sprite, quantity);
         }
 
         private void HandleSwap(UIInventoryItem inventoryItemUI)
         {
-            if(mouseFollower.isActiveAndEnabled)
+            if(MouseFollower.Instance.isActiveAndEnabled)
             {
                 int index = listOfUIItems.IndexOf(inventoryItemUI);
                 if (index == -1)
@@ -94,13 +93,13 @@ namespace Inventory.UI
 
                 inventoryItemUI.transform.SetSiblingIndex(siblingIndex2);
                 listOfUIItems[currentlyDraggedItemIndex].transform.SetSiblingIndex(siblingIndex1);
-                HandleItemSelection(inventoryItemUI);
+                //HandleItemSelection(inventoryItemUI);
             }
         }
 
         private void ResetDraggedItem()
         {
-            mouseFollower.Toggle(false);
+            MouseFollower.Instance.Toggle(false);
             currentlyDraggedItemIndex = -1;
         }
 
