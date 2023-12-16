@@ -59,7 +59,7 @@ public class MobAI : MonoBehaviour
         }
     }
 
-    protected IEnumerator AttackRoutine()
+    protected virtual IEnumerator AttackRoutine()
     {
         float timeSincePreviousAttack = 0;
         while (true)
