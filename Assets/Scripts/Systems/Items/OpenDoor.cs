@@ -1,8 +1,3 @@
-using Inventory;
-using Inventory.Model;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class OpenDoor : MonoBehaviour
@@ -31,7 +26,7 @@ public class OpenDoor : MonoBehaviour
 
     public void Opening()
     {
-        
+
         if (inventoryManager.inventoryData.UseItemByIndex(keyIndex) || NoKeyRequired)
         {
             OpenWaypointBehindDoor();
@@ -43,9 +38,9 @@ public class OpenDoor : MonoBehaviour
             else
             {
                 Destroy(gameObject);
-            }    
+            }
         }
-        else 
+        else
         {
             Debug.Log("No Key");
         }
@@ -59,7 +54,7 @@ public class OpenDoor : MonoBehaviour
 
     private void OpenWaypointBehindDoor()
     {
-        var cell = mapGrid.GetCell(floorIndexBack, cellBehindDoorX, cellBehindDoorY);
+        MapGrid.Cell cell = mapGrid.GetCell(floorIndexBack, cellBehindDoorX, cellBehindDoorY);
         if (cell != null)
         {
             cell.AllowedMoves |= toAddInBack;
@@ -68,7 +63,7 @@ public class OpenDoor : MonoBehaviour
 
     private void OpenWaypointInFrontDoor()
     {
-        var cell = mapGrid.GetCell(floorIndexFront, cellInFrontDoorX, cellInFrontDoorY);
+        MapGrid.Cell cell = mapGrid.GetCell(floorIndexFront, cellInFrontDoorX, cellInFrontDoorY);
         if (cell != null)
         {
             cell.AllowedMoves |= toAddInFront;

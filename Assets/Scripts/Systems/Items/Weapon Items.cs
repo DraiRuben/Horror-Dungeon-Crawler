@@ -1,7 +1,4 @@
-using Inventory;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Inventory.Model
@@ -23,10 +20,10 @@ namespace Inventory.Model
         [NonSerialized] public float previousTimeUsed;
         public override bool Use()
         {
-            if(Time.time-previousTimeUsed > ReloadTime)
+            if (Time.time - previousTimeUsed > ReloadTime)
             {
-                var Player = PlayerMovement.Instance;
-                var AttackDir = MapGrid.Instance.GetRelativeDir(MapGrid.AllowedMovesMask.Top, Player.transform.rotation.eulerAngles.y);
+                PlayerMovement Player = PlayerMovement.Instance;
+                MapGrid.AllowedMovesMask AttackDir = MapGrid.Instance.GetRelativeDir(MapGrid.AllowedMovesMask.Top, Player.transform.rotation.eulerAngles.y);
                 if (ShootsProjectile)
                 {
                     AttackSystem.Instance.RangedAttack(Player.GridPos, Player.CurrentFloor, AttackDir, Damage, Range, ProjectileSpeed);

@@ -1,11 +1,7 @@
-using System.Collections;
+using Inventory.UI;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
-using System.Diagnostics.Eventing.Reader;
-using System.Runtime.Remoting.Messaging;
-using Inventory.UI;
-using Unity.VisualScripting;
 
 
 namespace Inventory.Model
@@ -28,7 +24,7 @@ namespace Inventory.Model
         {
             for (int i = 0; i < inventoryItems.Count; i++)
             {
-                if (inventoryItems[i].item !=null && inventoryItems[i].item.ItemImage == item.ItemImage)
+                if (inventoryItems[i].item != null && inventoryItems[i].item.ItemImage == item.ItemImage)
                 {
                     return i;
                 }
@@ -37,14 +33,14 @@ namespace Inventory.Model
         }
         public void ChangeAmount(int slotIndex, int amount)
         {
-            var copy = inventoryItems[slotIndex];
+            InventoryItem copy = inventoryItems[slotIndex];
             copy.quantity += amount;
             inventoryItems[slotIndex] = copy;
             UIInventory.Instance.UpdateData(slotIndex, inventoryItems[slotIndex].item.ItemImage, inventoryItems[slotIndex].quantity);
         }
         public int GetFirstEmptySlotIndex()
         {
-            for(int i  = 0; i < inventoryItems.Count; i++)
+            for (int i = 0; i < inventoryItems.Count; i++)
             {
                 if (inventoryItems[i].isEmpty)
                 {

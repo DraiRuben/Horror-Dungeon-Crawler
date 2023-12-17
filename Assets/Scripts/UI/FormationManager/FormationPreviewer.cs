@@ -1,12 +1,10 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FormationPreviewer : MonoBehaviour
 {
     [SerializeField] private FormationElement m_linkedElement;
     public PlayerStats m_linkedCharacter;
+    [SerializeField] private GameObject m_formationMofifier;
     public void UpdateHierarchy()
     {
         int TargetIndex = m_linkedElement.transform.GetSiblingIndex();
@@ -15,15 +13,19 @@ public class FormationPreviewer : MonoBehaviour
         transform.parent.GetChild(TargetIndex).SetSiblingIndex(CurrentIndex);
         transform.SetSiblingIndex(TargetIndex);
 
-        var CurrentGridPos = GridPosToHierarchy[CurrentIndex];
-        var TargetGridPos = GridPosToHierarchy[TargetIndex];
+        (int, int) CurrentGridPos = GridPosToHierarchy[CurrentIndex];
+        (int, int) TargetGridPos = GridPosToHierarchy[TargetIndex];
 
-        if (PlayerStatsManager.Instance.Characters[TargetGridPos.Item1,TargetGridPos.Item2]==null 
+        if (PlayerStatsManager.Instance.Characters[TargetGridPos.Item1, TargetGridPos.Item2] == null
             || PlayerStatsManager.Instance.Characters[TargetGridPos.Item1, TargetGridPos.Item2] != m_linkedCharacter)
         {
             PlayerStatsManager.Instance.Characters[CurrentGridPos.Item1, CurrentGridPos.Item2] = PlayerStatsManager.Instance.Characters[TargetGridPos.Item1, TargetGridPos.Item2];
             PlayerStatsManager.Instance.Characters[TargetGridPos.Item1, TargetGridPos.Item2] = m_linkedCharacter;
         }
+    }
+    public void ShowHideModifier()
+    {
+        m_formationMofifier.SetActive(!m_formationMofifier.activeSelf);
     }
     public static readonly (int, int)[] GridPosToHierarchy =
     {

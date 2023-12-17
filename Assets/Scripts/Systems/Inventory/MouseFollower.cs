@@ -1,7 +1,5 @@
 using Inventory.UI;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class MouseFollower : MonoBehaviour
 {

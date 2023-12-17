@@ -1,7 +1,5 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Inventory.UI
@@ -35,7 +33,7 @@ namespace Inventory.UI
         {
             for (int i = 0; i < inventorySize; i++)
             {
-                UIInventoryItem uiItem = Instantiate(itemPrefab, Vector3.zero, Quaternion.identity,contentPanel);
+                UIInventoryItem uiItem = Instantiate(itemPrefab, Vector3.zero, Quaternion.identity, contentPanel);
                 listOfUIItems.Add(uiItem);
                 uiItem.transform.localPosition = Vector3.zero;
                 uiItem.OnItemClicked += HandleItemSelection;
@@ -81,7 +79,7 @@ namespace Inventory.UI
 
         private void HandleSwap(UIInventoryItem inventoryItemUI)
         {
-            if(MouseFollower.Instance.isActiveAndEnabled)
+            if (MouseFollower.Instance.isActiveAndEnabled)
             {
                 int index = listOfUIItems.IndexOf(inventoryItemUI);
                 if (index == -1)

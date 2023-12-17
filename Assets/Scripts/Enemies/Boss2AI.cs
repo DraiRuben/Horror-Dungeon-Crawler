@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class Boss2AI : MobAI
 {
-    
+
     [SerializeField] protected int m_maxRangeTP;
     [SerializeField] protected int m_cooldownTP;
 
@@ -22,7 +20,7 @@ public class Boss2AI : MobAI
     {
         m_gridPos = MapGrid.Instance.GetClosestCell(m_floor, transform.position);
         MapGrid.Instance.GetCell(m_floor, m_gridPos.x, m_gridPos.y).OccupyingObject = gameObject;
-        
+
     }
 
     // Update is called once per frame
@@ -30,15 +28,15 @@ public class Boss2AI : MobAI
     {
         if (m_floor == PlayerMovement.Instance.CurrentFloor)
         {
-            var dist = MapGrid.Instance.DistanceBetweenCells(m_gridPos, PlayerMovement.Instance.GridPos);
-            var totalDist = dist.x + dist.y;
+            Vector2Int dist = MapGrid.Instance.DistanceBetweenCells(m_gridPos, PlayerMovement.Instance.GridPos);
+            int totalDist = dist.x + dist.y;
             transform.rotation = Quaternion.Euler(0, Quaternion.LookRotation(PlayerMovement.Instance.transform.position - transform.position).eulerAngles.y, 0);
             //updates grid pos only if it's not occupied by anything else, also empty previously occupied cell
-            var newGridPos = MapGrid.Instance.GetClosestCell(m_floor, transform.position, m_gridPos);
+            Vector2Int newGridPos = MapGrid.Instance.GetClosestCell(m_floor, transform.position, m_gridPos);
             if (newGridPos != m_gridPos)
             {
                 MapGrid.Instance.GetCell(m_floor, m_gridPos.x, m_gridPos.y).OccupyingObject = null;
-                var newCell = MapGrid.Instance.GetCell(m_floor, newGridPos.x, newGridPos.y);
+                MapGrid.Cell newCell = MapGrid.Instance.GetCell(m_floor, newGridPos.x, newGridPos.y);
                 if (newCell.OccupyingObject == null)
                 {
                     newCell.OccupyingObject = gameObject;
@@ -63,8 +61,8 @@ public class Boss2AI : MobAI
     private void BossTeleport()
     {
         //if()
-           // si (la boss est à plus de 2 cases du groupe)
-           // elle se tp face au dernier personnage qui lui a fais du dégât 
+        // si (la boss est à plus de 2 cases du groupe)
+        // elle se tp face au dernier personnage qui lui a fais du dégât 
 
     }
 }

@@ -1,9 +1,6 @@
 using Inventory.Model;
 using Inventory.UI;
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using UnityEngine;
 
 namespace Inventory
@@ -31,7 +28,7 @@ namespace Inventory
             inventoryData.Initialize();
             foreach (InventoryItem item in initialItems)
             {
-                if (item.isEmpty) 
+                if (item.isEmpty)
                     continue;
                 inventoryData.AddItem(item);
             }
@@ -55,7 +52,7 @@ namespace Inventory
             InventoryItem inventoryItem = inventoryData.GetItemAt(itemIndex);
             if (inventoryItem.isEmpty)
                 return;
-            inventoryUI.CreateDraggedItem(inventoryItem.item.ItemImage, inventoryItem.quantity); 
+            inventoryUI.CreateDraggedItem(inventoryItem.item.ItemImage, inventoryItem.quantity);
         }
 
         private void HandleDescriptionRequest(int itemIndex)

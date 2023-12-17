@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,10 +13,10 @@ public class UIPlayerFormation : MonoBehaviour
     }
     public void UpdatePreviewers()
     {
-        foreach(var previewer in Previewers)
+        foreach (FormationPreviewer previewer in Previewers)
         {
             previewer.UpdateHierarchy();
         }
     }
-    
+
 }

@@ -1,9 +1,6 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
 
 public class EntityStats : MonoBehaviour
 {
@@ -11,11 +8,11 @@ public class EntityStats : MonoBehaviour
     public int Dexterity;
     public int Strength;
     protected int m_health;
-    public int CurrentHealth{  get { return m_health; } set {  m_health = value; OnHealthChanged.Invoke(); } }
+    public int CurrentHealth { get { return m_health; } set { m_health = value; OnHealthChanged.Invoke(); } }
 
     [SerializeField] protected bool m_isBoss;
 
-    [NonSerialized]public UnityEvent OnHealthChanged = new();
+    [NonSerialized] public UnityEvent OnHealthChanged = new();
 
     void Start()
     {

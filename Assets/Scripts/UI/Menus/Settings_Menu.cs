@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class Settings_Menu : MonoBehaviour
 {
@@ -31,7 +29,7 @@ public class Settings_Menu : MonoBehaviour
     public void SetMasterVolume()
     {
         float volume = m_masterVolumeSlider.value;
-        m_mixer.SetFloat("master",Mathf.Log10(volume) * 20);
+        m_mixer.SetFloat("master", Mathf.Log10(volume) * 20);
         PlayerPrefs.SetFloat("masterVolume", volume);
     }
 

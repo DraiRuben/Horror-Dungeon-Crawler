@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class FormationElement : MonoBehaviour, IDragHandler, IDropHandler, IBeginDragHandler, IEndDragHandler,IPointerUpHandler
+public class FormationElement : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDropHandler, IDragHandler, IPointerUpHandler, IPointerDownHandler
 {
     private Image m_image;
     private void Awake()
@@ -42,5 +40,9 @@ public class FormationElement : MonoBehaviour, IDragHandler, IDropHandler, IBegi
 
         UIPlayerFormation.Instance.UpdatePreviewers();
 
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
     }
 }
