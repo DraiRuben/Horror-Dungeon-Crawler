@@ -34,6 +34,8 @@ public class OpenDoor : MonoBehaviour
             //SlotManager.Instantiate.UseItemByIndex;
             OpenWaypointBehindDoor();
             OpenWaypointInFrontDoor();
+
+
             if (!isCadavre)
             {
                 animator.SetTrigger("ChangeState");

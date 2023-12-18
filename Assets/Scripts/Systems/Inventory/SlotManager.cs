@@ -94,11 +94,11 @@ namespace Inventory.Model
 
         public bool UseItemByIndex(int index)
         {
-            foreach (InventoryItem inventoryItem in inventoryItems)
+            for(int i =0;i<inventoryItems.Count;i++)
             {
-                if (inventoryItem.item?.index == index)
+                if (inventoryItems[i].item?.index == index)
                 {
-                    inventoryItem.ChangeQuantity(inventoryItem.quantity - 1);
+                    inventoryItems[i] = inventoryItems[i].ChangeQuantity(inventoryItems[i].quantity - 1);
                     return true;
                 }
             }
@@ -117,9 +117,13 @@ namespace Inventory.Model
 
         public InventoryItem ChangeQuantity(int newQuantity)
         {
+            if (newQuantity <= 0)
+            {
+                UIInventory.Instance.RemoveItem(this.item);
+            }
             return new InventoryItem()
             {
-                item = this.item,
+                item = newQuantity != 0?this.item:null,
                 quantity = newQuantity,
             };
         }

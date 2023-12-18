@@ -177,23 +177,6 @@ public class MapGrid : SerializedMonoBehaviour
         }
         return returnValue;
     }
-    public bool IsValidCell(int _floor, int _column, int _row, AllowedMovesMask relativeDir)
-    {
-        if (ValidMovement(_floor, _column, _row, relativeDir))
-        {
-            Cell NextCell = GetCellInDir(_floor, _column, _row, relativeDir);
-            //if we have a cell we can go to
-            if (NextCell != null && NextCell.Center != null)
-            {
-                //if the cell isn't occupied by another entity
-                if (NextCell.OccupyingObject == null)
-                {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
     public Vector2Int DistanceBetweenCells(Vector2Int Cell1Pos, Vector2Int Cell2Pos) 
     {
         //Gets non diagonal distance in grid (non pythagorean dist)

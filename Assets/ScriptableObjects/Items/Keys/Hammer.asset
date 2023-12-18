@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <IsStackable>k__BackingField: 0
   <MaxStackSize>k__BackingField: 1
-  <Quantity>k__BackingField: 1
+  <Quantity>k__BackingField: 2
   index: 13
   <Name>k__BackingField: Hammer
   <Description>k__BackingField: It's Hammer time !

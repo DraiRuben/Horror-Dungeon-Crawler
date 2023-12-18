@@ -25,7 +25,7 @@ namespace Inventory.Model
             if (newSlotIndex >= 0)
             {
                 UIInventory.Instance.UpdateData(newSlotIndex, itemSO.ItemImage, itemQuantity);
-                Inventory.Instance.inventoryData.AddItem(itemSO, 1);
+                Inventory.Instance.inventoryData.AddItem(itemSO, itemSO.Quantity);
                 Destroy(gameObject);
                 return;
             }
