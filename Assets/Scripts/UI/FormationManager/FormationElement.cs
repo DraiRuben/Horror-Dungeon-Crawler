@@ -4,11 +4,7 @@ using UnityEngine.UI;
 
 public class FormationElement : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDropHandler, IDragHandler, IPointerUpHandler, IPointerDownHandler
 {
-    private Image m_image;
-    private void Awake()
-    {
-        m_image = GetComponent<Image>();
-    }
+    public Image m_image;
     public void OnBeginDrag(PointerEventData eventData)
     {
         MouseFollower.Instance.SetData(m_image.sprite, 1);

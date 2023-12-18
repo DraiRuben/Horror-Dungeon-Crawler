@@ -4,6 +4,8 @@ using Sirenix.Utilities;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
+
 
 
 
@@ -130,6 +132,24 @@ public class MapGrid : SerializedMonoBehaviour
             }
         }
         return returnValue;
+    }
+
+    public bool IsValidCell(int _floor, int _column, int _row, AllowedMovesMask relativeDir)
+    {
+        if (ValidMovement(_floor, _column, _row, relativeDir))
+        {
+            Cell NextCell = GetCellInDir(_floor, _column, _row, relativeDir);
+            //if we have a cell we can go to
+            if (NextCell != null && NextCell.Center != null)
+            {
+                //if the cell isn't occupied by another entity
+                if (NextCell.OccupyingObject == null)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
     public Vector2Int GetClosestCell(int _floor, Vector3 _worldPos, Vector2Int _gridPos)
     {

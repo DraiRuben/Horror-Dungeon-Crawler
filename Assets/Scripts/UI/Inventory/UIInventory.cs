@@ -1,5 +1,7 @@
+using Inventory.Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Inventory.UI
@@ -28,7 +30,11 @@ namespace Inventory.UI
             MouseFollower.Instance.Toggle(false);
             itemDescription.ResetDescription();
         }
-
+        public void RemoveItem(Item _toRemove)
+        {
+            var slot = listOfUIItems.First(x => x.itemImage!=null && x.itemImage == _toRemove.ItemImage);
+            slot?.SetData(null, 0);
+        }
         public void InitializeInventoryUI(int inventorySize)
         {
             for (int i = 0; i < inventorySize; i++)

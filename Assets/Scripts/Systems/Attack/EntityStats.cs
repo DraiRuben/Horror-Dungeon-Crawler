@@ -8,11 +8,12 @@ public class EntityStats : MonoBehaviour
     public int Dexterity;
     public int Strength;
     protected int m_health;
-    public int CurrentHealth { get { return m_health; } set { m_health = value; OnHealthChanged.Invoke(); } }
+    public int CurrentHealth { get { return m_health; } set { m_health = value; if (value > 0) OnHealthChanged.Invoke(); else OnDeath.Invoke(); } }
 
     [SerializeField] protected bool m_isBoss;
 
      public UnityEvent OnHealthChanged = new();
+     public UnityEvent OnDeath = new();
 
     void Start()
     {

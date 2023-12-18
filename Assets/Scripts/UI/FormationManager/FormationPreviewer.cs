@@ -1,14 +1,28 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FormationPreviewer : MonoBehaviour
 {
     [SerializeField] private FormationElement m_linkedElement;
     public PlayerStats m_linkedCharacter;
     [SerializeField] private GameObject m_formationMofifier;
+    private Image m_image;
+    private void Awake()
+    {
+        m_image = GetComponent<Image>();
+    }
+    private void Start()
+    {
+        m_linkedCharacter.OnDeath.AddListener(() => {
+            m_image.color = Color.clear;
+            m_linkedElement.m_image.color = Color.clear;
+        });
+    }
     public void UpdateHierarchy()
     {
         int TargetIndex = m_linkedElement.transform.GetSiblingIndex();
         int CurrentIndex = transform.GetSiblingIndex();
+        
 
         transform.parent.GetChild(TargetIndex).SetSiblingIndex(CurrentIndex);
         transform.SetSiblingIndex(TargetIndex);
