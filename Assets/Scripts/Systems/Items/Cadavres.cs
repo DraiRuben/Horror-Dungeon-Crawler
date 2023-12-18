@@ -7,6 +7,6 @@ public class Cadavres : MonoBehaviour
     private void OnDestroy()
     {
         ParticleSystem particleInstance = Instantiate(particle, transform.position, transform.rotation);
-        Destroy(particleInstance, 5.0f);
+        Destroy(particleInstance.gameObject, 2.0f);
     }
 }
