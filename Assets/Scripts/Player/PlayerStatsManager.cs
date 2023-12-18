@@ -1,15 +1,18 @@
 using Sirenix.OdinInspector;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerStatsManager : SerializedMonoBehaviour
 {
     [TableMatrix(SquareCells = true)]
     public PlayerStats[,] Characters;
-
+    public static PlayerStatsManager Instance;
+    private void Awake()
+    {
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
+    }
     public void TakeDamage(int _damage, GameObject _damageOrigin)
     {
         //gets angle between player looking forward and attack origin
@@ -21,18 +24,18 @@ public class PlayerStatsManager : SerializedMonoBehaviour
         Vector3 OriginLookDir = -_damageOrigin.transform.forward;
         OriginLookDir.Set(OriginLookDir.x, 0, OriginLookDir.z);
 
-        int attackRelativePos = ((int)Mathf.Round(Vector3.Angle(PlayerLookDir, OriginLookDir)/ 90))%4;
+        int attackRelativePos = ((int)Mathf.Round(Vector3.Angle(PlayerLookDir, OriginLookDir) / 90)) % 4;
 
         //gets pos in position grid of the two characters in the line directly hit by the attack
-        var firstFormationPos = m_formationPositions[attackRelativePos];
-        var secondFormationPos = m_formationPositions[(attackRelativePos + 1) % 4];
+        Vector2Int firstFormationPos = m_formationPositions[attackRelativePos];
+        Vector2Int secondFormationPos = m_formationPositions[(attackRelativePos + 1) % 4];
 
         //gets first two non null characters in the line on the side of the attack (null means dead)
         List<PlayerStats> CharactersToHit = new List<PlayerStats>()
         { Characters[firstFormationPos.x, firstFormationPos.y],
             Characters[secondFormationPos.x, secondFormationPos.y] }.Where(x => x != null).ToList();
-        
-        
+
+
         //if both the characters directly in line of the attack are dead
         if (CharactersToHit.Count <= 0)
         {
@@ -45,15 +48,17 @@ public class PlayerStatsManager : SerializedMonoBehaviour
             Characters[secondFormationPos.x, secondFormationPos.y] }.Where(x => x != null).ToList();
         }
         //choose randomly one character between the ones that can get hit and apply the damage to it
-        CharactersToHit[Random.Range(0, CharactersToHit.Count)].TakeDamage(_damage);
+        CharactersToHit[UnityEngine.Random.Range(0, CharactersToHit.Count)].TakeDamage(_damage);
     }
 
     //positions of characters in formation
-    private readonly static Vector2Int[] m_formationPositions = 
+    private static readonly Vector2Int[] m_formationPositions =
     {
         new(0,0),
         new(1,0),
-        new(1,1),        
+        new(1,1),
         new(0,1),
     };
+
+
 }

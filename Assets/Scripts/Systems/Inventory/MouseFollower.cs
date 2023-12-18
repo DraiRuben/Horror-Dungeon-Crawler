@@ -1,16 +1,16 @@
 using Inventory.UI;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class MouseFollower : MonoBehaviour
 {
-    [SerializeField] private Camera cam; 
     public UIInventoryItem item;
+    public static MouseFollower Instance;
 
     public void Awake()
     {
-        cam = Camera.main;
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     public void SetData(Sprite sprite, int quantity)

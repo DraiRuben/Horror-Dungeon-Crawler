@@ -1,13 +1,9 @@
-using Inventory;
-using Inventory.Model;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class OpenDoor : MonoBehaviour
 {
-    [field: SerializeField] public int keyIndex;
+    Animator animator;
+    public int keyIndex;
     private Inventory.Inventory inventoryManager;
     private MapGrid mapGrid;
     [field: SerializeField] MapGrid.AllowedMovesMask toAddInBack;
@@ -18,20 +14,31 @@ public class OpenDoor : MonoBehaviour
     [field: SerializeField] int cellInFrontDoorX;
     [field: SerializeField] int cellInFrontDoorY;
     [field: SerializeField] int floorIndexFront;
+    [SerializeField] bool NoKeyRequired;
+    public bool isCadavre;
 
     public void Start()
     {
+        animator = GetComponent<Animator>();
         inventoryManager = Inventory.Inventory.Instance;
         mapGrid = MapGrid.Instance;
     }
 
     public void Opening()
     {
-        if (inventoryManager.inventoryData.UseItemByIndex(keyIndex))
+
+        if (inventoryManager.inventoryData.UseItemByIndex(keyIndex) || NoKeyRequired)
         {
             OpenWaypointBehindDoor();
             OpenWaypointInFrontDoor();
-            Destroy(gameObject);
+            if (!isCadavre)
+            {
+                animator.SetTrigger("ChangeState");
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
         else
         {
@@ -41,12 +48,13 @@ public class OpenDoor : MonoBehaviour
 
     public void OnMouseDown()
     {
+
         Opening();
     }
 
     private void OpenWaypointBehindDoor()
     {
-        var cell = mapGrid.GetCell(floorIndexBack, cellBehindDoorX, cellBehindDoorY);
+        MapGrid.Cell cell = mapGrid.GetCell(floorIndexBack, cellBehindDoorX, cellBehindDoorY);
         if (cell != null)
         {
             cell.AllowedMoves |= toAddInBack;
@@ -55,7 +63,7 @@ public class OpenDoor : MonoBehaviour
 
     private void OpenWaypointInFrontDoor()
     {
-        var cell = mapGrid.GetCell(floorIndexFront, cellInFrontDoorX, cellInFrontDoorY);
+        MapGrid.Cell cell = mapGrid.GetCell(floorIndexFront, cellInFrontDoorX, cellInFrontDoorY);
         if (cell != null)
         {
             cell.AllowedMoves |= toAddInFront;

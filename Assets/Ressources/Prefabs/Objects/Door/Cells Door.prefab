@@ -204,6 +204,7 @@ GameObject:
   - component: {fileID: 65333139972825842}
   - component: {fileID: 65091066359013524}
   - component: {fileID: -6835267077288252873}
+  - component: {fileID: 7144655628319331638}
   m_Layer: 0
   m_Name: Cells Door
   m_TagString: Untagged
@@ -352,6 +353,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7386f063ddcdd9d42bff03eaab279882, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorPrefab: {fileID: 1991357231599456}
-  location: {fileID: 4491657188552712}
-  doorSO: {fileID: 11400000, guid: d4999c9761962ea45ad364bdff5cca2a, type: 2}
+  keyIndex: 0
+  toAddInBack: 0
+  cellBehindDoorX: 0
+  cellBehindDoorY: 0
+  floorIndexBack: 0
+  toAddInFront: 0
+  cellInFrontDoorX: 0
+  cellInFrontDoorY: 0
+  floorIndexFront: 0
+--- !u!95 &7144655628319331638
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991357231599456}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1bfcf3c8eeb16684c8302cff0daf05c3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

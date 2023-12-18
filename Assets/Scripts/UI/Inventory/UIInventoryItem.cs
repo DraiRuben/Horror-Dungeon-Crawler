@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -26,20 +24,20 @@ namespace Inventory.UI
 
         public void Deselect()
         {
-            if(borderImage !=null) borderImage.enabled = false;
+            if (borderImage != null) borderImage.enabled = false;
         }
 
         public void SetData(Sprite sprite, int quantity)
         {
             itemImage.gameObject.SetActive(true);
             itemImage.sprite = sprite;
-            if(quantityTxt!=null) quantityTxt.text = quantity + "";
+            if (quantityTxt != null) quantityTxt.text = quantity + "";
             empty = false;
         }
 
         public void Select()
         {
-            if(borderImage !=null) borderImage.enabled = true;
+            if (borderImage != null) borderImage.enabled = true;
         }
 
         public void OnPointerClick(PointerEventData pointerData)
@@ -72,16 +70,18 @@ namespace Inventory.UI
 
         public void OnPointerUp(PointerEventData eventData)
         {
-            if(!m_isPlaceholder)
+            if (!m_isPlaceholder)
                 OnItemDroppedOn?.Invoke(eventData.pointerEnter.GetComponent<UIInventoryItem>());
         }
 
         public void OnDrop(PointerEventData eventData)
         {
+
         }
 
         public void OnPointerDown(PointerEventData eventData)
         {
+
         }
     }
 }

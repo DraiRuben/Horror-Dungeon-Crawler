@@ -1,15 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerStats : EntityStats
 {
     private int m_currentStress;
-    [SerializeField] private int m_maxStress= 100;
+    [SerializeField] private int m_maxStress = 100;
 
     [SerializeField] private Image HealthBarPlayer;
-   
+
     void Start()
     {
         CurrentHealth = m_maxHealth;
@@ -25,9 +23,9 @@ public class PlayerStats : EntityStats
 
     }*/
 
-    
+
     public void PlayerUpdateFill()
     {
-        HealthBarPlayer.fillAmount = (float) CurrentHealth / m_maxHealth;
+        HealthBarPlayer.fillAmount = (float)CurrentHealth / m_maxHealth;
     }
 }

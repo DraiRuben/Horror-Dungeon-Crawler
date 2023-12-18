@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AttackSystem : MonoBehaviour
@@ -12,62 +11,62 @@ public class AttackSystem : MonoBehaviour
     }
     public bool InflictDamageAtGridPos(Vector2Int _gridAttackPos, int _floor, int _damage, GameObject _origin = null)
     {
-        var OccupyingEntity = MapGrid.Instance.GetCell(_floor,_gridAttackPos.x,_gridAttackPos.y)?.OccupyingObject;
+        GameObject OccupyingEntity = MapGrid.Instance.GetCell(_floor, _gridAttackPos.x, _gridAttackPos.y)?.OccupyingObject;
 
-        if(OccupyingEntity != null)
+        if (OccupyingEntity != null)
         {
-            var PlayerStatsManager = OccupyingEntity.GetComponent<PlayerStatsManager>();
-            if(PlayerStatsManager != null )
+            PlayerStatsManager PlayerStatsManager = OccupyingEntity.GetComponent<PlayerStatsManager>();
+            if (PlayerStatsManager != null)
             {
-                PlayerStatsManager.TakeDamage(_damage,_origin);
+                PlayerStatsManager.TakeDamage(_damage, _origin);
                 return true;
             }
-            var EntityStats = OccupyingEntity.GetComponent<EntityStats>();
-            if(EntityStats != null )
+            EntityStats EntityStats = OccupyingEntity.GetComponent<EntityStats>();
+            if (EntityStats != null)
             {
                 EntityStats.TakeDamage(_damage);
                 return true;
             }
         }
         return false;
-        
+
     }
     public void CQCAttack(Vector2Int _gridAttackPos, int _floor, MapGrid.AllowedMovesMask _attackDir, int _damage, GameObject _origin = null)
     {
         //if there's no wall, inflict damage one cell in front
         if (MapGrid.Instance.ValidMovement(_floor, _gridAttackPos.x, _gridAttackPos.y, _attackDir))
         {
-            var DamagedCellPos = MapGrid.Instance.GetCellPosInDir(_gridAttackPos.x, _gridAttackPos.y, _attackDir);
-            InflictDamageAtGridPos(DamagedCellPos, _floor, _damage,_origin);
+            Vector2Int DamagedCellPos = MapGrid.Instance.GetCellPosInDir(_gridAttackPos.x, _gridAttackPos.y, _attackDir);
+            InflictDamageAtGridPos(DamagedCellPos, _floor, _damage, _origin);
         }
     }
 
     public void RangedAttack(Vector2Int _gridAttackPos, int _floor, MapGrid.AllowedMovesMask _attackDir, int _damage, int _range, float _projectileSpeed, GameObject _origin = null)
     {
         //if the projectile wasn't shot at a wall
-        var nextCell = MapGrid.Instance.GetCellInDir(_floor, _gridAttackPos.x, _gridAttackPos.y, _attackDir);
+        MapGrid.Cell nextCell = MapGrid.Instance.GetCellInDir(_floor, _gridAttackPos.x, _gridAttackPos.y, _attackDir);
         if (MapGrid.Instance.ValidMovement(_floor, _gridAttackPos.x, _gridAttackPos.y, _attackDir)
-            && nextCell!=null && nextCell.Center!=null)
-            StartCoroutine(RangedAttackBehaviour(_gridAttackPos,_floor,_attackDir,_damage,_range,_projectileSpeed,_origin));
+            && nextCell != null && nextCell.Center != null)
+            StartCoroutine(RangedAttackBehaviour(_gridAttackPos, _floor, _attackDir, _damage, _range, _projectileSpeed, _origin));
     }
     private IEnumerator RangedAttackBehaviour(Vector2Int _gridAttackPos, int _floor, MapGrid.AllowedMovesMask _attackDir, int _damage, int _range, float _projectileSpeed, GameObject _origin)
     {
         Vector2Int currentGridPos = MapGrid.Instance.GetCellPosInDir(_gridAttackPos.x, _gridAttackPos.y, _attackDir);
         int currentCellDistance = 1;
-        float timer=0f;
+        float timer = 0f;
 
-        while (currentCellDistance < _range) 
+        while (currentCellDistance < _range)
         {
             //if we dealt the damage, stop dealing anymore damage
-            if(InflictDamageAtGridPos(currentGridPos, _floor, _damage, _origin))
-                    yield break;
+            if (InflictDamageAtGridPos(currentGridPos, _floor, _damage, _origin))
+                yield break;
 
             //move projectile position each 1/projectileSpeed seconds
             if (timer > (1f / _projectileSpeed))
             {
                 timer = 0;
                 currentCellDistance++;
-                var nextCell = MapGrid.Instance.GetCellInDir(_floor, _gridAttackPos.x, _gridAttackPos.y, _attackDir);
+                MapGrid.Cell nextCell = MapGrid.Instance.GetCellInDir(_floor, _gridAttackPos.x, _gridAttackPos.y, _attackDir);
                 //if the projectile won't hit a wall then update the position, else stop the projectile entirely
                 if (MapGrid.Instance.ValidMovement(_floor, currentGridPos.x, currentGridPos.y, _attackDir)
                     && nextCell != null && nextCell.Center != null)

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -26,24 +24,24 @@ public class PlayerMovement : MonoBehaviour
     public void Move(InputAction.CallbackContext _ctx)
     {
         m_movementInput = _ctx.ReadValue<Vector2>();
-        
+
         //if the input has a direction and the player can move
-        if(m_movementInput.magnitude > 0 && m_timeSinceMovement>= m_movementFrequency)
+        if (m_movementInput.magnitude > 0 && m_timeSinceMovement >= m_movementFrequency)
         {
             //gets move direction from the camera POV
-            var MoveDir = GetMoveDir();
+            MapGrid.AllowedMovesMask MoveDir = GetMoveDir();
             //converts camera POV input direction into Grid POV input direction
-            var RelativeMoveDir = MapGrid.Instance.GetRelativeDir(MoveDir, m_transform.rotation.eulerAngles.y);
+            MapGrid.AllowedMovesMask RelativeMoveDir = MapGrid.Instance.GetRelativeDir(MoveDir, m_transform.rotation.eulerAngles.y);
 
             //if the direction we tried to go to is in the list of valid directions in the current cell we have
-            if(MapGrid.Instance.ValidMovement(CurrentFloor, GridPos.x, GridPos.y, RelativeMoveDir))
+            if (MapGrid.Instance.ValidMovement(CurrentFloor, GridPos.x, GridPos.y, RelativeMoveDir))
             {
-                var NextCell = MapGrid.Instance.GetCellInDir(CurrentFloor, GridPos.x, GridPos.y, RelativeMoveDir);
+                MapGrid.Cell NextCell = MapGrid.Instance.GetCellInDir(CurrentFloor, GridPos.x, GridPos.y, RelativeMoveDir);
                 //if we have a cell we can go to
                 if (NextCell != null && NextCell.Center != null)
                 {
                     //if the cell isn't occupied by another entity
-                    if(NextCell.OccupyingObject == null)
+                    if (NextCell.OccupyingObject == null)
                     {
                         //get the cell we are on and remove ourselves from occupying it
                         MapGrid.Instance.GetCell(CurrentFloor, GridPos.x, GridPos.y).OccupyingObject = null;
@@ -55,24 +53,24 @@ public class PlayerMovement : MonoBehaviour
                         m_transform.position += Vector3.up * 1.5f;
                         UpdateGridPos(RelativeMoveDir);
                     }
-                    
+
                 }
                 else if (NextCell == null || NextCell.Center == null)
                 {
-                    var ConnectedFloorInfo = MapGrid.Instance.GetConnectedFloor(GridPos, CurrentFloor);
+                    MapGrid.FloorConnection.Point ConnectedFloorInfo = MapGrid.Instance.GetConnectedFloor(GridPos, CurrentFloor);
                     //if we didn't find a next cell in the current floor but the cell we are on is connected to a cell on another floor
                     if (ConnectedFloorInfo != null)
                     {
                         //do the same thing as with any other cell movement
-                        var Cell = MapGrid.Instance.GetCell(ConnectedFloorInfo.FloorIndex, ConnectedFloorInfo.GridPos.x, ConnectedFloorInfo.GridPos.y);
-                        if(Cell.OccupyingObject == null)
+                        MapGrid.Cell Cell = MapGrid.Instance.GetCell(ConnectedFloorInfo.FloorIndex, ConnectedFloorInfo.GridPos.x, ConnectedFloorInfo.GridPos.y);
+                        if (Cell.OccupyingObject == null)
                         {
                             MapGrid.Instance.GetCell(CurrentFloor, GridPos.x, GridPos.y).OccupyingObject = null;
                             Cell.OccupyingObject = gameObject;
                             m_timeSinceMovement = 0;
                             GridPos.Set(ConnectedFloorInfo.GridPos.x, ConnectedFloorInfo.GridPos.y);
                             CurrentFloor = ConnectedFloorInfo.FloorIndex;
-                            m_transform.position = MapGrid.Instance.GetCell(CurrentFloor, GridPos.x,GridPos.y).Center.position;
+                            m_transform.position = MapGrid.Instance.GetCell(CurrentFloor, GridPos.x, GridPos.y).Center.position;
                             m_transform.position += Vector3.up * 1.5f;
                         }
 
@@ -86,13 +84,13 @@ public class PlayerMovement : MonoBehaviour
     {
         m_rotationInput = _ctx.ReadValue<float>();
         //if we can move
-        if(m_timeSinceMovement >= m_movementFrequency)
+        if (m_timeSinceMovement >= m_movementFrequency)
         {
             //rotate 90° either left or right on the Y axis depending on the input
             if (m_rotationInput > 0)
             {
                 m_timeSinceMovement = 0;
-                m_transform.rotation = Quaternion.Euler(10, m_transform.rotation.eulerAngles.y +90, 0);
+                m_transform.rotation = Quaternion.Euler(10, m_transform.rotation.eulerAngles.y + 90, 0);
             }
             else if (m_rotationInput < 0)
             {
@@ -117,16 +115,16 @@ public class PlayerMovement : MonoBehaviour
     {
         switch (relativeMovementDir)
         {
-            case  MapGrid.AllowedMovesMask.Top:
+            case MapGrid.AllowedMovesMask.Top:
                 GridPos.y--;
                 break;
-            case  MapGrid.AllowedMovesMask.Right:
+            case MapGrid.AllowedMovesMask.Right:
                 GridPos.x++;
                 break;
-            case  MapGrid.AllowedMovesMask.Bottom:
+            case MapGrid.AllowedMovesMask.Bottom:
                 GridPos.y++;
                 break;
-            case  MapGrid.AllowedMovesMask.Left:
+            case MapGrid.AllowedMovesMask.Left:
                 GridPos.x--;
                 break;
         }
