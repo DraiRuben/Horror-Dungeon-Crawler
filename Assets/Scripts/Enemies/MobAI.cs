@@ -19,7 +19,7 @@ public class MobAI : MonoBehaviour
     {
         m_agent = GetComponent<NavMeshAgent>();
         m_entityStats = GetComponent<EntityStats>();
-        //StartCoroutine(AttackRoutine());
+        StartCoroutine(AttackRoutine());
     }
     private void Start()
     {

@@ -32,13 +32,17 @@ public class FormationElement : MonoBehaviour, IBeginDragHandler, IEndDragHandle
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        int CurrentIndex = transform.GetSiblingIndex();
-        int TargetIndex = eventData.pointerEnter.transform.GetSiblingIndex();
 
-        transform.SetSiblingIndex(TargetIndex);
-        eventData.pointerEnter.transform.SetSiblingIndex(CurrentIndex);
+        if(eventData.pointerEnter!= null)
+        {
+            int CurrentIndex = transform.GetSiblingIndex();
+            int TargetIndex = eventData.pointerEnter.transform.GetSiblingIndex();
 
-        UIPlayerFormation.Instance.UpdatePreviewers();
+            transform.SetSiblingIndex(TargetIndex);
+            eventData.pointerEnter.transform.SetSiblingIndex(CurrentIndex);
+
+            UIPlayerFormation.Instance.UpdatePreviewers();
+        }
 
     }
 

@@ -12,7 +12,7 @@ public class EntityStats : MonoBehaviour
 
     [SerializeField] protected bool m_isBoss;
 
-    [NonSerialized] public UnityEvent OnHealthChanged = new();
+     public UnityEvent OnHealthChanged = new();
 
     void Start()
     {
