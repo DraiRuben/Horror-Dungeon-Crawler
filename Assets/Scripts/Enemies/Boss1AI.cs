@@ -4,7 +4,6 @@ using UnityEngine.AI;
 
 public class Boss1AI : MobAI
 {
-
     [SerializeField] protected int NextPhaseHP;
     [SerializeField] protected int NextPhaseStrength;
     [SerializeField] protected int NextPhaseDexterity;
