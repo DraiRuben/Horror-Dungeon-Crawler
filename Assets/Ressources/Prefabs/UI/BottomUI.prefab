@@ -866,6 +866,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d039de4d60a51d4f9f4207c6ac5785d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_image: {fileID: 7685957938553052368}
 --- !u!1 &961005874921478344
 GameObject:
   m_ObjectHideFlags: 0
@@ -1403,6 +1404,9 @@ MonoBehaviour:
   Strength: 0
   m_isBoss: 0
   OnHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeath:
     m_PersistentCalls:
       m_Calls: []
   m_maxStress: 100
@@ -2130,6 +2134,9 @@ MonoBehaviour:
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
   m_maxStress: 100
   HealthBarPlayer: {fileID: 6206806514969800348}
 --- !u!1 &4629620249702801620
@@ -2531,6 +2538,9 @@ MonoBehaviour:
   Strength: 0
   m_isBoss: 0
   OnHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeath:
     m_PersistentCalls:
       m_Calls: []
   m_maxStress: 100
@@ -3146,6 +3156,9 @@ MonoBehaviour:
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
   m_maxStress: 100
   HealthBarPlayer: {fileID: 9038508820413956135}
 --- !u!1 &5931844346611902097
@@ -3514,6 +3527,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d039de4d60a51d4f9f4207c6ac5785d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_image: {fileID: 1084377364445310660}
 --- !u!1 &6245198245521682856
 GameObject:
   m_ObjectHideFlags: 0
@@ -4174,6 +4188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d039de4d60a51d4f9f4207c6ac5785d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_image: {fileID: 5403186798135241640}
 --- !u!1 &7033389654208330122
 GameObject:
   m_ObjectHideFlags: 0
@@ -5859,3 +5874,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d039de4d60a51d4f9f4207c6ac5785d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_image: {fileID: 8645531677413488050}
