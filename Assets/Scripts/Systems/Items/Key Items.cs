@@ -1,3 +1,4 @@
+using Inventory.UI;
 using UnityEngine;
 
 namespace Inventory.Model
@@ -5,14 +6,14 @@ namespace Inventory.Model
     [CreateAssetMenu]
     public class Key : Item
     {
-        public int usesLeft;
-
         public override bool Use()
         {
-            usesLeft--;
-            if (usesLeft <= 0)
+            Quantity--; 
+
+            if (Quantity <= 0)
             {
-                //SlotManager.RemoveItem(Item item);
+                Inventory.Instance.inventoryData.RemoveItem(this);
+                UIInventory.Instance.RemoveItem(this);
             }
             return true;
         }

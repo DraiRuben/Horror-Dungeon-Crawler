@@ -151,5 +151,10 @@ namespace Inventory.UI
             DeselectAllItems();
             listOfUIItems[itemIndex].Select();
         }
+        public void RemoveItem(Item _toRemove)
+        {
+            var slot = listOfUIItems.First(x => x.itemImage != null && x.itemImage == _toRemove.ItemImage);
+            slot?.SetData(null, 0);
+        }
     }
 }

@@ -1,3 +1,4 @@
+using Inventory.Model;
 using UnityEngine;
 
 public class OpenDoor : MonoBehaviour
@@ -16,6 +17,7 @@ public class OpenDoor : MonoBehaviour
     [field: SerializeField] int floorIndexFront;
     [SerializeField] bool NoKeyRequired;
     public bool isCadavre;
+    public bool isOpen = false;
 
     public void Start()
     {
@@ -29,11 +31,13 @@ public class OpenDoor : MonoBehaviour
 
         if (inventoryManager.inventoryData.UseItemByIndex(keyIndex) || NoKeyRequired)
         {
+            //SlotManager.Instantiate.UseItemByIndex;
             OpenWaypointBehindDoor();
             OpenWaypointInFrontDoor();
             if (!isCadavre)
             {
                 animator.SetTrigger("ChangeState");
+                isOpen = true;
             }
             else
             {
@@ -48,8 +52,10 @@ public class OpenDoor : MonoBehaviour
 
     public void OnMouseDown()
     {
-
-        Opening();
+        if (!isOpen)
+        {
+            Opening();
+        }
     }
 
     private void OpenWaypointBehindDoor()

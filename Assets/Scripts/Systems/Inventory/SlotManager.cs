@@ -62,7 +62,11 @@ namespace Inventory.Model
             }
             if (item.GetType() == typeof(Weapon) && ((Weapon)item).AutoEquip)
             {
-                PlayerUISlotsManager.Instance.TryAutoEquip(((Weapon)item).CanUse, (Weapon)item);
+                PlayerUISlotsManager.Instance.TryAutoEquipWeapon(((Weapon)item).CanUse, (Weapon)item);
+            }
+            else if (item.index == 1|| item.index == 2)
+            {
+                PlayerUISlotsManager.Instance.AutoEquipUtility(item);
             }
         }
 
