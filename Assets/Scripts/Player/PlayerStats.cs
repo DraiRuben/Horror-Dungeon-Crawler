@@ -23,7 +23,18 @@ public class PlayerStats : EntityStats
 
     }*/
 
-
+    public override void TakeDamage(int damage)
+    {
+        CurrentHealth -= damage;
+        if (m_isBoss)
+        {
+            BossHealthUI.Instance.BossUpdateFill((float)CurrentHealth / m_maxHealth);
+        }
+        if (CurrentHealth <= 0)
+        {
+            gameObject.SetActive(false);
+        }
+    }
     public void PlayerUpdateFill()
     {
         HealthBarPlayer.fillAmount = (float)CurrentHealth / m_maxHealth;

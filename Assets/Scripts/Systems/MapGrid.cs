@@ -4,10 +4,6 @@ using Sirenix.Utilities;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using Unity.VisualScripting.Antlr3.Runtime.Tree;
-
-
-
 
 #if UNITY_EDITOR
 using Sirenix.Utilities.Editor;
@@ -93,7 +89,7 @@ public class MapGrid : SerializedMonoBehaviour
         All = Left | Right | Top | Bottom
     }
 
-    private static readonly AllowedMovesMask[] Moves = { AllowedMovesMask.Top, AllowedMovesMask.Right, AllowedMovesMask.Bottom, AllowedMovesMask.Left };
+    public static readonly List<AllowedMovesMask>Moves = new(){ AllowedMovesMask.Top, AllowedMovesMask.Right, AllowedMovesMask.Bottom, AllowedMovesMask.Left };
     private Cell[,] GetFloor(int _floor)
     {
         switch (_floor)
@@ -221,7 +217,8 @@ public class MapGrid : SerializedMonoBehaviour
     //rotates a direction depending on the rotation given
     public AllowedMovesMask GetRelativeDir(AllowedMovesMask _moveDir, float _rotationY = 0)
     {
-        return Moves[(Array.IndexOf(Moves, _moveDir) + (int)_rotationY / 90) % 4];
+        int nearestMultiple = (int)Math.Round((_rotationY / 90d),MidpointRounding.AwayFromZero);
+        return Moves[(Moves.IndexOf(_moveDir) + nearestMultiple) % 4];
     }
     public Cell GetCell(int _floor, int _column, int _row)
     {

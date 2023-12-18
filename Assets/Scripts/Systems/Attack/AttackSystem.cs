@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 public class AttackSystem : MonoBehaviour
@@ -40,7 +41,7 @@ public class AttackSystem : MonoBehaviour
         if (MapGrid.Instance.ValidMovement(_floor, _gridAttackPos.x, _gridAttackPos.y, _attackDir))
         {
             var position = MapGrid.Instance.GetCell(_floor, _gridAttackPos.x, _gridAttackPos.y).Center.position;
-            Instantiate(m_slashPrefab,position, Quaternion.Euler(0,((int)_attackDir)/4 * 90,0));
+            Destroy(Instantiate(m_slashPrefab,position, Quaternion.Euler(0,MapGrid.Moves.IndexOf(_attackDir)*90,90)).gameObject,4f);
             
             Vector2Int DamagedCellPos = MapGrid.Instance.GetCellPosInDir(_gridAttackPos.x, _gridAttackPos.y, _attackDir);
             InflictDamageAtGridPos(DamagedCellPos, _floor, _damage, _origin);
@@ -61,7 +62,7 @@ public class AttackSystem : MonoBehaviour
         int currentCellDistance = 1;
         float timer = 0f;
         var position = MapGrid.Instance.GetCell(_floor, _gridAttackPos.x, _gridAttackPos.y).Center.position;
-        var Visual = Instantiate(m_bulletPrefab, position, Quaternion.Euler(0, ((int)_attackDir) / 4 * 90, 0));
+        var Visual = Instantiate(m_bulletPrefab, position, Quaternion.Euler(0, MapGrid.Moves.IndexOf(_attackDir) * 90, 0));
 
         while (currentCellDistance < _range)
         {

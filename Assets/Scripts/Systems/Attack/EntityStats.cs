@@ -20,7 +20,7 @@ public class EntityStats : MonoBehaviour
         CurrentHealth = m_maxHealth;
     }
 
-    public void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage)
     {
         CurrentHealth -= damage;
         if (m_isBoss)
