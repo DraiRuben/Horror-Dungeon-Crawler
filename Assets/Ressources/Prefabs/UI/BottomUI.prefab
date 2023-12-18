@@ -1372,6 +1372,9 @@ MonoBehaviour:
   Dexterity: 0
   Strength: 0
   m_isBoss: 0
+  OnHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
   m_maxStress: 100
   HealthBarPlayer: {fileID: 1195021171287828359}
 --- !u!1 &2310730620750347454
@@ -2094,6 +2097,9 @@ MonoBehaviour:
   Dexterity: 0
   Strength: 0
   m_isBoss: 0
+  OnHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
   m_maxStress: 100
   HealthBarPlayer: {fileID: 6206806514969800348}
 --- !u!1 &4629620249702801620
@@ -2241,6 +2247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c17fadc982bd229418240c80e20fd493, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SlotImage: {fileID: 6866903388106621310}
   CurrentItem: {fileID: 0}
 --- !u!1 &4774294725049331665
 GameObject:
@@ -2493,6 +2500,9 @@ MonoBehaviour:
   Dexterity: 0
   Strength: 0
   m_isBoss: 0
+  OnHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
   m_maxStress: 100
   HealthBarPlayer: {fileID: 7938122107411463804}
 --- !u!1 &4987530024116443395
@@ -2760,6 +2770,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c17fadc982bd229418240c80e20fd493, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SlotImage: {fileID: 1388806973213766067}
   CurrentItem: {fileID: 0}
 --- !u!1 &5090717377161219963
 GameObject:
@@ -3104,6 +3115,9 @@ MonoBehaviour:
   Dexterity: 0
   Strength: 0
   m_isBoss: 0
+  OnHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
   m_maxStress: 100
   HealthBarPlayer: {fileID: 9038508820413956135}
 --- !u!1 &5931844346611902097
@@ -3617,6 +3631,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c17fadc982bd229418240c80e20fd493, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SlotImage: {fileID: 242376296404075455}
   CurrentItem: {fileID: 0}
 --- !u!1 &6474758662572166914
 GameObject:
@@ -4916,6 +4931,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c17fadc982bd229418240c80e20fd493, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SlotImage: {fileID: 3006756633427375582}
   CurrentItem: {fileID: 0}
 --- !u!1 &8236420808325095417
 GameObject:
