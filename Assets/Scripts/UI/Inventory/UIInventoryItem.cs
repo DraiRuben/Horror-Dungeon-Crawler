@@ -8,7 +8,7 @@ namespace Inventory.UI
 {
     public class UIInventoryItem : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IEndDragHandler, IDropHandler, IDragHandler, IPointerUpHandler, IPointerDownHandler
     {
-        [SerializeField] private Image itemImage;
+        public Image itemImage;
         [SerializeField] private TMP_Text quantityTxt;
         [SerializeField] private Image borderImage;
         [SerializeField] private bool m_isPlaceholder;

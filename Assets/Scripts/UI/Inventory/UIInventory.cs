@@ -1,5 +1,7 @@
+using Inventory.Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Inventory.UI
@@ -144,6 +146,11 @@ namespace Inventory.UI
             itemDescription.SetDescription(itemImage, name, description);
             DeselectAllItems();
             listOfUIItems[itemIndex].Select();
+        }
+        public void RemoveItem(Item _toRemove)
+        {
+            var slot = listOfUIItems.First(x => x.itemImage != null && x.itemImage == _toRemove.ItemImage);
+            slot?.SetData(null, 0);
         }
     }
 }

@@ -11,6 +11,8 @@ namespace Inventory.Model
         [field: SerializeField]
         public int MaxStackSize { get; set; } = 1;
 
+        [field: SerializeField]
+        public int Quantity { get; set; } = 1; 
 
         [SerializeField]
         public int index;
@@ -18,11 +20,9 @@ namespace Inventory.Model
         [field: SerializeField]
         public string Name { get; set; }
 
-
         [field: SerializeField]
         [field: TextArea]
         public string Description { get; set; }
-
 
         [field: SerializeField]
         public Sprite ItemImage { get; set; }

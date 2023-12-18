@@ -7,7 +7,7 @@ namespace Inventory
 {
     public class Inventory : MonoBehaviour
     {
-        [SerializeField] private UIInventory inventoryUI;
+        [SerializeField] public UIInventory inventoryUI;
         public SlotManager inventoryData;
 
         public List<InventoryItem> initialItems = new List<InventoryItem>();
