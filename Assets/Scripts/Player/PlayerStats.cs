@@ -59,7 +59,12 @@ public class PlayerStats : EntityStats
             }
         }
     }
-
+    private void OnEnable()
+    {
+        var connected = UIPlayerFormation.Instance.Previewers.First(x => x.m_linkedCharacter == this);
+        connected.m_image.color = Color.white;
+        connected.m_linkedElement.m_image.color = Color.white;
+    }
     public void PlayerUpdateFill()
     {
         HealthBarPlayer.fillAmount = (float)CurrentHealth / m_maxHealth;
