@@ -13,15 +13,13 @@ public class HealingItems : MonoBehaviour
         stats = GetComponent<PlayerStats>();
     }
 
-    private void Heal()
+    public void Heal()
     {
-        if (isMedKit)
-        {
-            stats.CurrentHealth += 50;
-        }
-        else if (isPills)
-        {
-            stats.CurrentStress -= 50;
-        }
+        stats.CurrentHealth += 50;
+    }
+
+    public void Pills()
+    {
+        stats.CurrentStress -= 50;
     }
 }
