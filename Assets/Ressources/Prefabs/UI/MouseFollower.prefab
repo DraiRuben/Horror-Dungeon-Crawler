@@ -93,6 +93,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ItemUI
       objectReference: {fileID: 0}
+    - target: {fileID: 4810902354913923020, guid: d62c11102c0f03044a2599cd21ffccb1, type: 3}
+      propertyPath: m_isPlaceholder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6550707901047564194, guid: d62c11102c0f03044a2599cd21ffccb1, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -196,7 +200,7 @@ CanvasGroup:
   m_Enabled: 1
   m_Alpha: 0.5
   m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!224 &7021483928387996238 stripped
 RectTransform:
