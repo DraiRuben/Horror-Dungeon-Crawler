@@ -1,25 +1,25 @@
+using Inventory.Model;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class HealingItems : MonoBehaviour
 {
-    public bool isMedKit;
-    public bool isPills;
-    private PlayerStats stats;
-
-    private void Start()
-    {
-        stats = GetComponent<PlayerStats>();
-    }
-
     public void Heal()
     {
-        stats.CurrentHealth += 50;
+        if(PlayerSelector.CurrentlySelected != null && PlayerSelector.CurrentlySelected.CurrentHealth > 0)
+        {
+            PlayerSelector.CurrentlySelected.CurrentHealth += 50;
+            Inventory.Inventory.Instance.inventoryData.UseItemByIndex(1);
+        }
     }
 
     public void Pills()
     {
-        stats.CurrentStress -= 50;
+        if (PlayerSelector.CurrentlySelected != null && PlayerSelector.CurrentlySelected.CurrentHealth > 0)
+        {
+            PlayerSelector.CurrentlySelected.CurrentStress -= 50;
+            Inventory.Inventory.Instance.inventoryData.UseItemByIndex(2);
+        }
     }
 }
