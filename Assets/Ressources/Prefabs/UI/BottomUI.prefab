@@ -1816,7 +1816,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1848,6 +1848,7 @@ MonoBehaviour:
   m_linkedElement: {fileID: 3738854025943692291}
   m_linkedCharacter: {fileID: 909971080834125635}
   m_formationMofifier: {fileID: 0}
+  m_image: {fileID: 0}
 --- !u!1 &3205000493393298125
 GameObject:
   m_ObjectHideFlags: 0
@@ -3498,7 +3499,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4159,7 +4160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4651,7 +4652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4683,6 +4684,7 @@ MonoBehaviour:
   m_linkedElement: {fileID: 8799262592677558720}
   m_linkedCharacter: {fileID: 6111550665857093145}
   m_formationMofifier: {fileID: 0}
+  m_image: {fileID: 0}
 --- !u!1 &7793765388944737723
 GameObject:
   m_ObjectHideFlags: 0
@@ -5421,6 +5423,7 @@ MonoBehaviour:
   m_linkedElement: {fileID: 5783482897107542186}
   m_linkedCharacter: {fileID: 6339234357190331521}
   m_formationMofifier: {fileID: 0}
+  m_image: {fileID: 0}
 --- !u!1 &8724503835970486795
 GameObject:
   m_ObjectHideFlags: 0
@@ -5754,7 +5757,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5786,6 +5789,7 @@ MonoBehaviour:
   m_linkedElement: {fileID: 6520025730537228281}
   m_linkedCharacter: {fileID: 2948909733990028516}
   m_formationMofifier: {fileID: 8236420808325095417}
+  m_image: {fileID: 0}
 --- !u!1 &9077386905401553470
 GameObject:
   m_ObjectHideFlags: 0
@@ -5845,7 +5849,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

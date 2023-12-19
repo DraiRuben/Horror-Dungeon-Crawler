@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,7 +16,12 @@ public class PlayerStats : EntityStats
         HealthBarPlayer.fillAmount = 1;
         OnHealthChanged.AddListener(PlayerUpdateFill);
     }
-
+    private void OnEnable()
+    {
+        var connected = UIPlayerFormation.Instance.Previewers.First(x => x.m_linkedCharacter == this);
+        connected.m_image.color = Color.white;
+        connected.m_linkedElement.m_image.color = Color.white;
+    }
     /*public void TakeStress(int stress)
     {
         m_curStress -= stress;
