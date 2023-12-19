@@ -1,5 +1,7 @@
 using Inventory.Model;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class OpenDoor : MonoBehaviour
 {
@@ -28,13 +30,11 @@ public class OpenDoor : MonoBehaviour
 
     public void Opening()
     {
-
         if (inventoryManager.inventoryData.UseItemByIndex(keyIndex) || NoKeyRequired)
         {
             //SlotManager.Instantiate.UseItemByIndex;
             OpenWaypointBehindDoor();
             OpenWaypointInFrontDoor();
-
 
             if (!isCadavre)
             {
