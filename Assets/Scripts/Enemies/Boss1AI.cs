@@ -88,7 +88,7 @@ public class Boss1AI : MobAI
         }
     }
 
-    private void NextPhaseCheck()
+    protected void NextPhaseCheck()
     {
         if (m_entityStats.CurrentHealth < NextPhaseHP)
         {

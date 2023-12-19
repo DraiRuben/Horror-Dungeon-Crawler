@@ -4,8 +4,20 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class Boss3AI : Boss1AI
-{ 
-   
+{
+    [SerializeField] protected float m_cooldownCharge;
+    [SerializeField] protected int m_maxRangeCharge;
+    [SerializeField] protected float m_lastCharge;
+    [SerializeField] protected float currentSpeed;
+    [SerializeField] protected float speedCharge;
+    [SerializeField] protected int m_damageCharge;
+
+    private bool m_isInCharge;
+
+    public int CurrentFloor;
+    protected Vector2Int GridPos;
+    private MapGrid.AllowedMovesMask RelativeMoveDir;
+
     void Awake()
     {
         m_agent = GetComponent<NavMeshAgent>();
@@ -13,7 +25,7 @@ public class Boss3AI : Boss1AI
         StartCoroutine(AttackRoutine());
     }
 // Start is called before the first frame update
-void Start()
+    void Start()
     {
         m_gridPos = MapGrid.Instance.GetClosestCell(m_floor, transform.position);
         MapGrid.Instance.GetCell(m_floor, m_gridPos.x, m_gridPos.y).OccupyingObject = gameObject;
@@ -46,14 +58,21 @@ void Start()
                 m_agent.SetDestination(MapGrid.Instance.GetCell(m_floor, m_gridPos.x, m_gridPos.y).Center.position);
                 //système d'attaque
                 m_isCloseEnough = true;
+                if (m_isInCharge)
+                {
+                    m_isInCharge = false;
+                    MapGrid.AllowedMovesMask AttackDir = MapGrid.Instance.GetRelativeDir(MapGrid.AllowedMovesMask.Top, transform.rotation.eulerAngles.y);
+                    AttackSystem.Instance.CQCAttack(m_gridPos, m_floor, AttackDir, m_damageCharge, gameObject);
+                }
             }
             else
             {
                 m_isCloseEnough = false;
                 m_agent.SetDestination(PlayerMovement.Instance.transform.position);
-                ChargeThePlayer();
+                ChargeThePlayer(totalDist);
             }
         }
+        
     }
 
     protected override IEnumerator AttackRoutine()
@@ -82,24 +101,21 @@ void Start()
         }
     }
 
-  
-    private void NextPhaseCheck()
+    private void ChargeThePlayer(int totalDist)
     {
-        if (m_entityStats.CurrentHealth < NextPhaseHP)
+        if (totalDist < m_maxRangeCharge && Time.time - m_lastCharge > m_cooldownCharge)
         {
-            m_entityStats.Dexterity = NextPhaseDexterity;
-            m_entityStats.Strength = NextPhaseStrength;
-            m_entityStats.OnHealthChanged.RemoveListener(NextPhaseCheck);
-        }
-
+            GetComponent<NavMeshAgent>().speed = speedCharge;
+            m_isInCharge = true;    
+            m_lastCharge = Time.time;
+            StartCoroutine(ChargeBehaviour());
+        }    
     }
 
-    private void ChargeThePlayer()
+    private IEnumerator ChargeBehaviour()
     {
-        // détecter le joueur dans la pièce
-        // si le joueur est à 3/4 cases d'écart
-        // effectuer la charge
-        // aplliquer les degats 
-        // cooldown de la charge
+        yield return new WaitForSeconds(2f);
+        GetComponent<NavMeshAgent>().speed = currentSpeed;
+        m_isInCharge = false;
     }
 }

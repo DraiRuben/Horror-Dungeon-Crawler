@@ -12,7 +12,7 @@ public class Boss2AI : MobAI
     [SerializeField] protected float m_lastTP;
 
     public int CurrentFloor;
-    public Vector2Int GridPos;
+    protected Vector2Int GridPos;
     private MapGrid.AllowedMovesMask RelativeMoveDir;
 
     void Awake()
