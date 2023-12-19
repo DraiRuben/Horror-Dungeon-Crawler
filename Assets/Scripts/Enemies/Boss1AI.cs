@@ -4,6 +4,7 @@ using UnityEngine.AI;
 
 public class Boss1AI : MobAI
 {
+    [Header("Phase 2 Behaviour Parameters")]
     [SerializeField] protected int NextPhaseHP;
     [SerializeField] protected int NextPhaseStrength;
     [SerializeField] protected int NextPhaseDexterity;
@@ -35,13 +36,13 @@ public class Boss1AI : MobAI
             if (newGridPos != m_gridPos)
             {
                 MapGrid.Instance.GetCell(m_floor, m_gridPos.x, m_gridPos.y).OccupyingObject = null;
-                MapGrid.Cell newCell = MapGrid.Instance.GetCell(m_floor, newGridPos.x, newGridPos.y);
-                if (newCell.OccupyingObject == null)
-                {
-                    newCell.OccupyingObject = gameObject;
-                }
-                m_gridPos = newGridPos;
             }
+            MapGrid.Cell newCell = MapGrid.Instance.GetCell(m_floor, newGridPos.x, newGridPos.y);
+            if (newCell.OccupyingObject == null)
+            {
+                newCell.OccupyingObject = gameObject;
+            }
+            m_gridPos = newGridPos;
             // if attack is CQC check if distance to player is <= 1 or if attack is Ranged, check if distance to player <= Reach and both are aligned
             if (m_attackReach <= 1 && totalDist <= 1 || (m_attackReach > 1 && m_attackReach >= totalDist && (dist.x == 0 || dist.y == 0)))
             {

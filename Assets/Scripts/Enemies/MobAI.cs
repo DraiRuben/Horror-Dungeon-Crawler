@@ -6,13 +6,16 @@ public class MobAI : MonoBehaviour
 {
     protected NavMeshAgent m_agent;
     protected Vector2Int m_gridPos;
+    [Header("Base Parameters")]
     [SerializeField] protected int m_floor;
     [SerializeField] protected int m_attackReach;
     [SerializeField] protected bool m_projectileAttacks;
+
+    [SerializeField] protected float m_destinationUpdateFrequency;
+    [Space(5)]
+
     protected bool m_isCloseEnough;
     protected EntityStats m_entityStats;
-    [SerializeField] protected float m_destinationUpdateFrequency;
-
     protected float m_previousDestinationSetTime;
     // Start is called before the first frame update
     void Awake()
