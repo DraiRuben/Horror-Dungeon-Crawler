@@ -27,7 +27,7 @@ namespace Inventory
         private void PrepareInventoryData()
         {
             inventoryData.Initialize();
-            foreach (InventoryItem item in initialItems)
+            foreach (InventoryItem item in inventoryData.inventoryItems)
             {
                 if (item.isEmpty)
                     continue;

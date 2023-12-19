@@ -1402,15 +1402,19 @@ MonoBehaviour:
   m_maxHealth: 100
   Dexterity: 0
   Strength: 0
+  m_maxStress: 100
   m_isBoss: 0
   OnHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnMaxStressReached:
     m_PersistentCalls:
       m_Calls: []
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
-  m_maxStress: 100
   HealthBarPlayer: {fileID: 1195021171287828359}
+  StressBarPlayer: {fileID: 6297497579608472681}
 --- !u!1 &2310730620750347454
 GameObject:
   m_ObjectHideFlags: 0
@@ -2131,15 +2135,19 @@ MonoBehaviour:
   m_maxHealth: 100
   Dexterity: 0
   Strength: 0
+  m_maxStress: 100
   m_isBoss: 0
   OnHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnMaxStressReached:
     m_PersistentCalls:
       m_Calls: []
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
-  m_maxStress: 100
   HealthBarPlayer: {fileID: 6206806514969800348}
+  StressBarPlayer: {fileID: 77757611182185296}
 --- !u!1 &4629620249702801620
 GameObject:
   m_ObjectHideFlags: 0
@@ -2537,15 +2545,19 @@ MonoBehaviour:
   m_maxHealth: 100
   Dexterity: 0
   Strength: 0
+  m_maxStress: 100
   m_isBoss: 0
   OnHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnMaxStressReached:
     m_PersistentCalls:
       m_Calls: []
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
-  m_maxStress: 100
   HealthBarPlayer: {fileID: 7938122107411463804}
+  StressBarPlayer: {fileID: 5171671719598815859}
 --- !u!1 &4987530024116443395
 GameObject:
   m_ObjectHideFlags: 0
@@ -3153,15 +3165,19 @@ MonoBehaviour:
   m_maxHealth: 100
   Dexterity: 0
   Strength: 0
+  m_maxStress: 100
   m_isBoss: 0
   OnHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnMaxStressReached:
     m_PersistentCalls:
       m_Calls: []
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
-  m_maxStress: 100
   HealthBarPlayer: {fileID: 9038508820413956135}
+  StressBarPlayer: {fileID: 8170309241525340593}
 --- !u!1 &5931844346611902097
 GameObject:
   m_ObjectHideFlags: 0
