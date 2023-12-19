@@ -32,7 +32,9 @@ public class MobAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (m_floor == PlayerMovement.Instance.CurrentFloor)
+        Physics.Raycast(transform.position, PlayerMovement.Instance.transform.position - transform.position, out var HitInfo, 10f);
+        if (m_floor == PlayerMovement.Instance.CurrentFloor
+            && HitInfo.collider != null && HitInfo.collider.CompareTag("Player"))
         {
             Vector2Int dist = MapGrid.Instance.DistanceBetweenCells(m_gridPos, PlayerMovement.Instance.GridPos);
             int totalDist = dist.x + dist.y;
@@ -53,8 +55,8 @@ public class MobAI : MonoBehaviour
             // if attack is CQC check if distance to player is <= 1 or if attack is Ranged, check if distance to player <= Reach and both are aligned
             if (m_attackReach <= 1 && totalDist <= 1 || (m_attackReach > 1 && m_attackReach >= totalDist && (dist.x == 0 || dist.y == 0)))
             {
-
-                m_agent.SetDestination(MapGrid.Instance.GetCell(m_floor, m_gridPos.x, m_gridPos.y).Center.position);
+                if (HitInfo.collider != null && HitInfo.collider.CompareTag("Player"))
+                    m_agent.SetDestination(MapGrid.Instance.GetCell(m_floor, m_gridPos.x, m_gridPos.y).Center.position);
                 //système d'attaque
                 m_isCloseEnough = true;
 
@@ -62,9 +64,11 @@ public class MobAI : MonoBehaviour
             else
             {
                 m_isCloseEnough = false;
-                if (Time.time - m_previousDestinationSetTime > m_destinationUpdateFrequency)
+                if (Time.time - m_previousDestinationSetTime > m_destinationUpdateFrequency
+                    && HitInfo.collider != null && HitInfo.collider.CompareTag("Player"))
                 {
                     m_previousDestinationSetTime = Time.time;
+
                     m_agent.SetDestination(PlayerMovement.Instance.transform.position);
                 }
             }
