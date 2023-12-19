@@ -19,14 +19,15 @@ namespace Inventory
         }
         private void Start()
         {
-            PrepareUI();
             PrepareInventoryData();
+            PrepareUI();
+            
         }
 
         private void PrepareInventoryData()
         {
             inventoryData.Initialize();
-            foreach (InventoryItem item in initialItems)
+            foreach (InventoryItem item in inventoryData.inventoryItems)
             {
                 if (item.isEmpty)
                     continue;

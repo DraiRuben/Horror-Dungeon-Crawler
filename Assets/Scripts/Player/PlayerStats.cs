@@ -1,27 +1,31 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class PlayerStats : EntityStats
 {
-    private int m_currentStress;
-    [SerializeField] private int m_maxStress = 100;
-
     [SerializeField] private Image HealthBarPlayer;
+    [SerializeField] private Image StressBarPlayer;
+
+    private const int StressDamage = 50;
+    private const float StressIncreaseRate = 0.1f;
+    private WaitForSeconds stressIncreaseDelay = new WaitForSeconds(1.0f);
+
+    private Coroutine stressCoroutine;
 
     void Start()
     {
         CurrentHealth = m_maxHealth;
-        m_currentStress = m_maxStress;
+        CurrentStress = 0;
         HealthBarPlayer.fillAmount = 1;
+        if (StressBarPlayer != null )
+        {
+            StressBarPlayer.fillAmount = 0;
+        }
         OnHealthChanged.AddListener(PlayerUpdateFill);
+        stressCoroutine = StartCoroutine(IncreaseStress());
     }
-
-    /*public void TakeStress(int stress)
-    {
-        m_curStress -= stress;
-        //PlayerStressUI.Instance.PlayerUpdateStress((float)m_curStress / m_maxStress);
-
-    }*/
 
     public override void TakeDamage(int damage)
     {
@@ -35,8 +39,35 @@ public class PlayerStats : EntityStats
             gameObject.SetActive(false);
         }
     }
+
+    private IEnumerator IncreaseStress()
+    {
+        while (true)
+        {
+            yield return stressIncreaseDelay;
+
+            CurrentStress++;
+            if (StressBarPlayer != null)
+            {
+                StressBarPlayer.fillAmount = (float)CurrentStress / m_maxStress;
+                if (CurrentStress >= m_maxStress)
+                {
+                    TakeDamage(StressDamage);
+                    CurrentStress = 0;
+                    StressBarPlayer.fillAmount = 0;
+                }
+            }
+        }
+    }
+
     public void PlayerUpdateFill()
     {
         HealthBarPlayer.fillAmount = (float)CurrentHealth / m_maxHealth;
+        StressBarPlayer.fillAmount = (float)CurrentStress / m_maxStress;
+    }
+
+    public void SelectedCharacter()
+    {
+
     }
 }

@@ -5,17 +5,22 @@ using UnityEngine.AI;
 
 public class Boss3AI : Boss1AI
 {
+    [Header("Charge Behaviour Parameters")]
+
     [SerializeField] protected float m_cooldownCharge;
     [SerializeField] protected int m_maxRangeCharge;
-    [SerializeField] protected float m_lastCharge;
-    [SerializeField] protected float currentSpeed;
-    [SerializeField] protected float speedCharge;
+
+    [SerializeField] protected float chargeSpeed;
     [SerializeField] protected int m_damageCharge;
 
+    [SerializeField] protected float normalSpeed;
+
+    [Space(5)]
     private bool m_isInCharge;
 
     public int CurrentFloor;
     protected Vector2Int GridPos;
+    protected float m_lastCharge;
     private MapGrid.AllowedMovesMask RelativeMoveDir;
 
     void Awake()
@@ -35,27 +40,29 @@ public class Boss3AI : Boss1AI
     // Update is called once per frame
     void Update()
     {
+        Physics.Raycast(transform.position, PlayerMovement.Instance.transform.position - transform.position, out var HitInfo, 10f);
         if (m_floor == PlayerMovement.Instance.CurrentFloor)
         {
             var dist = MapGrid.Instance.DistanceBetweenCells(m_gridPos, PlayerMovement.Instance.GridPos);
             var totalDist = dist.x + dist.y;
             transform.rotation = Quaternion.Euler(0, Quaternion.LookRotation(PlayerMovement.Instance.transform.position - transform.position).eulerAngles.y, 0);
             //updates grid pos only if it's not occupied by anything else, also empty previously occupied cell
-            var newGridPos = MapGrid.Instance.GetClosestCell(m_floor, transform.position, m_gridPos);
+            Vector2Int newGridPos = MapGrid.Instance.GetClosestCell(m_floor, transform.position, m_gridPos);
             if (newGridPos != m_gridPos)
             {
                 MapGrid.Instance.GetCell(m_floor, m_gridPos.x, m_gridPos.y).OccupyingObject = null;
-                var newCell = MapGrid.Instance.GetCell(m_floor, newGridPos.x, newGridPos.y);
-                if (newCell.OccupyingObject == null)
-                {
-                    newCell.OccupyingObject = gameObject;
-                }
-                m_gridPos = newGridPos;
             }
+            MapGrid.Cell newCell = MapGrid.Instance.GetCell(m_floor, newGridPos.x, newGridPos.y);
+            if (newCell.OccupyingObject == null)
+            {
+                newCell.OccupyingObject = gameObject;
+            }
+            m_gridPos = newGridPos;
             // if attack is CQC check if distance to player is <= 1 or if attack is Ranged, check if distance to player <= Reach and both are aligned
             if (m_attackReach <= 1 && totalDist <= 1 || (m_attackReach > 1 && m_attackReach >= totalDist && (dist.x == 0 || dist.y == 0)))
             {
-                m_agent.SetDestination(MapGrid.Instance.GetCell(m_floor, m_gridPos.x, m_gridPos.y).Center.position);
+                if(HitInfo.collider != null && HitInfo.collider.CompareTag("Player")) 
+                    m_agent.SetDestination(MapGrid.Instance.GetCell(m_floor, m_gridPos.x, m_gridPos.y).Center.position);
                 //système d'attaque
                 m_isCloseEnough = true;
                 if (m_isInCharge)
@@ -68,8 +75,14 @@ public class Boss3AI : Boss1AI
             else
             {
                 m_isCloseEnough = false;
-                m_agent.SetDestination(PlayerMovement.Instance.transform.position);
-                ChargeThePlayer(totalDist);
+                if (Time.time - m_previousDestinationSetTime > m_destinationUpdateFrequency
+                    && HitInfo.collider != null && HitInfo.collider.CompareTag("Player"))
+                {
+                    m_previousDestinationSetTime = Time.time;
+
+                    m_agent.SetDestination(PlayerMovement.Instance.transform.position);
+                }
+                TryCharge(totalDist);
             }
         }
         
@@ -101,11 +114,11 @@ public class Boss3AI : Boss1AI
         }
     }
 
-    private void ChargeThePlayer(int totalDist)
+    private void TryCharge(int totalDist)
     {
-        if (totalDist < m_maxRangeCharge && Time.time - m_lastCharge > m_cooldownCharge)
+        if (totalDist <= m_maxRangeCharge && Time.time - m_lastCharge > m_cooldownCharge)
         {
-            GetComponent<NavMeshAgent>().speed = speedCharge;
+            GetComponent<NavMeshAgent>().speed = chargeSpeed;
             m_isInCharge = true;    
             m_lastCharge = Time.time;
             StartCoroutine(ChargeBehaviour());
@@ -115,7 +128,7 @@ public class Boss3AI : Boss1AI
     private IEnumerator ChargeBehaviour()
     {
         yield return new WaitForSeconds(2f);
-        GetComponent<NavMeshAgent>().speed = currentSpeed;
+        GetComponent<NavMeshAgent>().speed = normalSpeed;
         m_isInCharge = false;
     }
 }

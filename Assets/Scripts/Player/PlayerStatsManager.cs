@@ -33,7 +33,7 @@ public class PlayerStatsManager : SerializedMonoBehaviour
         //gets first two non null characters in the line on the side of the attack (null means dead)
         List<PlayerStats> CharactersToHit = new List<PlayerStats>()
         { Characters[firstFormationPos.x, firstFormationPos.y],
-            Characters[secondFormationPos.x, secondFormationPos.y] }.Where(x => x != null).ToList();
+            Characters[secondFormationPos.x, secondFormationPos.y] }.Where(x => x != null && x.gameObject.activeSelf).ToList();
 
 
         //if both the characters directly in line of the attack are dead

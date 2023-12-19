@@ -9,6 +9,7 @@ public class BossHealthUI : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        BossUpdateFill(0);
     }
 
     void Start()
