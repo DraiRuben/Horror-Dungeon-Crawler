@@ -42,6 +42,8 @@ namespace Inventory.UI
                 uiItem.OnItemDroppedOn += HandleSwap;
                 uiItem.OnItemEndDrag += HandleEndDrag;
                 uiItem.OnRightMouseBtnClick += HandleShowItemActions;
+                var item = Inventory.Instance.inventoryData.GetItemAt(i);
+                uiItem.SetData(item.item?.ItemImage,item.quantity);
             }
         }
 

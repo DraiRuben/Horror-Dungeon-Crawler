@@ -30,9 +30,10 @@ namespace Inventory.UI
         public void SetData(Sprite sprite, int quantity)
         {
             itemImage.sprite = sprite;
-            itemImage.gameObject.SetActive(quantity > 0);
+            Debug.Log(quantity > 0);
             if (quantityTxt != null) quantityTxt.text = quantity + "";
-            empty = false;
+            empty = quantity <= 0;
+            itemImage.gameObject.SetActive(!empty);
         }
 
         public void Select()
