@@ -52,7 +52,6 @@ namespace Inventory.UI
             if (listOfUIItems.Count > itemIndex)
             {
                 listOfUIItems[itemIndex].SetData(itemImage, itemQuantity);
-                Debug.Log("updatesData");
             }
         }
 
