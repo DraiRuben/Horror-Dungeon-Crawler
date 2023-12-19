@@ -10,18 +10,18 @@ namespace Inventory.Model
     [CreateAssetMenu(menuName = "UIItems")]
     public class SlotManager : ScriptableObject
     {
-        [SerializeField] private List<InventoryItem> inventoryItems;
+        public List<InventoryItem> inventoryItems;
 
-        private List<InventoryItem> inventoryItemsInstance;
+        private InventoryItem[] inventoryItemsInstance;
         [field: SerializeField] public int Size { get; private set; } = 10;
 
         public void Initialize()
         {
-            inventoryItemsInstance = inventoryItems.ToList();
+            inventoryItemsInstance = new InventoryItem[inventoryItems.Count];
         }
         public int GetDuplicateSlotIndex(Item item)
         {
-            for (int i = 0; i < inventoryItemsInstance.Count; i++)
+            for (int i = 0; i < inventoryItemsInstance.Length; i++)
             {
                 if (inventoryItemsInstance[i].item != null && inventoryItemsInstance[i].item.ItemImage == item.ItemImage)
                 {
@@ -39,7 +39,7 @@ namespace Inventory.Model
         }
         public int GetFirstEmptySlotIndex()
         {
-            for (int i = 0; i < inventoryItemsInstance.Count; i++)
+            for (int i = 0; i < inventoryItemsInstance.Length; i++)
             {
                 if (inventoryItemsInstance[i].isEmpty)
                 {
@@ -81,7 +81,7 @@ namespace Inventory.Model
 
         public void RemoveItem(Item item)
         {
-            for (int i = 0; i < inventoryItemsInstance.Count; i++)
+            for (int i = 0; i < inventoryItemsInstance.Length; i++)
             {
                 if (inventoryItemsInstance[i].item == item)
                 {
@@ -93,7 +93,7 @@ namespace Inventory.Model
 
         public bool UseItemByIndex(int index)
         {
-            for(int i =0;i<inventoryItemsInstance.Count;i++)
+            for(int i =0;i<inventoryItemsInstance.Length;i++)
             {
                 if (inventoryItemsInstance[i].item?.index == index)
                 {

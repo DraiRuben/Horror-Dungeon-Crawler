@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
@@ -25,7 +26,6 @@ public class PlayerStats : EntityStats
         OnHealthChanged.AddListener(PlayerUpdateFill);
         stressCoroutine = StartCoroutine(IncreaseStress());
     }
-
 
     public override void TakeDamage(int damage)
     {

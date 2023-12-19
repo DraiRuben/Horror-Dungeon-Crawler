@@ -3,10 +3,10 @@ using UnityEngine.UI;
 
 public class FormationPreviewer : MonoBehaviour
 {
-    [SerializeField] private FormationElement m_linkedElement;
+    public FormationElement m_linkedElement;
     public PlayerStats m_linkedCharacter;
     [SerializeField] private GameObject m_formationMofifier;
-    private Image m_image;
+    public Image m_image;
     private void Awake()
     {
         m_image = GetComponent<Image>();
