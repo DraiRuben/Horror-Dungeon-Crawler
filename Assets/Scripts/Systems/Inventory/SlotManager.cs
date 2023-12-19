@@ -1,6 +1,7 @@
 using Inventory.UI;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 
@@ -10,21 +11,19 @@ namespace Inventory.Model
     public class SlotManager : ScriptableObject
     {
         [SerializeField] private List<InventoryItem> inventoryItems;
+
+        private List<InventoryItem> inventoryItemsInstance;
         [field: SerializeField] public int Size { get; private set; } = 10;
 
         public void Initialize()
         {
-            inventoryItems = new List<InventoryItem>();
-            for (int i = 0; i < Size; i++)
-            {
-                inventoryItems.Add(InventoryItem.GetEmptyItem());
-            }
+            inventoryItemsInstance = inventoryItems.ToList();
         }
         public int GetDuplicateSlotIndex(Item item)
         {
-            for (int i = 0; i < inventoryItems.Count; i++)
+            for (int i = 0; i < inventoryItemsInstance.Count; i++)
             {
-                if (inventoryItems[i].item != null && inventoryItems[i].item.ItemImage == item.ItemImage)
+                if (inventoryItemsInstance[i].item != null && inventoryItemsInstance[i].item.ItemImage == item.ItemImage)
                 {
                     return i;
                 }
@@ -33,16 +32,16 @@ namespace Inventory.Model
         }
         public void ChangeAmount(int slotIndex, int amount)
         {
-            InventoryItem copy = inventoryItems[slotIndex];
+            InventoryItem copy = inventoryItemsInstance[slotIndex];
             copy.quantity += amount;
-            inventoryItems[slotIndex] = copy;
-            UIInventory.Instance.UpdateData(slotIndex, inventoryItems[slotIndex].item.ItemImage, inventoryItems[slotIndex].quantity);
+            inventoryItemsInstance[slotIndex] = copy;
+            UIInventory.Instance.UpdateData(slotIndex, inventoryItemsInstance[slotIndex].item.ItemImage, inventoryItemsInstance[slotIndex].quantity);
         }
         public int GetFirstEmptySlotIndex()
         {
-            for (int i = 0; i < inventoryItems.Count; i++)
+            for (int i = 0; i < inventoryItemsInstance.Count; i++)
             {
-                if (inventoryItems[i].isEmpty)
+                if (inventoryItemsInstance[i].isEmpty)
                 {
                     return i;
                 }
@@ -54,7 +53,7 @@ namespace Inventory.Model
             int slotIndex = GetFirstEmptySlotIndex();
             if (slotIndex != -1)
             {
-                inventoryItems[slotIndex] = new InventoryItem
+                inventoryItemsInstance[slotIndex] = new InventoryItem
                 {
                     item = item,
                     quantity = quantity
@@ -77,16 +76,16 @@ namespace Inventory.Model
 
         public InventoryItem GetItemAt(int itemIndex)
         {
-            return inventoryItems[itemIndex];
+            return inventoryItemsInstance[itemIndex];
         }
 
         public void RemoveItem(Item item)
         {
-            for (int i = 0; i < inventoryItems.Count; i++)
+            for (int i = 0; i < inventoryItemsInstance.Count; i++)
             {
-                if (inventoryItems[i].item == item)
+                if (inventoryItemsInstance[i].item == item)
                 {
-                    inventoryItems[i] = InventoryItem.GetEmptyItem();
+                    inventoryItemsInstance[i] = InventoryItem.GetEmptyItem();
                     break;
                 }
             }
@@ -94,11 +93,11 @@ namespace Inventory.Model
 
         public bool UseItemByIndex(int index)
         {
-            for(int i =0;i<inventoryItems.Count;i++)
+            for(int i =0;i<inventoryItemsInstance.Count;i++)
             {
-                if (inventoryItems[i].item?.index == index)
+                if (inventoryItemsInstance[i].item?.index == index)
                 {
-                    inventoryItems[i] = inventoryItems[i].ChangeQuantity(inventoryItems[i].quantity - 1);
+                    inventoryItemsInstance[i] = inventoryItemsInstance[i].ChangeQuantity(inventoryItemsInstance[i].quantity - 1);
                     return true;
                 }
             }
