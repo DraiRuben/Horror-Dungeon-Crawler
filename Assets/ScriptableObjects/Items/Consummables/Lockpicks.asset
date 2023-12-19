@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <IsStackable>k__BackingField: 1
   <MaxStackSize>k__BackingField: 10
-  <Quantity>k__BackingField: 1
+  <Quantity>k__BackingField: 100
   index: 3
   <Name>k__BackingField: Lockpicks
   <Description>k__BackingField: You never have enough lockpicks.
