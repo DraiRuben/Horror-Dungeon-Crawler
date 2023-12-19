@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 33402375429888714}
   - component: {fileID: 23958458572147580}
   - component: {fileID: 65076793561365110}
-  - component: {fileID: 4462715277919684033}
-  - component: {fileID: 3471975799862170965}
+  - component: {fileID: 173579123525817210}
+  - component: {fileID: 7054161098834798780}
   m_Layer: 0
   m_Name: SM_Bld_Cell_Door_01_Door_01
   m_TagString: Untagged
@@ -107,7 +107,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.1211718, y: 2.4111834, z: 0.16108647}
   m_Center: {x: -0.5605859, y: 1.2055917, z: -0.024136866}
---- !u!114 &4462715277919684033
+--- !u!114 &173579123525817210
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,19 +119,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7386f063ddcdd9d42bff03eaab279882, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyIndex: 14
-  toAddInBack: 2
-  cellBehindDoorX: 2
-  cellBehindDoorY: 1
+  keyIndex: 3
+  toAddInBack: 0
+  cellBehindDoorX: 0
+  cellBehindDoorY: 0
   floorIndexBack: 0
-  toAddInFront: 4
-  cellInFrontDoorX: 1
-  cellInFrontDoorY: 1
+  toAddInFront: 0
+  cellInFrontDoorX: 0
+  cellInFrontDoorY: 0
   floorIndexFront: 0
   NoKeyRequired: 0
   isCadavre: 0
   isOpen: 0
---- !u!95 &3471975799862170965
+--- !u!95 &7054161098834798780
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 4491657188552712}
   - component: {fileID: 33430713993999064}
   - component: {fileID: 23600350768017222}
-  - component: {fileID: 65642303422832002}
+  - component: {fileID: 65091066359013524}
   m_Layer: 0
   m_Name: Cells Door
   m_TagString: Untagged
@@ -237,7 +237,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &65642303422832002
+--- !u!65 &65091066359013524
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -256,5 +256,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.6786709, y: 2.999998, z: 0.20902845}
-  m_Center: {x: -0.33933544, y: 1.499999, z: 0.014858291}
+  m_Size: {x: 2.5, y: 0.49635506, z: 0.20902845}
+  m_Center: {x: -1.25, y: 2.7518206, z: 0.014858291}
