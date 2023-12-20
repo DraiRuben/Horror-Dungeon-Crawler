@@ -12,7 +12,7 @@ public class AudioFather : MonoBehaviour
     private Boss1AI bossAI;
     private void Awake()
     {
-        m_audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManagerFather>();
+        m_audioManager = transform.GetChild(0).GetComponent<AudioManagerFather>();
     }
 
     private void Start()
