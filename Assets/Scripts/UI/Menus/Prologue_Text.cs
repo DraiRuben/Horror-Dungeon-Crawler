@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Prologue_Text : MonoBehaviour
 {
@@ -19,5 +20,10 @@ public class Prologue_Text : MonoBehaviour
             m.SetTrigger("Appear");
             yield return TextDelay;
         }
+    }
+
+    public void Play()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
