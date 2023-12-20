@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class AudioFather : MonoBehaviour
 {
-    private AudioManager m_audioManager;
+    private AudioManagerFather m_audioManager;
     private float minInterval = 0.0f;
     private float maxInterval = 3.0f;
     private float offset = 3.0f;
     private Boss1AI bossAI;
     private void Awake()
     {
-        m_audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        m_audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManagerFather>();
     }
 
     private void Start()
@@ -22,18 +22,18 @@ public class AudioFather : MonoBehaviour
     
     public void FatherDamagedSound()
     {
-        m_audioManager.PlaySFX(m_audioManager.Father_Damaged);
+        m_audioManager.PlaySFXFather(m_audioManager.Father_Damaged);
     }
 
     public void FatherDeathSound()
     {
-        m_audioManager.PlaySFX(m_audioManager.Father_Death);
+        m_audioManager.PlaySFXFather(m_audioManager.Father_Death);
     }
 
     public void FatherIdle()
     {
         float randomInterval = Random.Range(minInterval, maxInterval) + offset;
-        m_audioManager.PlaySFX(m_audioManager.Father_Phase1_Idle);
+        m_audioManager.PlaySFXFather(m_audioManager.Father_Phase1_Idle);
         Invoke("FatherIdle", randomInterval);
     }
 }
