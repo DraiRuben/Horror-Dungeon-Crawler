@@ -103,6 +103,17 @@ namespace Inventory.Model
             }
             return false;
         }
+        public InventoryItem GetItemInInventoryByIndex(int index)
+        {
+            for (int i = 0; i < inventoryItemsInstance.Length; i++)
+            {
+                if (inventoryItemsInstance[i].item?.index == index)
+                {
+                    return inventoryItemsInstance[i];
+                }
+            }
+            return InventoryItem.GetEmptyItem();
+        }
 
     }
 
