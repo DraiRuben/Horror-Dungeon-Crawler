@@ -29,8 +29,7 @@ public class AudioFather : MonoBehaviour
 
     public void FatherIdle()
     {
-        bool isPhase2 = boss1AI.father_Phase2;
-        if (isPhase2 == false) 
+        if (!boss1AI.father_Phase2) 
         { 
             float randomInterval = Random.Range(minInterval, maxInterval) + offset;
             m_audioManager.PlaySFXFather(m_audioManager.Father_Phase1_Idle);
