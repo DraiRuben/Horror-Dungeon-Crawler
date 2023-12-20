@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 636d8c7e44f59aa40a9991bb1a1f6abc, type: 3}
   m_Name: Kitchen Knife
   m_EditorClassIdentifier: 
+  UseSFX: {fileID: 8300000, guid: 951a04db4bd35aa429a039c027d75dc7, type: 3}
   <IsStackable>k__BackingField: 0
   <MaxStackSize>k__BackingField: 1
   <Quantity>k__BackingField: 1
   index: 6
   <Name>k__BackingField: Combat Knife
-  <Description>k__BackingField: 
-  <ItemImage>k__BackingField: {fileID: 21300000, guid: bc446b19758ee0e4fa2585165dbd9261, type: 3}
+  <Description>k__BackingField: Swing Swing !
+  <ItemImage>k__BackingField: {fileID: 21300000, guid: 45caabd6272951c45aed7dd4a5ea417a, type: 3}
   CanUse: 1
   AutoEquip: 1
   ShootsProjectile: 0
@@ -26,4 +27,3 @@ MonoBehaviour:
   Range: 1
   Damage: 7
   ReloadTime: 1
-  UseSFX: {fileID: 8300000, guid: 951a04db4bd35aa429a039c027d75dc7, type: 3}

@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 636d8c7e44f59aa40a9991bb1a1f6abc, type: 3}
   m_Name: Cursed Arms
   m_EditorClassIdentifier: 
+  UseSFX: {fileID: 8300000, guid: df16e6cdb36e28c4d9c1faed485645f1, type: 3}
   <IsStackable>k__BackingField: 0
   <MaxStackSize>k__BackingField: 1
   <Quantity>k__BackingField: 1
   index: 8
   <Name>k__BackingField: Cursed Arms
-  <Description>k__BackingField: 
-  <ItemImage>k__BackingField: {fileID: 21300000, guid: dbe03a8dfd87352428cc016048814cd8, type: 3}
+  <Description>k__BackingField: I AM ALIIIIVE !
+  <ItemImage>k__BackingField: {fileID: 21300000, guid: ddfa0e7130a046146993f460604c4367, type: 3}
   CanUse: 3
   AutoEquip: 1
   ShootsProjectile: 0
@@ -26,4 +27,3 @@ MonoBehaviour:
   Range: 1
   Damage: 15
   ReloadTime: 0.2
-  UseSFX: {fileID: 8300000, guid: df16e6cdb36e28c4d9c1faed485645f1, type: 3}

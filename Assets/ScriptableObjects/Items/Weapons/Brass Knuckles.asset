@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 636d8c7e44f59aa40a9991bb1a1f6abc, type: 3}
   m_Name: Brass Knuckles
   m_EditorClassIdentifier: 
+  UseSFX: {fileID: 8300000, guid: c418977e1e521944b88871404c24433e, type: 3}
   <IsStackable>k__BackingField: 0
   <MaxStackSize>k__BackingField: 1
   <Quantity>k__BackingField: 1
   index: 7
   <Name>k__BackingField: Brass Knuckles
-  <Description>k__BackingField: 
-  <ItemImage>k__BackingField: {fileID: 21300000, guid: e9647c36948b60349ab7cce99c9527f9, type: 3}
+  <Description>k__BackingField: It's not over until the bell rings!
+  <ItemImage>k__BackingField: {fileID: 21300000, guid: 6a7601ff05a93fe4da2896e9ccf3fb7c, type: 3}
   CanUse: 0
   AutoEquip: 1
   ShootsProjectile: 0
@@ -26,4 +27,3 @@ MonoBehaviour:
   Range: 1
   Damage: 10
   ReloadTime: 0.2
-  UseSFX: {fileID: 8300000, guid: c418977e1e521944b88871404c24433e, type: 3}
