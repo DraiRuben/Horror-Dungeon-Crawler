@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
 
     private Transform m_transform;
     public static PlayerMovement Instance;
+    public event Action<int> OnFloorChanged;
+
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -21,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
 
         m_transform = GetComponent<Transform>();
     }
+
     public void Move(InputAction.CallbackContext _ctx)
     {
         m_movementInput = _ctx.ReadValue<Vector2>();
@@ -69,6 +73,10 @@ public class PlayerMovement : MonoBehaviour
                             Cell.OccupyingObject = gameObject;
                             m_timeSinceMovement = 0;
                             GridPos.Set(ConnectedFloorInfo.GridPos.x, ConnectedFloorInfo.GridPos.y);
+                            if(CurrentFloor != ConnectedFloorInfo.FloorIndex)
+                            {
+                                OnFloorChanged.Invoke(CurrentFloor);
+                            }
                             CurrentFloor = ConnectedFloorInfo.FloorIndex;
                             m_transform.position = MapGrid.Instance.GetCell(CurrentFloor, GridPos.x, GridPos.y).Center.position;
                             m_transform.position += Vector3.up * 1.5f;
