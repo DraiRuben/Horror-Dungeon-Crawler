@@ -7,10 +7,6 @@ public class PlayerUISlot : MonoBehaviour
 {
     public Image SlotImage;
     public Item CurrentItem;
-    private void Awake()
-    {
-        SlotImage = GetComponent<Image>();
-    }
     public void Use()
     {
         CurrentItem?.Use();
