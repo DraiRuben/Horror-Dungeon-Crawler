@@ -75,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
                             GridPos.Set(ConnectedFloorInfo.GridPos.x, ConnectedFloorInfo.GridPos.y);
                             if(CurrentFloor != ConnectedFloorInfo.FloorIndex)
                             {
-                                OnFloorChanged.Invoke(CurrentFloor);
+                                OnFloorChanged?.Invoke(CurrentFloor);
                             }
                             CurrentFloor = ConnectedFloorInfo.FloorIndex;
                             m_transform.position = MapGrid.Instance.GetCell(CurrentFloor, GridPos.x, GridPos.y).Center.position;

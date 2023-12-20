@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class HealingItems : MonoBehaviour
 {
     [SerializeField] private PlayerUISlot pillsSlot, medKitSlot;
+
+    
     public void Heal()
     {
         if(PlayerSelector.CurrentlySelected != null && PlayerSelector.CurrentlySelected.CurrentHealth > 0)
