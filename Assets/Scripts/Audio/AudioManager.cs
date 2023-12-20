@@ -1,7 +1,10 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+    public static AudioManager Instance;
 
     [Header("------------AudioSource------------")]
 
@@ -10,49 +13,57 @@ public class AudioManager : MonoBehaviour
 
     [Header("------------AudioClip------------")]
 
-    public AudioClip footstep_Concrete;
+    public AudioClip Footstep_Concrete;
+    public AudioClip Footstep_Wood;
+    public AudioClip Click_Button;
 
     [Header("Items")]
 
-    public AudioClip pickup_Items;
-    public AudioClip key;
-    public AudioClip bandage;
-    public AudioClip pills;
-    public AudioClip matches;
-    public AudioClip gun;
-    public AudioClip punch;
-    public AudioClip knife;
-    public AudioClip magic_Arms;
+    public AudioClip Pickup_Items;
+    public AudioClip Door;
+    public AudioClip Prison_Door;
+    public AudioClip Corpses_Burning;
 
     [Header("Mobs")]
 
-    public AudioClip dog_Idle;
-    public AudioClip dog_Attack;
-    public AudioClip dog_Damaged;
-    public AudioClip dog_Death;
+    public AudioClip Dog_Idle;
+    public AudioClip Dog_Attack;
+    public AudioClip Dog_Damaged;
+    public AudioClip Dog_Death;
 
     [Header("Boss")]
 
-    public AudioClip father_Phase1_Idle;
-    public AudioClip father_Phase2_Idle;
-    public AudioClip father_Attack;
-    public AudioClip father_Damaged;
-    public AudioClip father_Death;
+    public AudioClip Father_Phase1_Idle;
+    public AudioClip Father_Phase2_Idle;
+    public AudioClip Father_Attack;
+    public AudioClip Father_Damaged;
+    public AudioClip Father_Death;
 
     [Header("------------Music------------")]
 
-    public AudioClip main_Menu;
-    public AudioClip victory_Menu;
-    public AudioClip defeat_Menu;
+    public AudioClip Main_Menu;
+    public AudioClip Victory_Menu;
+    public AudioClip Defeat_Menu;
     public AudioClip Basement;
 
+    private void Awake()
+    {
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
+    }
     public void PlaySFX(AudioClip clip)
     {
         m_SFXSource.PlayOneShot(clip);
     }
+
     public void PlayMusic(AudioClip music)
     {
         m_musicSource.PlayOneShot(music);
         m_musicSource.loop = true;
+    }
+
+    internal void PlayMusic(Dictionary<int, AudioClip> audioFloor)
+    {
+        throw new NotImplementedException();
     }
 }

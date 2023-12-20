@@ -17,6 +17,7 @@ namespace Inventory.Model
                 {
                     Inventory.Instance.inventoryData.ChangeAmount(duplicateSlotIndex, 1);
                     Destroy(gameObject);
+                    AudioManager.Instance.PlaySFX(AudioManager.Instance.Pickup_Items);
                     return;
                 }
             }
@@ -27,8 +28,10 @@ namespace Inventory.Model
                 UIInventory.Instance.UpdateData(newSlotIndex, itemSO.ItemImage, itemQuantity);
                 Inventory.Instance.inventoryData.AddItem(itemSO, itemSO.Quantity);
                 Destroy(gameObject);
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.Pickup_Items);
                 return;
             }
+            
         }
 
         private void OnMouseDown()

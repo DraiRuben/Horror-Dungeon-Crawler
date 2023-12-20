@@ -8,6 +8,7 @@ public class Boss1AI : MobAI
     [SerializeField] protected int NextPhaseHP;
     [SerializeField] protected int NextPhaseStrength;
     [SerializeField] protected int NextPhaseDexterity;
+    public bool father_Phase2 = false;
 
     void Awake()
     {
@@ -59,13 +60,8 @@ public class Boss1AI : MobAI
                 if (Time.time - m_previousDestinationSetTime > m_destinationUpdateFrequency)
                 {
                     m_previousDestinationSetTime = Time.time;
-                    if (Time.time - m_previousDestinationSetTime > m_destinationUpdateFrequency
-                    && HitInfo.collider != null && HitInfo.collider.CompareTag("Player"))
-                    {
-                        m_previousDestinationSetTime = Time.time;
+                    m_agent.SetDestination(PlayerMovement.Instance.transform.position);
 
-                        m_agent.SetDestination(PlayerMovement.Instance.transform.position);
-                    }
                 }
             }
         }
@@ -91,6 +87,7 @@ public class Boss1AI : MobAI
                 {
                     AttackSystem.Instance.RangedAttack(m_gridPos, m_floor, AttackDir, m_entityStats.Strength, m_attackReach, m_entityStats.Dexterity, gameObject);
                 }
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.Father_Attack);
             }
 
             timeSincePreviousAttack += Time.deltaTime;
@@ -105,6 +102,7 @@ public class Boss1AI : MobAI
             m_entityStats.Dexterity = NextPhaseDexterity;
             m_entityStats.Strength = NextPhaseStrength;
             m_entityStats.OnHealthChanged.RemoveListener(NextPhaseCheck);
+            father_Phase2 = true;
         }
 
     }

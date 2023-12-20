@@ -10,13 +10,18 @@ public class PlayerSelector : Selectable
     public static PlayerStats CurrentlySelected;
 
     [SerializeField] private PlayerStats toSelect;
-    private void Start()
-    {
-        
-    }
     public override void OnDeselect(BaseEventData eventData)
     {
-        
+        var castedData = (PointerEventData)eventData;
+        if (castedData.pointerEnter == null || !castedData.pointerEnter.CompareTag("HealingItems"))
+        {
+            base.OnDeselect(eventData);
+            if (CurrentlySelected == toSelect)
+            {
+                CurrentlySelected = null;
+            }
+            Debug.Log("Deselected");
+        }
     }
 
     public override void OnPointerDown(PointerEventData eventData)
@@ -24,12 +29,12 @@ public class PlayerSelector : Selectable
         base.OnPointerDown(eventData);
         if (CurrentlySelected == toSelect)
         {
-            CurrentlySelected = null;
-            base.OnDeselect(eventData);
-            EventSystem.current.SetSelectedGameObject(null);
+            OnDeselect(eventData);
+            Debug.Log("Click Deselected");
         }
         else
         {
+            Debug.Log("Selected");
             CurrentlySelected = toSelect;
         }
     }

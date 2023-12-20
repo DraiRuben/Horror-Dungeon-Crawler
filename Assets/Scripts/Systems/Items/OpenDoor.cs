@@ -1,5 +1,7 @@
 using Inventory.Model;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class OpenDoor : MonoBehaviour
 {
@@ -19,6 +21,7 @@ public class OpenDoor : MonoBehaviour
     public bool isCadavre;
     public bool isOpen = false;
 
+
     public void Start()
     {
         animator = GetComponent<Animator>();
@@ -28,21 +31,22 @@ public class OpenDoor : MonoBehaviour
 
     public void Opening()
     {
-
         if (inventoryManager.inventoryData.UseItemByIndex(keyIndex) || NoKeyRequired)
         {
             //SlotManager.Instantiate.UseItemByIndex;
             OpenWaypointBehindDoor();
             OpenWaypointInFrontDoor();
 
-
             if (!isCadavre)
             {
                 animator.SetTrigger("ChangeState");
                 isOpen = true;
+                GetComponent<Cadavres>().LightOnFire();
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.Door);
             }
             else
             {
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.Corpses_Burning);
                 Destroy(gameObject);
             }
         }

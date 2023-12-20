@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,6 +15,11 @@ public class PlayerMovement : MonoBehaviour
 
     private Transform m_transform;
     public static PlayerMovement Instance;
+    public event Action<int> OnFloorChanged;
+
+
+
+    private AudioClip m_footstepAudioClip;
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -21,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
 
         m_transform = GetComponent<Transform>();
     }
+
     public void Move(InputAction.CallbackContext _ctx)
     {
         m_movementInput = _ctx.ReadValue<Vector2>();
@@ -52,6 +59,25 @@ public class PlayerMovement : MonoBehaviour
                         m_transform.position = NextCell.Center.position;
                         m_transform.position += Vector3.up * 1.5f;
                         UpdateGridPos(RelativeMoveDir);
+
+                        switch (CurrentFloor)
+                        {
+                            case 0:
+                                AudioManager.Instance.PlaySFX(AudioManager.Instance.Footstep_Concrete);
+                                break;
+                            case 1:
+                                AudioManager.Instance.PlaySFX(AudioManager.Instance.Footstep_Concrete);
+                                break;
+                            case 2:
+                                AudioManager.Instance.PlaySFX(AudioManager.Instance.Footstep_Wood);
+                                break;
+                            case 3:
+                                AudioManager.Instance.PlaySFX(AudioManager.Instance.Footstep_Wood);
+                                break;
+                            case 4:
+                                AudioManager.Instance.PlaySFX(AudioManager.Instance.Footstep_Wood);
+                                break;
+                        }
                     }
 
                 }
@@ -69,9 +95,32 @@ public class PlayerMovement : MonoBehaviour
                             Cell.OccupyingObject = gameObject;
                             m_timeSinceMovement = 0;
                             GridPos.Set(ConnectedFloorInfo.GridPos.x, ConnectedFloorInfo.GridPos.y);
+                            if(CurrentFloor != ConnectedFloorInfo.FloorIndex)
+                            {
+                                OnFloorChanged?.Invoke(CurrentFloor);
+                            }
                             CurrentFloor = ConnectedFloorInfo.FloorIndex;
                             m_transform.position = MapGrid.Instance.GetCell(CurrentFloor, GridPos.x, GridPos.y).Center.position;
                             m_transform.position += Vector3.up * 1.5f;
+
+                            switch (CurrentFloor)
+                            {
+                                case 0:
+                                    AudioManager.Instance.PlaySFX(AudioManager.Instance.Footstep_Concrete);
+                                    break;
+                                case 1:
+                                    AudioManager.Instance.PlaySFX(AudioManager.Instance.Footstep_Concrete);
+                                    break;
+                                case 2:
+                                    AudioManager.Instance.PlaySFX(AudioManager.Instance.Footstep_Wood);
+                                    break;
+                                case 3:
+                                    AudioManager.Instance.PlaySFX(AudioManager.Instance.Footstep_Wood);
+                                    break;
+                                case 4:
+                                    AudioManager.Instance.PlaySFX(AudioManager.Instance.Footstep_Wood);
+                                    break;
+                            }
                         }
 
                     }
@@ -86,7 +135,7 @@ public class PlayerMovement : MonoBehaviour
         //if we can move
         if (m_timeSinceMovement >= 1f/m_movementFrequency)
         {
-            //rotate 90° either left or right on the Y axis depending on the input
+            //rotate 90ï¿½ either left or right on the Y axis depending on the input
             if (m_rotationInput > 0)
             {
                 m_timeSinceMovement = 0;
@@ -129,6 +178,8 @@ public class PlayerMovement : MonoBehaviour
                 break;
         }
     }
+
+
     private void Update()
     {
         m_timeSinceMovement += Time.deltaTime;

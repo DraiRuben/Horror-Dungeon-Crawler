@@ -5,6 +5,9 @@ namespace Inventory.Model
     [CreateAssetMenu]
     public class Item : ScriptableObject
     {
+        public AudioClip UseSFX;
+
+
         [field: SerializeField]
         public bool IsStackable { get; set; }
 
@@ -14,7 +17,6 @@ namespace Inventory.Model
         [field: SerializeField]
         public int Quantity { get; set; } = 1; 
 
-        [SerializeField]
         public int index;
 
         [field: SerializeField]
@@ -27,6 +29,10 @@ namespace Inventory.Model
         [field: SerializeField]
         public Sprite ItemImage { get; set; }
 
-        public virtual bool Use() { return true; }
+        public virtual bool Use() 
+        {
+            AudioManager.Instance.PlaySFX(UseSFX);
+            return true;
+        }
     }
 }

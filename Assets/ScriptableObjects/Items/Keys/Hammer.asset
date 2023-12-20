@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f2a1df01f8805144be65e238a198c28, type: 3}
   m_Name: Hammer
   m_EditorClassIdentifier: 
+  m_audioManager: {fileID: 0}
+  UseSFX: {fileID: 8300000, guid: 3f696839a52f0784ba0d18343e764a8e, type: 3}
   <IsStackable>k__BackingField: 0
   <MaxStackSize>k__BackingField: 1
   <Quantity>k__BackingField: 2

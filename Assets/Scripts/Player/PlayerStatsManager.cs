@@ -15,6 +15,7 @@ public class PlayerStatsManager : SerializedMonoBehaviour
     }
     public void TakeDamage(int _damage, GameObject _damageOrigin)
     {
+        if (_damageOrigin == null) return;
         //gets angle between player looking forward and attack origin
         float AngleY = Quaternion.LookRotation(PlayerMovement.Instance.transform.position - _damageOrigin.transform.position).eulerAngles.y;
 
@@ -45,7 +46,7 @@ public class PlayerStatsManager : SerializedMonoBehaviour
 
             CharactersToHit = new List<PlayerStats>()
             { Characters[firstFormationPos.x, firstFormationPos.y],
-            Characters[secondFormationPos.x, secondFormationPos.y] }.Where(x => x != null).ToList();
+            Characters[secondFormationPos.x, secondFormationPos.y] }.Where(x => x != null && x.gameObject.activeSelf).ToList();
         }
         //choose randomly one character between the ones that can get hit and apply the damage to it
         CharactersToHit[UnityEngine.Random.Range(0, CharactersToHit.Count)].TakeDamage(_damage);

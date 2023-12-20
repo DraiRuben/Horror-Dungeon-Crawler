@@ -17,7 +17,10 @@ namespace Inventory.Model
         public int Damage;
         public float ReloadTime;
 
+
         [NonSerialized] public float previousTimeUsed;
+
+       
         public override bool Use()
         {
             if (Time.time - previousTimeUsed > ReloadTime)
@@ -32,6 +35,7 @@ namespace Inventory.Model
                 {
                     AttackSystem.Instance.CQCAttack(Player.GridPos, Player.CurrentFloor, AttackDir, Damage);
                 }
+                AudioManager.Instance.PlaySFX(UseSFX);
                 previousTimeUsed = Time.time;
                 return true;
             }

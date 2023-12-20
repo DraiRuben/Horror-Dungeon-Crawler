@@ -5,18 +5,13 @@ public class Victory_Menu : MonoBehaviour
 {
     public GameObject victory_Menu;
 
-    private AudioManager audioManager;
-    public void Awake()
-    {
-        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-    }
     public void Start()
     {
-        audioManager.PlayMusic(audioManager.victory_Menu);
+        AudioManager.Instance.PlayMusic(AudioManager.Instance.Victory_Menu);
     }
     public void BackToMainMenu()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        SceneManager.LoadScene(0);
         victory_Menu.SetActive(false);
     }
 

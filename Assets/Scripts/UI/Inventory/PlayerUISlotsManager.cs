@@ -7,8 +7,7 @@ using UnityEngine;
 public class PlayerUISlotsManager : SerializedMonoBehaviour
 {
     public Dictionary<Weapon.Character, PlayerUISlot> WeaponSlots;
-    public Dictionary<Weapon.Character, PlayerUISlot> AbilitySlots;
-    public Dictionary<Weapon.Character, PlayerUISlot> UtilitySlots;
+
     public PlayerUISlot medKitSlot;
     public PlayerUISlot pillsSlot;
 
@@ -27,6 +26,8 @@ public class PlayerUISlotsManager : SerializedMonoBehaviour
             _toEquip.previousTimeUsed = Time.time;
             WeaponSlots[_character].CurrentItem = _toEquip;
             WeaponSlots[_character].SlotImage.sprite = _toEquip.ItemImage;
+            WeaponSlots[_character].transform.GetChild(0).gameObject.SetActive(true);
+
         }
     }
 
