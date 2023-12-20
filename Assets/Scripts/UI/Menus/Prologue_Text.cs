@@ -20,6 +20,7 @@ public class Prologue_Text : MonoBehaviour
             m.SetTrigger("Appear");
             yield return TextDelay;
         }
+        Play();
     }
 
     public void Play()
