@@ -15,7 +15,7 @@ namespace Inventory.Model
                 Inventory.Instance.inventoryData.RemoveItem(this);
                 UIInventory.Instance.RemoveItem(this);
             }
-            m_audioManager.PlaySFX(UseSFX);
+            AudioManager.Instance.PlaySFX(UseSFX);
             return true;
         }
     }

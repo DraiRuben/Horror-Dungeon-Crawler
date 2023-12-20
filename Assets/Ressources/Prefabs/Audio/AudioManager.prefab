@@ -306,11 +306,11 @@ MonoBehaviour:
   m_musicSource: {fileID: 3767467265414536596}
   m_SFXSource: {fileID: 4450286520745344655}
   Footstep_Concrete: {fileID: 8300000, guid: 1711470d1db13d3498f6b4b8492974c6, type: 3}
-  Footstep_Wood: {fileID: 0}
+  Footstep_Wood: {fileID: 8300000, guid: 1711470d1db13d3498f6b4b8492974c6, type: 3}
   Click_Button: {fileID: 8300000, guid: 2597a84f6d8914a4290390c0a4fa8aad, type: 3}
   Pickup_Items: {fileID: 8300000, guid: e3205c9e708893a4ead52aa7224b4fac, type: 3}
-  Door: {fileID: 0}
-  Prison_Door: {fileID: 8300000, guid: d60d773d6e57e6b46b3d220aedf54e1d, type: 3}
+  Door: {fileID: 8300000, guid: d60d773d6e57e6b46b3d220aedf54e1d, type: 3}
+  Prison_Door: {fileID: 8300000, guid: 12c7c718d20815e4ab12755856dc1bde, type: 3}
   Corpses_Burning: {fileID: 8300000, guid: 14873c0e79b36714389137c736de1511, type: 3}
   Dog_Idle: {fileID: 8300000, guid: 39ec2344dbed6474f8f1db94502f096c, type: 3}
   Dog_Attack: {fileID: 8300000, guid: e0efba1aa4cc3524f900be6307ca0553, type: 3}
@@ -342,6 +342,9 @@ MonoBehaviour:
     SerializedBytes: 
     ReferencedUnityObjects:
     - {fileID: 8300000, guid: 028d57da8c3fb554ba3113134fd60585, type: 3}
+    - {fileID: 8300000, guid: 1711470d1db13d3498f6b4b8492974c6, type: 3}
+    - {fileID: 8300000, guid: 2597a84f6d8914a4290390c0a4fa8aad, type: 3}
+    - {fileID: 8300000, guid: d60d773d6e57e6b46b3d220aedf54e1d, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -380,8 +383,8 @@ MonoBehaviour:
       Entry: 3
       Data: 1
     - Name: $v
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -392,8 +395,8 @@ MonoBehaviour:
       Entry: 3
       Data: 2
     - Name: $v
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 2
     - Name: 
       Entry: 8
       Data: 
@@ -416,8 +419,8 @@ MonoBehaviour:
       Entry: 3
       Data: 4
     - Name: $v
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 3
     - Name: 
       Entry: 8
       Data: 

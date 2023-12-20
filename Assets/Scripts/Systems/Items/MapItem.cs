@@ -7,12 +7,7 @@ namespace Inventory.Model
     {
         public Item itemSO;
         private int itemQuantity = 1;
-        private AudioManager m_audioManager;
 
-        private void Awake()
-        {
-            m_audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-        }
         public void PickUpItemOnMap()
         {
             if (itemSO.IsStackable)
@@ -22,6 +17,7 @@ namespace Inventory.Model
                 {
                     Inventory.Instance.inventoryData.ChangeAmount(duplicateSlotIndex, 1);
                     Destroy(gameObject);
+                    AudioManager.Instance.PlaySFX(AudioManager.Instance.Pickup_Items);
                     return;
                 }
             }
@@ -32,9 +28,10 @@ namespace Inventory.Model
                 UIInventory.Instance.UpdateData(newSlotIndex, itemSO.ItemImage, itemQuantity);
                 Inventory.Instance.inventoryData.AddItem(itemSO, itemSO.Quantity);
                 Destroy(gameObject);
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.Pickup_Items);
                 return;
             }
-            m_audioManager.PlaySFX(m_audioManager.Pickup_Items);
+            
         }
 
         private void OnMouseDown()

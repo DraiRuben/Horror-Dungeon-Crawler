@@ -5,13 +5,8 @@ namespace Inventory.Model
     [CreateAssetMenu]
     public class Item : ScriptableObject
     {
-        public AudioManager m_audioManager;
         public AudioClip UseSFX;
 
-        private void Start()
-        {
-            m_audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-        }
 
         [field: SerializeField]
         public bool IsStackable { get; set; }
@@ -22,7 +17,6 @@ namespace Inventory.Model
         [field: SerializeField]
         public int Quantity { get; set; } = 1; 
 
-        [SerializeField]
         public int index;
 
         [field: SerializeField]
@@ -37,7 +31,7 @@ namespace Inventory.Model
 
         public virtual bool Use() 
         {
-            m_audioManager.PlaySFX(UseSFX);
+            AudioManager.Instance.PlaySFX(UseSFX);
             return true;
         }
     }

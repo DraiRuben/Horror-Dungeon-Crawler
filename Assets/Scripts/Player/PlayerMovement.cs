@@ -20,14 +20,12 @@ public class PlayerMovement : MonoBehaviour
 
 
     private AudioClip m_footstepAudioClip;
-    private AudioManager m_audioManager;
     private void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
 
         m_transform = GetComponent<Transform>();
-        m_audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     public void Move(InputAction.CallbackContext _ctx)
@@ -65,19 +63,19 @@ public class PlayerMovement : MonoBehaviour
                         switch (CurrentFloor)
                         {
                             case 0:
-                                m_audioManager.PlaySFX(m_audioManager.Footstep_Concrete);
+                                AudioManager.Instance.PlaySFX(AudioManager.Instance.Footstep_Concrete);
                                 break;
                             case 1:
-                                m_audioManager.PlaySFX(m_audioManager.Footstep_Concrete);
+                                AudioManager.Instance.PlaySFX(AudioManager.Instance.Footstep_Concrete);
                                 break;
                             case 2:
-                                m_audioManager.PlaySFX(m_audioManager.Footstep_Wood);
+                                AudioManager.Instance.PlaySFX(AudioManager.Instance.Footstep_Wood);
                                 break;
                             case 3:
-                                m_audioManager.PlaySFX(m_audioManager.Footstep_Wood);
+                                AudioManager.Instance.PlaySFX(AudioManager.Instance.Footstep_Wood);
                                 break;
                             case 4:
-                                m_audioManager.PlaySFX(m_audioManager.Footstep_Wood);
+                                AudioManager.Instance.PlaySFX(AudioManager.Instance.Footstep_Wood);
                                 break;
                         }
                     }
@@ -108,19 +106,19 @@ public class PlayerMovement : MonoBehaviour
                             switch (CurrentFloor)
                             {
                                 case 0:
-                                    m_audioManager.PlaySFX(m_audioManager.Footstep_Concrete);
+                                    AudioManager.Instance.PlaySFX(AudioManager.Instance.Footstep_Concrete);
                                     break;
                                 case 1:
-                                    m_audioManager.PlaySFX(m_audioManager.Footstep_Concrete);
+                                    AudioManager.Instance.PlaySFX(AudioManager.Instance.Footstep_Concrete);
                                     break;
                                 case 2:
-                                    m_audioManager.PlaySFX(m_audioManager.Footstep_Wood);
+                                    AudioManager.Instance.PlaySFX(AudioManager.Instance.Footstep_Wood);
                                     break;
                                 case 3:
-                                    m_audioManager.PlaySFX(m_audioManager.Footstep_Wood);
+                                    AudioManager.Instance.PlaySFX(AudioManager.Instance.Footstep_Wood);
                                     break;
                                 case 4:
-                                    m_audioManager.PlaySFX(m_audioManager.Footstep_Wood);
+                                    AudioManager.Instance.PlaySFX(AudioManager.Instance.Footstep_Wood);
                                     break;
                             }
                         }

@@ -17,7 +17,6 @@ public class MobAI : MonoBehaviour
     protected bool m_isCloseEnough;
     protected EntityStats m_entityStats;
 
-    protected AudioManager m_audioManager;
 
     protected float m_previousDestinationSetTime;
     // Start is called before the first frame update
@@ -25,7 +24,6 @@ public class MobAI : MonoBehaviour
     {
         m_agent = GetComponent<NavMeshAgent>();
         m_entityStats = GetComponent<EntityStats>();
-        m_audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         StartCoroutine(AttackRoutine());
     }
     private void Start()
@@ -97,7 +95,7 @@ public class MobAI : MonoBehaviour
                 {
                     AttackSystem.Instance.RangedAttack(m_gridPos, m_floor, AttackDir, m_entityStats.Strength, m_attackReach, m_entityStats.Dexterity, gameObject);
                 }
-                m_audioManager.PlaySFX(m_audioManager.Dog_Attack);
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.Dog_Attack);
             }
 
             timeSincePreviousAttack += Time.deltaTime;

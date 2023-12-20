@@ -4,14 +4,9 @@ using UnityEngine;
 
 public class Menu_Music : MonoBehaviour
 {
-    private AudioManager audioManager;
-    public void Awake()
-    {
-        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-    }
 
     public void Start()
     {
-        audioManager.PlayMusic(audioManager.main_Menu);
+        AudioManager.Instance.PlayMusic(AudioManager.Instance.Main_Menu);
     }
 }

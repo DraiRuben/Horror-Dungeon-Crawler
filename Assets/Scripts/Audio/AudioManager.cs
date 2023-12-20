@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+    public static AudioManager Instance;
 
     [Header("------------AudioSource------------")]
 
@@ -45,6 +46,11 @@ public class AudioManager : MonoBehaviour
     public AudioClip Defeat_Menu;
     public AudioClip Basement;
 
+    private void Awake()
+    {
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
+    }
     public void PlaySFX(AudioClip clip)
     {
         m_SFXSource.PlayOneShot(clip);

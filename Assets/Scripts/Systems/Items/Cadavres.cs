@@ -3,10 +3,18 @@ using UnityEngine;
 public class Cadavres : MonoBehaviour
 {
     [SerializeField] ParticleSystem particle;
-
+    private bool isQuitting;
     private void OnDestroy()
     {
-        ParticleSystem particleInstance = Instantiate(particle, transform.position, transform.rotation);
-        Destroy(particleInstance.gameObject, 2.0f);
+        if (!isQuitting)
+        {
+            ParticleSystem particleInstance = Instantiate(particle, transform.position, transform.rotation);
+            Destroy(particleInstance.gameObject, 2.0f);
+        }
+
+    }
+    private void OnApplicationQuit()
+    {
+        isQuitting = true;
     }
 }
