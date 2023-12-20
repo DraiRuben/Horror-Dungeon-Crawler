@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioDog : MonoBehaviour
@@ -11,7 +9,7 @@ public class AudioDog : MonoBehaviour
     private float offset = 3.0f;
     private void Awake()
     {
-        m_audioManager = transform.GetChild(0).GetComponent<AudioManagerEnnemies>();  
+        m_audioManager = transform.GetChild(0).GetComponent<AudioManagerEnnemies>();
     }
 
     private void Start()

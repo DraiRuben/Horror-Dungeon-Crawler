@@ -20,7 +20,7 @@ namespace Inventory.Model
 
         [NonSerialized] public float previousTimeUsed;
 
-       
+
         public override bool Use()
         {
             if (Time.time - previousTimeUsed > ReloadTime)

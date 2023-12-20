@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -16,9 +15,9 @@ public class EntityStats : MonoBehaviour
 
     [SerializeField] protected bool m_isBoss;
 
-     public UnityEvent OnHealthChanged = new();
-     public UnityEvent OnMaxStressReached = new();
-     public UnityEvent OnDeath = new();
+    public UnityEvent OnHealthChanged = new();
+    public UnityEvent OnMaxStressReached = new();
+    public UnityEvent OnDeath = new();
 
     void Start()
     {

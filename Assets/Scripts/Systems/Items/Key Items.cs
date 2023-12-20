@@ -8,7 +8,7 @@ namespace Inventory.Model
     {
         public override bool Use()
         {
-            Quantity--; 
+            Quantity--;
 
             if (Quantity <= 0)
             {

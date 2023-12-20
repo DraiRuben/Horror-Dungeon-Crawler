@@ -27,7 +27,7 @@ public class Boss1AI : MobAI
     // Update is called once per frame
     void Update()
     {
-        Physics.Raycast(transform.position, PlayerMovement.Instance.transform.position - transform.position, out var HitInfo, 10f);
+        Physics.Raycast(transform.position, PlayerMovement.Instance.transform.position - transform.position, out RaycastHit HitInfo, 10f);
         if (m_floor == PlayerMovement.Instance.CurrentFloor
             && HitInfo.collider != null && HitInfo.collider.CompareTag("Player"))
         {

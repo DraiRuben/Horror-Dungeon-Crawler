@@ -42,8 +42,8 @@ namespace Inventory.UI
                 uiItem.OnItemDroppedOn += HandleSwap;
                 uiItem.OnItemEndDrag += HandleEndDrag;
                 uiItem.OnRightMouseBtnClick += HandleShowItemActions;
-                var item = Inventory.Instance.inventoryData.GetItemAt(i);
-                uiItem.SetData(item.item?.ItemImage,item.quantity);
+                InventoryItem item = Inventory.Instance.inventoryData.GetItemAt(i);
+                uiItem.SetData(item.item?.ItemImage, item.quantity);
             }
         }
 
@@ -149,7 +149,7 @@ namespace Inventory.UI
         }
         public void RemoveItem(Item _toRemove)
         {
-            var slot = listOfUIItems.First(x => x.itemImage != null && x.itemImage.sprite == _toRemove.ItemImage);
+            UIInventoryItem slot = listOfUIItems.First(x => x.itemImage != null && x.itemImage.sprite == _toRemove.ItemImage);
             slot?.SetData(null, 0);
         }
     }

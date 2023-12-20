@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Drawing.Text;
 using UnityEngine;
 
 public class Loose : MonoBehaviour
@@ -8,7 +5,7 @@ public class Loose : MonoBehaviour
     [SerializeField] private GameObject defeatScreen;
     private void Start()
     {
-        foreach(var c in PlayerStatsManager.Instance.Characters)
+        foreach (PlayerStats c in PlayerStatsManager.Instance.Characters)
         {
             c.OnDeath.AddListener(CheckAlivePlayers);
         }
@@ -16,7 +13,7 @@ public class Loose : MonoBehaviour
 
     private void CheckAlivePlayers()
     {
-        foreach (var c in PlayerStatsManager.Instance.Characters)
+        foreach (PlayerStats c in PlayerStatsManager.Instance.Characters)
         {
             if (c.CurrentHealth > 0)
             {

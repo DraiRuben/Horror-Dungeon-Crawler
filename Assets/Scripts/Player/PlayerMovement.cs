@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
         m_movementInput = _ctx.ReadValue<Vector2>();
 
         //if the input has a direction and the player can move
-        if (m_movementInput.magnitude > 0 && m_timeSinceMovement >= 1f/m_movementFrequency)
+        if (m_movementInput.magnitude > 0 && m_timeSinceMovement >= 1f / m_movementFrequency)
         {
             //gets move direction from the camera POV
             MapGrid.AllowedMovesMask MoveDir = GetMoveDir();
@@ -95,7 +95,7 @@ public class PlayerMovement : MonoBehaviour
                             Cell.OccupyingObject = gameObject;
                             m_timeSinceMovement = 0;
                             GridPos.Set(ConnectedFloorInfo.GridPos.x, ConnectedFloorInfo.GridPos.y);
-                            if(CurrentFloor != ConnectedFloorInfo.FloorIndex)
+                            if (CurrentFloor != ConnectedFloorInfo.FloorIndex)
                             {
                                 OnFloorChanged?.Invoke(CurrentFloor);
                             }
@@ -133,7 +133,7 @@ public class PlayerMovement : MonoBehaviour
     {
         m_rotationInput = _ctx.ReadValue<float>();
         //if we can move
-        if (m_timeSinceMovement >= 1f/m_movementFrequency)
+        if (m_timeSinceMovement >= 1f / m_movementFrequency)
         {
             //rotate 90� either left or right on the Y axis depending on the input
             if (m_rotationInput > 0)

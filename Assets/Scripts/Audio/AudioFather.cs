@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class AudioFather : MonoBehaviour
@@ -19,7 +16,7 @@ public class AudioFather : MonoBehaviour
     {
         Invoke("FatherIdle", 2.0f);
     }
-    
+
     public void FatherDamagedSound()
     {
         m_audioManager.PlaySFXFather(m_audioManager.Father_Damaged);
