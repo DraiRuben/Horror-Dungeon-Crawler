@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Prologue_Text : MonoBehaviour
 {
-    private WaitForSeconds TextDelay = new WaitForSeconds(5.0f);
+    private WaitForSeconds TextDelay = new WaitForSeconds(4.0f);
     [SerializeField] List<Animator> m_sentences = new();
 
     void Start()
