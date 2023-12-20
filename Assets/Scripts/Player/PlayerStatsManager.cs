@@ -15,6 +15,7 @@ public class PlayerStatsManager : SerializedMonoBehaviour
     }
     public void TakeDamage(int _damage, GameObject _damageOrigin)
     {
+        if (_damageOrigin == null) return;
         //gets angle between player looking forward and attack origin
         float AngleY = Quaternion.LookRotation(PlayerMovement.Instance.transform.position - _damageOrigin.transform.position).eulerAngles.y;
 
