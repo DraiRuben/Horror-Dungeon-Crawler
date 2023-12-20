@@ -7,11 +7,13 @@ public class Boss1AI : MobAI
     [SerializeField] protected int NextPhaseHP;
     [SerializeField] protected int NextPhaseStrength;
     [SerializeField] protected int NextPhaseDexterity;
+    public bool father_Phase2 = false;
 
     void Awake()
     {
         m_agent = GetComponent<NavMeshAgent>();
         m_entityStats = GetComponent<EntityStats>();
+        m_audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         StartCoroutine(AttackRoutine());
     }
     // Start is called before the first frame update
@@ -81,6 +83,7 @@ public class Boss1AI : MobAI
                 {
                     AttackSystem.Instance.RangedAttack(m_gridPos, m_floor, AttackDir, m_entityStats.Strength, m_attackReach, m_entityStats.Dexterity, gameObject);
                 }
+                m_audioManager.PlaySFX(m_audioManager.Father_Attack);
             }
 
             timeSincePreviousAttack += Time.deltaTime;
@@ -95,6 +98,7 @@ public class Boss1AI : MobAI
             m_entityStats.Dexterity = NextPhaseDexterity;
             m_entityStats.Strength = NextPhaseStrength;
             m_entityStats.OnHealthChanged.RemoveListener(NextPhaseCheck);
+            father_Phase2 = true;
         }
 
     }

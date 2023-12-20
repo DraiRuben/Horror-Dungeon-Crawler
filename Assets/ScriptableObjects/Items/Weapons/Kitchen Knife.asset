@@ -25,3 +25,4 @@ MonoBehaviour:
   Range: 1
   Damage: 20
   ReloadTime: 1
+  UseSFX: {fileID: 8300000, guid: 951a04db4bd35aa429a039c027d75dc7, type: 3}

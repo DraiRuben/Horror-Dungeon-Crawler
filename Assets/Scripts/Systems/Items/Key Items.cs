@@ -14,6 +14,7 @@ namespace Inventory.Model
             {
                 //SlotManager.RemoveItem(Item item);
             }
+            m_audioManager.PlaySFX(UseSFX);
             return true;
         }
     }

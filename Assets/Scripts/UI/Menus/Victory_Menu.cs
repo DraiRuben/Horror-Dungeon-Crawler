@@ -12,7 +12,7 @@ public class Victory_Menu : MonoBehaviour
     }
     public void Start()
     {
-        audioManager.PlayMusic(audioManager.victory_Menu);
+        audioManager.PlayMusic(audioManager.Victory_Menu);
     }
     public void BackToMainMenu()
     {

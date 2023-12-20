@@ -2,15 +2,15 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class Main_Menu : MonoBehaviour
 {
-    private AudioManager audioManager;
+    private AudioManager m_audioManager;
     public void Awake()
     {
-        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        m_audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     public void Start()
     {
-        audioManager.PlayMusic(audioManager.main_Menu);
+        m_audioManager.PlayMusic(m_audioManager.Main_Menu);
     }
     public void Play()
     {

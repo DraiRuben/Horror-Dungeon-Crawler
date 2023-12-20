@@ -5,6 +5,14 @@ namespace Inventory.Model
     [CreateAssetMenu]
     public class Item : ScriptableObject
     {
+        public AudioManager m_audioManager;
+        public AudioClip UseSFX;
+
+        private void Start()
+        {
+            m_audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        }
+
         [field: SerializeField]
         public bool IsStackable { get; set; }
 
@@ -27,6 +35,10 @@ namespace Inventory.Model
         [field: SerializeField]
         public Sprite ItemImage { get; set; }
 
-        public virtual bool Use() { return true; }
+        public virtual bool Use() 
+        {
+            m_audioManager.PlaySFX(UseSFX);
+            return true;
+        }
     }
 }
