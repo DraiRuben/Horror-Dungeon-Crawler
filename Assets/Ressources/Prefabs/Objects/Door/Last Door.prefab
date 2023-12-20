@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9215741826259371627}
   - component: {fileID: 899995474345694638}
   m_Layer: 0
-  m_Name: FIN
+  m_Name: Last Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
