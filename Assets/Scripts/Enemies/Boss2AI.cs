@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UIElements;
 
 public class Boss2AI : MobAI
 {
@@ -32,12 +29,12 @@ public class Boss2AI : MobAI
     // Update is called once per frame
     void Update()
     {
-        Physics.Raycast(transform.position, PlayerMovement.Instance.transform.position - transform.position, out var HitInfo, 10f);
+        Physics.Raycast(transform.position, PlayerMovement.Instance.transform.position - transform.position, out RaycastHit HitInfo, 10f);
         if (m_floor == PlayerMovement.Instance.CurrentFloor
             && HitInfo.collider != null && HitInfo.collider.CompareTag("Player"))
         {
-            var dist = MapGrid.Instance.DistanceBetweenCells(m_gridPos, PlayerMovement.Instance.GridPos);
-            var totalDist = dist.x + dist.y;
+            Vector2Int dist = MapGrid.Instance.DistanceBetweenCells(m_gridPos, PlayerMovement.Instance.GridPos);
+            int totalDist = dist.x + dist.y;
             transform.rotation = Quaternion.Euler(0, Quaternion.LookRotation(PlayerMovement.Instance.transform.position - transform.position).eulerAngles.y, 0);
             //updates grid pos only if it's not occupied by anything else, also empty previously occupied cell
             Vector2Int newGridPos = MapGrid.Instance.GetClosestCell(m_floor, transform.position, m_gridPos);
@@ -77,11 +74,11 @@ public class Boss2AI : MobAI
     {
         if (totalDist <= m_maxRangeTP && Time.time - m_lastTP > m_cooldownTP)
         {
-            var Dir = MapGrid.Instance.GetRelativeDir(MapGrid.AllowedMovesMask.Bottom, PlayerMovement.Instance.transform.rotation.eulerAngles.y);
+            MapGrid.AllowedMovesMask Dir = MapGrid.Instance.GetRelativeDir(MapGrid.AllowedMovesMask.Bottom, PlayerMovement.Instance.transform.rotation.eulerAngles.y);
             if (MapGrid.Instance.IsValidCell(CurrentFloor, PlayerMovement.Instance.GridPos.x, PlayerMovement.Instance.GridPos.y, Dir))
             {
                 m_lastTP = Time.time;
-                var Cell = MapGrid.Instance.GetCellInDir(CurrentFloor, PlayerMovement.Instance.GridPos.x, PlayerMovement.Instance.GridPos.y, Dir);
+                MapGrid.Cell Cell = MapGrid.Instance.GetCellInDir(CurrentFloor, PlayerMovement.Instance.GridPos.x, PlayerMovement.Instance.GridPos.y, Dir);
                 transform.position = Cell.Center.position;
                 return;
             }
@@ -89,7 +86,7 @@ public class Boss2AI : MobAI
             if (MapGrid.Instance.IsValidCell(CurrentFloor, PlayerMovement.Instance.GridPos.x, PlayerMovement.Instance.GridPos.y, Dir))
             {
                 m_lastTP = Time.time;
-                var Cell = MapGrid.Instance.GetCellInDir(CurrentFloor, PlayerMovement.Instance.GridPos.x, PlayerMovement.Instance.GridPos.y, Dir);
+                MapGrid.Cell Cell = MapGrid.Instance.GetCellInDir(CurrentFloor, PlayerMovement.Instance.GridPos.x, PlayerMovement.Instance.GridPos.y, Dir);
                 transform.position = Cell.Center.position;
                 return;
             }
@@ -97,7 +94,7 @@ public class Boss2AI : MobAI
             if (MapGrid.Instance.IsValidCell(CurrentFloor, PlayerMovement.Instance.GridPos.x, PlayerMovement.Instance.GridPos.y, Dir))
             {
                 m_lastTP = Time.time;
-                var Cell = MapGrid.Instance.GetCellInDir(CurrentFloor, PlayerMovement.Instance.GridPos.x, PlayerMovement.Instance.GridPos.y, Dir);
+                MapGrid.Cell Cell = MapGrid.Instance.GetCellInDir(CurrentFloor, PlayerMovement.Instance.GridPos.x, PlayerMovement.Instance.GridPos.y, Dir);
                 transform.position = Cell.Center.position;
                 return;
             }
@@ -105,7 +102,7 @@ public class Boss2AI : MobAI
             if (MapGrid.Instance.IsValidCell(CurrentFloor, PlayerMovement.Instance.GridPos.x, PlayerMovement.Instance.GridPos.y, Dir))
             {
                 m_lastTP = Time.time;
-                var Cell = MapGrid.Instance.GetCellInDir(CurrentFloor, PlayerMovement.Instance.GridPos.x, PlayerMovement.Instance.GridPos.y, Dir);
+                MapGrid.Cell Cell = MapGrid.Instance.GetCellInDir(CurrentFloor, PlayerMovement.Instance.GridPos.x, PlayerMovement.Instance.GridPos.y, Dir);
                 transform.position = Cell.Center.position;
                 return;
             }

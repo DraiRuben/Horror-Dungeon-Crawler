@@ -15,7 +15,7 @@ namespace Inventory.Model
         public int MaxStackSize { get; set; } = 1;
 
         [field: SerializeField]
-        public int Quantity { get; set; } = 1; 
+        public int Quantity { get; set; } = 1;
 
         public int index;
 
@@ -29,7 +29,7 @@ namespace Inventory.Model
         [field: SerializeField]
         public Sprite ItemImage { get; set; }
 
-        public virtual bool Use() 
+        public virtual bool Use()
         {
             AudioManager.Instance.PlaySFX(UseSFX);
             return true;

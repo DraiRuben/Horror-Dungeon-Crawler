@@ -1,5 +1,4 @@
 using Inventory.Model;
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 

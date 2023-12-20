@@ -1,6 +1,5 @@
 using Inventory.Model;
 using Sirenix.OdinInspector;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -44,7 +43,7 @@ public class PlayerUISlotsManager : SerializedMonoBehaviour
                 medKitSlot.SlotImage.color = Color.white;
                 medKitSlot.gameObject.SetActive(true);
             }
-            else 
+            else
             {
                 medKitSlot.CurrentItem = null;
                 medKitSlot.SlotImage.sprite = null;

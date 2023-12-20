@@ -13,7 +13,8 @@ public class FormationPreviewer : MonoBehaviour
     }
     private void Start()
     {
-        m_linkedCharacter.OnDeath.AddListener(() => {
+        m_linkedCharacter.OnDeath.AddListener(() =>
+        {
             m_image.color = Color.clear;
             m_linkedElement.m_image.color = Color.clear;
         });
@@ -22,7 +23,7 @@ public class FormationPreviewer : MonoBehaviour
     {
         int TargetIndex = m_linkedElement.transform.GetSiblingIndex();
         int CurrentIndex = transform.parent.GetSiblingIndex();
-        
+
 
         transform.parent.parent.GetChild(TargetIndex).SetSiblingIndex(CurrentIndex);
         transform.parent.SetSiblingIndex(TargetIndex);

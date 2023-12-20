@@ -10,12 +10,12 @@ public class Prologue_Text : MonoBehaviour
 
     void Start()
     {
-         StartCoroutine(TextApparition());
+        StartCoroutine(TextApparition());
     }
 
     private IEnumerator TextApparition()
     {
-        foreach (var m in m_sentences)
+        foreach (Animator m in m_sentences)
         {
             m.SetTrigger("Appear");
             yield return TextDelay;

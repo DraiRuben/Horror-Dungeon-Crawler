@@ -1,7 +1,4 @@
-using Inventory.Model;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public class OpenDoor : MonoBehaviour
 {
@@ -41,6 +38,7 @@ public class OpenDoor : MonoBehaviour
             {
                 animator.SetTrigger("ChangeState");
                 isOpen = true;
+                
                 AudioManager.Instance.PlaySFX(AudioManager.Instance.Door);
             }
             else

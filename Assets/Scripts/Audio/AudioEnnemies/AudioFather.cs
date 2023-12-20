@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class AudioFather : MonoBehaviour
@@ -9,7 +6,7 @@ public class AudioFather : MonoBehaviour
     private float minInterval = 0.0f;
     private float maxInterval = 3.0f;
     private float offset = 3.0f;
-    private Boss1AI bossAI;
+    public Boss1AI boss1AI;
     private void Awake()
     {
         m_audioManager = transform.GetChild(0).GetComponent<AudioManagerFather>();
@@ -19,7 +16,7 @@ public class AudioFather : MonoBehaviour
     {
         Invoke("FatherIdle", 2.0f);
     }
-    
+
     public void FatherDamagedSound()
     {
         m_audioManager.PlaySFXFather(m_audioManager.Father_Damaged);
@@ -32,8 +29,17 @@ public class AudioFather : MonoBehaviour
 
     public void FatherIdle()
     {
-        float randomInterval = Random.Range(minInterval, maxInterval) + offset;
-        m_audioManager.PlaySFXFather(m_audioManager.Father_Phase1_Idle);
-        Invoke("FatherIdle", randomInterval);
+        if (!boss1AI.father_Phase2) 
+        { 
+            float randomInterval = Random.Range(minInterval, maxInterval) + offset;
+            m_audioManager.PlaySFXFather(m_audioManager.Father_Phase1_Idle);
+            Invoke("FatherIdle", randomInterval);
+        }
+        else
+        {
+            float randomInterval = Random.Range(minInterval, maxInterval) + offset;
+            m_audioManager.PlaySFXFather(m_audioManager.Father_Phase2_Idle);
+            Invoke("FatherIdle", randomInterval);
+        }
     }
 }

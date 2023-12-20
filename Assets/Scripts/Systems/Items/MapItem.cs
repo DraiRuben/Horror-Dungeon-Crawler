@@ -31,7 +31,7 @@ namespace Inventory.Model
                 AudioManager.Instance.PlaySFX(AudioManager.Instance.Pickup_Items);
                 return;
             }
-            
+
         }
 
         private void OnMouseDown()
