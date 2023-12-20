@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 95161500554173096}
   - component: {fileID: -7131609496118098161}
   - component: {fileID: 6297501453661051608}
-  - component: {fileID: -460599757822966451}
   m_Layer: 0
   m_Name: firstaid
   m_TagString: Untagged
@@ -143,22 +142,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.8154834, y: 0.3475596, z: 0.62949526}
   m_Center: {x: -0.0068259835, y: 0.1600316, z: 0.0025842488}
---- !u!114 &-460599757822966451
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1987713744733760}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88dcf755e3c457b4aafe360b9c32d847, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isMedKit: 1
-  isPills: 0
-  health: {fileID: 0}
-  stress: {fileID: 0}
 --- !u!1 &186224457559681346
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ public class PlayerStats : EntityStats
     [SerializeField] private Image StressBarPlayer;
 
     private const int StressDamage = 50;
-    private const float StressIncreaseRate = 0.1f;
+    private const float StressIncreaseRate = 2f;
     private WaitForSeconds stressIncreaseDelay = new WaitForSeconds(1.0f);
 
     private Coroutine stressCoroutine;
@@ -67,8 +67,14 @@ public class PlayerStats : EntityStats
     }
     public void PlayerUpdateFill()
     {
-        HealthBarPlayer.fillAmount = (float)CurrentHealth / m_maxHealth;
-        StressBarPlayer.fillAmount = (float)CurrentStress / m_maxStress;
+        if (HealthBarPlayer != null)
+        {
+            HealthBarPlayer.fillAmount = (float)CurrentHealth / m_maxHealth;
+        }
+        if (StressBarPlayer != null)
+        {
+            StressBarPlayer.fillAmount = (float)CurrentStress / m_maxStress;
+        }
     }
 
     public void SelectedCharacter()
