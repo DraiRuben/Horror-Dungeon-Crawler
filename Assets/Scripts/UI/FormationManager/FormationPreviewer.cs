@@ -21,11 +21,11 @@ public class FormationPreviewer : MonoBehaviour
     public void UpdateHierarchy()
     {
         int TargetIndex = m_linkedElement.transform.GetSiblingIndex();
-        int CurrentIndex = transform.GetSiblingIndex();
+        int CurrentIndex = transform.parent.GetSiblingIndex();
         
 
-        transform.parent.GetChild(TargetIndex).SetSiblingIndex(CurrentIndex);
-        transform.SetSiblingIndex(TargetIndex);
+        transform.parent.parent.GetChild(TargetIndex).SetSiblingIndex(CurrentIndex);
+        transform.parent.SetSiblingIndex(TargetIndex);
 
         (int, int) CurrentGridPos = GridPosToHierarchy[CurrentIndex];
         (int, int) TargetGridPos = GridPosToHierarchy[TargetIndex];

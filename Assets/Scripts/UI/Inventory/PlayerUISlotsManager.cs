@@ -6,8 +6,7 @@ using UnityEngine;
 public class PlayerUISlotsManager : SerializedMonoBehaviour
 {
     public Dictionary<Weapon.Character, PlayerUISlot> WeaponSlots;
-    public Dictionary<Weapon.Character, PlayerUISlot> AbilitySlots;
-    public Dictionary<Weapon.Character, PlayerUISlot> UtilitySlots;
+
     public PlayerUISlot medKitSlot;
     public PlayerUISlot pillsSlot;
 
