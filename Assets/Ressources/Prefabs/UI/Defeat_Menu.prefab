@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5266660309870663573}
   - component: {fileID: 6879070679598553767}
+  - component: {fileID: 8284242532079775507}
   m_Layer: 5
   m_Name: Defeat_Menu
   m_TagString: Untagged
@@ -47,6 +48,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b13cf1e956d0b5f4b90dd4522f74a67d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defeat_Menu: {fileID: 0}
+--- !u!114 &8284242532079775507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 49758416822847854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8dcb8f81f7cb2c48a14c364981e7688, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1400364033567003957
@@ -169,7 +183,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 780665894038689228}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6879070679598553767}
+        m_TargetAssemblyTypeName: Defeat_Menu, Assembly-CSharp
+        m_MethodName: BackToMainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8284242532079775507}
+        m_TargetAssemblyTypeName: AudioClick, Assembly-CSharp
+        m_MethodName: ClickSFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5678719144964155421
 GameObject:
   m_ObjectHideFlags: 0
@@ -290,7 +328,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8519232132232131056}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6879070679598553767}
+        m_TargetAssemblyTypeName: Defeat_Menu, Assembly-CSharp
+        m_MethodName: Quit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8284242532079775507}
+        m_TargetAssemblyTypeName: AudioClick, Assembly-CSharp
+        m_MethodName: ClickSFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5765567326972385558
 GameObject:
   m_ObjectHideFlags: 0

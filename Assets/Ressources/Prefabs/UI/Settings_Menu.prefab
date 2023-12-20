@@ -567,6 +567,30 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 1
+      - m_Target: {fileID: 49758416822847854, guid: 5be9047e3138367498e668243185cd87, type: 3}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 1
+      - m_Target: {fileID: 3787552729704305605}
+        m_TargetAssemblyTypeName: AudioClick, Assembly-CSharp
+        m_MethodName: ClickSFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!1 &3056188626385634529
 GameObject:
@@ -650,6 +674,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8990990110505068244}
   - component: {fileID: 8933802345419304811}
+  - component: {fileID: 3787552729704305605}
   m_Layer: 5
   m_Name: Settings_Menu
   m_TagString: Untagged
@@ -693,6 +718,18 @@ MonoBehaviour:
   m_masterVolumeSlider: {fileID: 1087071421418904215}
   m_musicVolumeSlider: {fileID: 7563839889788170243}
   m_SFXVolumeSlider: {fileID: 8876723065537061601}
+--- !u!114 &3787552729704305605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4730595762330632733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8dcb8f81f7cb2c48a14c364981e7688, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5608368161480640283
 GameObject:
   m_ObjectHideFlags: 0

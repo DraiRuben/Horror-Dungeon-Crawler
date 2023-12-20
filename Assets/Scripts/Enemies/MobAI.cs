@@ -16,12 +16,16 @@ public class MobAI : MonoBehaviour
 
     protected bool m_isCloseEnough;
     protected EntityStats m_entityStats;
+
+    protected AudioManager m_audioManager;
+
     protected float m_previousDestinationSetTime;
     // Start is called before the first frame update
     void Awake()
     {
         m_agent = GetComponent<NavMeshAgent>();
         m_entityStats = GetComponent<EntityStats>();
+        m_audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         StartCoroutine(AttackRoutine());
     }
     private void Start()
@@ -57,7 +61,7 @@ public class MobAI : MonoBehaviour
             {
                 if (HitInfo.collider != null && HitInfo.collider.CompareTag("Player"))
                     m_agent.SetDestination(MapGrid.Instance.GetCell(m_floor, m_gridPos.x, m_gridPos.y).Center.position);
-                //système d'attaque
+                //systï¿½me d'attaque
                 m_isCloseEnough = true;
 
             }
@@ -93,6 +97,7 @@ public class MobAI : MonoBehaviour
                 {
                     AttackSystem.Instance.RangedAttack(m_gridPos, m_floor, AttackDir, m_entityStats.Strength, m_attackReach, m_entityStats.Dexterity, gameObject);
                 }
+                m_audioManager.PlaySFX(m_audioManager.Dog_Attack);
             }
 
             timeSincePreviousAttack += Time.deltaTime;

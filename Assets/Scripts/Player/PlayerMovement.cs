@@ -17,12 +17,17 @@ public class PlayerMovement : MonoBehaviour
     public static PlayerMovement Instance;
     public event Action<int> OnFloorChanged;
 
+
+
+    private AudioClip m_footstepAudioClip;
+    private AudioManager m_audioManager;
     private void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
 
         m_transform = GetComponent<Transform>();
+        m_audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     public void Move(InputAction.CallbackContext _ctx)
@@ -56,6 +61,25 @@ public class PlayerMovement : MonoBehaviour
                         m_transform.position = NextCell.Center.position;
                         m_transform.position += Vector3.up * 1.5f;
                         UpdateGridPos(RelativeMoveDir);
+
+                        switch (CurrentFloor)
+                        {
+                            case 0:
+                                m_audioManager.PlaySFX(m_audioManager.Footstep_Concrete);
+                                break;
+                            case 1:
+                                m_audioManager.PlaySFX(m_audioManager.Footstep_Concrete);
+                                break;
+                            case 2:
+                                m_audioManager.PlaySFX(m_audioManager.Footstep_Wood);
+                                break;
+                            case 3:
+                                m_audioManager.PlaySFX(m_audioManager.Footstep_Wood);
+                                break;
+                            case 4:
+                                m_audioManager.PlaySFX(m_audioManager.Footstep_Wood);
+                                break;
+                        }
                     }
 
                 }
@@ -80,6 +104,25 @@ public class PlayerMovement : MonoBehaviour
                             CurrentFloor = ConnectedFloorInfo.FloorIndex;
                             m_transform.position = MapGrid.Instance.GetCell(CurrentFloor, GridPos.x, GridPos.y).Center.position;
                             m_transform.position += Vector3.up * 1.5f;
+
+                            switch (CurrentFloor)
+                            {
+                                case 0:
+                                    m_audioManager.PlaySFX(m_audioManager.Footstep_Concrete);
+                                    break;
+                                case 1:
+                                    m_audioManager.PlaySFX(m_audioManager.Footstep_Concrete);
+                                    break;
+                                case 2:
+                                    m_audioManager.PlaySFX(m_audioManager.Footstep_Wood);
+                                    break;
+                                case 3:
+                                    m_audioManager.PlaySFX(m_audioManager.Footstep_Wood);
+                                    break;
+                                case 4:
+                                    m_audioManager.PlaySFX(m_audioManager.Footstep_Wood);
+                                    break;
+                            }
                         }
 
                     }
@@ -94,7 +137,7 @@ public class PlayerMovement : MonoBehaviour
         //if we can move
         if (m_timeSinceMovement >= 1f/m_movementFrequency)
         {
-            //rotate 90° either left or right on the Y axis depending on the input
+            //rotate 90ï¿½ either left or right on the Y axis depending on the input
             if (m_rotationInput > 0)
             {
                 m_timeSinceMovement = 0;
@@ -137,6 +180,8 @@ public class PlayerMovement : MonoBehaviour
                 break;
         }
     }
+
+
     private void Update()
     {
         m_timeSinceMovement += Time.deltaTime;

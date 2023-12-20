@@ -21,6 +21,12 @@ public class OpenDoor : MonoBehaviour
     public bool isCadavre;
     public bool isOpen = false;
 
+    private AudioManager m_audioManager;
+
+    private void Awake()
+    {
+        m_audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     public void Start()
     {
         animator = GetComponent<Animator>();
@@ -40,9 +46,11 @@ public class OpenDoor : MonoBehaviour
             {
                 animator.SetTrigger("ChangeState");
                 isOpen = true;
+                m_audioManager.PlaySFX(m_audioManager.Door);
             }
             else
             {
+                m_audioManager.PlaySFX(m_audioManager.Corpses_Burning);
                 Destroy(gameObject);
             }
         }

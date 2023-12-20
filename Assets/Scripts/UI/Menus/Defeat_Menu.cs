@@ -12,7 +12,7 @@ public class Defeat_Menu : MonoBehaviour
     }
     public void Start()
     {
-        audioManager.PlayMusic(audioManager.defeat_Menu);
+        audioManager.PlayMusic(audioManager.Defeat_Menu);
     }
     public void BackToMainMenu()
     {
