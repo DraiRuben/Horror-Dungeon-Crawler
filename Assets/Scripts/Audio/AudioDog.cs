@@ -5,28 +5,34 @@ using UnityEngine;
 public class AudioDog : MonoBehaviour
 {
 
+    private AudioManagerEnnemies m_audioManager;
     private float minInterval = 0.0f;
     private float maxInterval = 3.0f;
     private float offset = 3.0f;
+    private void Awake()
+    {
+        m_audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManagerEnnemies>();  
+    }
+
     private void Start()
     {
-        Invoke(nameof(DogIdle), 2.0f);
+        Invoke("DogIdle", 2.0f);
     }
 
     public void DogDamagedSound()
     {
-        AudioManager.Instance.PlaySFX(AudioManager.Instance.Dog_Damaged);
+        m_audioManager.PlaySFXMob(m_audioManager.Dog_Damaged);
     }
 
     public void DogDeathSound()
     {
-        AudioManager.Instance.PlaySFX(AudioManager.Instance.Dog_Death);
+        m_audioManager.PlaySFXMob(m_audioManager.Dog_Death);
     }
 
     public void DogIdle()
     {
         float randomInterval = Random.Range(minInterval, maxInterval) + offset;
-        AudioManager.Instance.PlaySFX(AudioManager.Instance.Dog_Idle);
+        m_audioManager.PlaySFXMob(m_audioManager.Dog_Idle);
         Invoke("DogIdle", randomInterval);
     }
 }
