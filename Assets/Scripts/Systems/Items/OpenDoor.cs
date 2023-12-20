@@ -41,6 +41,7 @@ public class OpenDoor : MonoBehaviour
             {
                 animator.SetTrigger("ChangeState");
                 isOpen = true;
+                GetComponent<Cadavres>().LightOnFire();
                 AudioManager.Instance.PlaySFX(AudioManager.Instance.Door);
             }
             else

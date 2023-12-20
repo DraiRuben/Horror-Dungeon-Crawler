@@ -30,5 +30,6 @@ public class Loose : MonoBehaviour
     private void Defeat()
     {
         defeatScreen.gameObject.SetActive(true);
+        Time.timeScale = 0f;
     }
 }

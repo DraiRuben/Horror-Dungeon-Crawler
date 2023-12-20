@@ -5,8 +5,9 @@ using UnityEngine;
 public class Win : MonoBehaviour
 {
     [SerializeField] private GameObject winScreen;
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         winScreen.gameObject.SetActive(true);
+        Time.timeScale = 0f;
     }
 }

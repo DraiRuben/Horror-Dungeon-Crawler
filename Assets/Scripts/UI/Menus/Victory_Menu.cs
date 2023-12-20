@@ -11,7 +11,7 @@ public class Victory_Menu : MonoBehaviour
     }
     public void BackToMainMenu()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        SceneManager.LoadScene(0);
         victory_Menu.SetActive(false);
     }
 
