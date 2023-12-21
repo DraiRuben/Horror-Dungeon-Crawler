@@ -18,7 +18,8 @@ MonoBehaviour:
   <Quantity>k__BackingField: 1
   index: 7
   <Name>k__BackingField: Brass Knuckles
-  <Description>k__BackingField: It's not over until the bell rings!
+  <Description>k__BackingField: She may have been knocked out, but this big girl
+    never lose.
   <ItemImage>k__BackingField: {fileID: 21300000, guid: 6a7601ff05a93fe4da2896e9ccf3fb7c, type: 3}
   CanUse: 0
   AutoEquip: 1

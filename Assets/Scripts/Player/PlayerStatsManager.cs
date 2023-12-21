@@ -60,6 +60,4 @@ public class PlayerStatsManager : SerializedMonoBehaviour
         new(1,1),
         new(0,1),
     };
-
-
 }
