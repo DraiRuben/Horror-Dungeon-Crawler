@@ -13,7 +13,8 @@ public class AudioManagerFather : MonoBehaviour
     public AudioClip Father_Phase1_Idle;
     public AudioClip Father_Phase2_Idle;
     public AudioClip Father_Attack;
-    public AudioClip Father_Damaged;
+    public AudioClip Father_Phase1_Damaged;
+    public AudioClip Father_Phase2_Damaged;
     public AudioClip Father_Death;
 
 

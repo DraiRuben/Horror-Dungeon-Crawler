@@ -19,7 +19,14 @@ public class AudioFather : MonoBehaviour
 
     public void FatherDamagedSound()
     {
-        m_audioManager.PlaySFXFather(m_audioManager.Father_Damaged);
+        if (!boss1AI.father_Phase2)
+        {
+            m_audioManager.PlaySFXFather(m_audioManager.Father_Phase1_Damaged);
+        }
+        else
+        {
+            m_audioManager.PlaySFXFather(m_audioManager.Father_Phase2_Damaged);
+        }
     }
 
     public void FatherDeathSound()

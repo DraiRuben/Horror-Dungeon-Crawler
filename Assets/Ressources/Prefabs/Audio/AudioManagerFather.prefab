@@ -49,7 +49,8 @@ MonoBehaviour:
   Father_Phase1_Idle: {fileID: 8300000, guid: 6e9fccebcc7b36a4092cdf37b6f58084, type: 3}
   Father_Phase2_Idle: {fileID: 8300000, guid: a23072b77b6ee1c4d93c99523d5f18de, type: 3}
   Father_Attack: {fileID: 8300000, guid: 9061e5a0d8df16b41a63876eaeadd745, type: 3}
-  Father_Damaged: {fileID: 8300000, guid: 212751704a39ae34eb541e561122302a, type: 3}
+  Father_Phase1_Damaged: {fileID: 8300000, guid: 7377f20b37f68bc42b18d7b3924b3752, type: 3}
+  Father_Phase2_Damaged: {fileID: 8300000, guid: 212751704a39ae34eb541e561122302a, type: 3}
   Father_Death: {fileID: 8300000, guid: 56a080c31de6efb4582f8168757f6dd5, type: 3}
 --- !u!1 &7389196095090328246
 GameObject:

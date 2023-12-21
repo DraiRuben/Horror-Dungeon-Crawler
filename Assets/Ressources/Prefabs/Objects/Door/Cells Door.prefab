@@ -130,6 +130,7 @@ MonoBehaviour:
   floorIndexFront: 0
   NoKeyRequired: 0
   isCadavre: 0
+  isPrisonDoor: 1
   isOpen: 0
 --- !u!95 &7054161098834798780
 Animator:

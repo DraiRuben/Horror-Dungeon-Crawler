@@ -325,6 +325,10 @@ MonoBehaviour:
   Victory_Menu: {fileID: 8300000, guid: 0e1208679d3a2654581465d156525700, type: 3}
   Defeat_Menu: {fileID: 8300000, guid: 5482735ecffde244a8e2ba8c43660760, type: 3}
   Basement: {fileID: 8300000, guid: 028d57da8c3fb554ba3113134fd60585, type: 3}
+  Prison: {fileID: 8300000, guid: b9ff2a9c3b7ceb7489a641c0d8a9887f, type: 3}
+  Floor_0: {fileID: 8300000, guid: b9adc8d62e887ad45b4a018b5855ae17, type: 3}
+  Floor_1: {fileID: 8300000, guid: f934264a21c55614093df64a526934fd, type: 3}
+  Attic: {fileID: 8300000, guid: 7de0ef5683c7ed949b81493cc33b825c, type: 3}
 --- !u!114 &6697453901940755915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -341,10 +345,11 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
+    - {fileID: 8300000, guid: b9ff2a9c3b7ceb7489a641c0d8a9887f, type: 3}
     - {fileID: 8300000, guid: 028d57da8c3fb554ba3113134fd60585, type: 3}
-    - {fileID: 8300000, guid: 1711470d1db13d3498f6b4b8492974c6, type: 3}
-    - {fileID: 8300000, guid: 2597a84f6d8914a4290390c0a4fa8aad, type: 3}
-    - {fileID: 8300000, guid: d60d773d6e57e6b46b3d220aedf54e1d, type: 3}
+    - {fileID: 8300000, guid: b9adc8d62e887ad45b4a018b5855ae17, type: 3}
+    - {fileID: 8300000, guid: f934264a21c55614093df64a526934fd, type: 3}
+    - {fileID: 8300000, guid: 7de0ef5683c7ed949b81493cc33b825c, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -407,8 +412,8 @@ MonoBehaviour:
       Entry: 3
       Data: 3
     - Name: $v
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 3
     - Name: 
       Entry: 8
       Data: 
@@ -420,7 +425,7 @@ MonoBehaviour:
       Data: 4
     - Name: $v
       Entry: 10
-      Data: 3
+      Data: 4
     - Name: 
       Entry: 8
       Data: 
