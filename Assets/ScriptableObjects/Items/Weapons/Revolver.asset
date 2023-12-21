@@ -18,7 +18,8 @@ MonoBehaviour:
   <Quantity>k__BackingField: 1
   index: 5
   <Name>k__BackingField: Revolver
-  <Description>k__BackingField: Your enemy can't kill you if they're dead !!
+  <Description>k__BackingField: 'He his just a rookie ! He barely know how to use
+    a gun ! '
   <ItemImage>k__BackingField: {fileID: 21300000, guid: 4c654251e55e79e4997f57a23017c4ec, type: 3}
   CanUse: 2
   AutoEquip: 1

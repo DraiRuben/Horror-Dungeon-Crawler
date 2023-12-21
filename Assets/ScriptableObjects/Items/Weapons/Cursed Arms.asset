@@ -18,7 +18,8 @@ MonoBehaviour:
   <Quantity>k__BackingField: 1
   index: 8
   <Name>k__BackingField: Cursed Arms
-  <Description>k__BackingField: I AM ALIIIIVE !
+  <Description>k__BackingField: '"I don''t want to do that dad ! I dont like killing
+    people !" '
   <ItemImage>k__BackingField: {fileID: 21300000, guid: ddfa0e7130a046146993f460604c4367, type: 3}
   CanUse: 3
   AutoEquip: 1
