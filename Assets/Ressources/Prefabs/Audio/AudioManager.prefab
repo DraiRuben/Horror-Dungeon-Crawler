@@ -341,10 +341,11 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
+    - {fileID: 8300000, guid: 3c5a11e69ad207f4594e7a7ad7de6589, type: 3}
     - {fileID: 8300000, guid: 028d57da8c3fb554ba3113134fd60585, type: 3}
-    - {fileID: 8300000, guid: 1711470d1db13d3498f6b4b8492974c6, type: 3}
-    - {fileID: 8300000, guid: 2597a84f6d8914a4290390c0a4fa8aad, type: 3}
-    - {fileID: 8300000, guid: d60d773d6e57e6b46b3d220aedf54e1d, type: 3}
+    - {fileID: 8300000, guid: 401de17844b4cab4ab603257e27bd141, type: 3}
+    - {fileID: 8300000, guid: 6eaad3bbc59a1f2438bfa82d6d5d2e01, type: 3}
+    - {fileID: 8300000, guid: 7f7cfec5089be0e42b881e80db7c49be, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -407,8 +408,8 @@ MonoBehaviour:
       Entry: 3
       Data: 3
     - Name: $v
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 3
     - Name: 
       Entry: 8
       Data: 
@@ -420,7 +421,7 @@ MonoBehaviour:
       Data: 4
     - Name: $v
       Entry: 10
-      Data: 3
+      Data: 4
     - Name: 
       Entry: 8
       Data: 

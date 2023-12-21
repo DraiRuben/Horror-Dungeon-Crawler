@@ -9,6 +9,7 @@ public class AudioFloors : SerializedMonoBehaviour
     private void Start()
     {
         PlayerMovement.Instance.OnFloorChanged += LevelsAmbientMusic;
+        LevelsAmbientMusic(0);
     }
     private void LevelsAmbientMusic(int Floor)
     {
