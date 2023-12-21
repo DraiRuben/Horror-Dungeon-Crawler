@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioManagerSister : MonoBehaviour
 {
     [Header("------------AudioSource------------")]
 
-    [SerializeField] AudioSource m_SFXSourceSister;
+    [SerializeField] private AudioSource m_SFXSourceSister;
 
     [Header("------------AudioClip------------")]
 

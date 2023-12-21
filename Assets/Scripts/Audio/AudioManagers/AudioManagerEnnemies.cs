@@ -5,7 +5,7 @@ public class AudioManagerEnnemies : MonoBehaviour
 
     [Header("------------AudioSource------------")]
 
-    [SerializeField] AudioSource m_SFXSourceMob;
+    [SerializeField] private AudioSource m_SFXSourceMob;
 
     [Header("------------AudioClip------------")]
 

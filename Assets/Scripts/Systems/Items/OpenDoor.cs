@@ -39,8 +39,8 @@ public class OpenDoor : MonoBehaviour
             {
                 animator.SetTrigger("ChangeState");
                 isOpen = true;
-                
-                
+
+
                 if (!isPrisonDoor)
                 {
                     AudioManager.Instance.PlaySFX(AudioManager.Instance.Door);

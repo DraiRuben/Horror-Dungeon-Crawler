@@ -13,13 +13,12 @@ namespace Inventory.UI
         [SerializeField] private UIItemDescription itemDescription;
         public static UIInventory Instance;
 
-        List<UIInventoryItem> listOfUIItems = new List<UIInventoryItem>();
+        List<UIInventoryItem> listOfUIItems = new();
 
         private int currentlyDraggedItemIndex = -1;
 
         public event Action<int> OnDescriptionRequested, OnItemActionRequested, OnStartDragging;
 
-        public event Action<int, int> OnSwapItems;
 
         private void Awake()
         {

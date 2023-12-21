@@ -106,7 +106,7 @@ public class MapGrid : SerializedMonoBehaviour
     }
     public Vector2Int GetClosestCell(int _floor, Vector3 _worldPos)
     {
-        _worldPos.Set(_worldPos.x,0,_worldPos.z);
+        _worldPos.Set(_worldPos.x, 0, _worldPos.z);
         Cell[,] floor = GetFloor(_floor);
 
         Vector2Int returnValue = new();
@@ -118,8 +118,8 @@ public class MapGrid : SerializedMonoBehaviour
             {
                 if (floor[i, u].Center != null)
                 {
-                    var cellPos = floor[i, u].Center.position;
-                    cellPos.Set(cellPos.x,0,cellPos.z);
+                    Vector3 cellPos = floor[i, u].Center.position;
+                    cellPos.Set(cellPos.x, 0, cellPos.z);
                     float Dist = Vector3.Distance(_worldPos, cellPos);
                     if (Dist < closestDistance)
                     {

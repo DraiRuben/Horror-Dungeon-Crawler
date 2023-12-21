@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,15 +7,19 @@ public class Boss1AI : MobAI
     [SerializeField] protected int NextPhaseHP;
     [SerializeField] protected int NextPhaseStrength;
     [SerializeField] protected int NextPhaseDexterity;
-    [SerializeField] public SpriteRenderer spriteRenderer;
-    [SerializeField] public Sprite NextPhaseSprite;
+    [SerializeField] protected SpriteRenderer spriteRenderer;
+    [SerializeField] protected Sprite NextPhaseSprite;
+
+    private AudioManagerFather m_audioManager;
     public bool father_Phase2 = false;
 
     void Awake()
     {
         m_agent = GetComponent<NavMeshAgent>();
         m_entityStats = GetComponent<EntityStats>();
+        m_audioManager = GetComponentInChildren<AudioManagerFather>();
         StartCoroutine(AttackRoutine());
+
     }
     // Start is called before the first frame update
     void Start()
@@ -24,14 +27,14 @@ public class Boss1AI : MobAI
         m_gridPos = MapGrid.Instance.GetClosestCell(m_floor, transform.position);
         MapGrid.Instance.GetCell(m_floor, m_gridPos.x, m_gridPos.y).OccupyingObject = gameObject;
         m_entityStats.OnHealthChanged.AddListener(NextPhaseCheck);
+        StartCoroutine(TryFindPlayer());
     }
 
     // Update is called once per frame
     void Update()
     {
-        Physics.Raycast(transform.position, PlayerMovement.Instance.transform.position - transform.position, out RaycastHit HitInfo, 10f);
         if (m_floor == PlayerMovement.Instance.CurrentFloor
-            && HitInfo.collider != null && HitInfo.collider.CompareTag("Player"))
+            && m_hasFoundPlayer)
         {
             Vector2Int dist = MapGrid.Instance.DistanceBetweenCells(m_gridPos, PlayerMovement.Instance.GridPos);
             int totalDist = dist.x + dist.y;
@@ -51,8 +54,7 @@ public class Boss1AI : MobAI
             // if attack is CQC check if distance to player is <= 1 or if attack is Ranged, check if distance to player <= Reach and both are aligned
             if (m_attackReach <= 1 && totalDist <= 1 || (m_attackReach > 1 && m_attackReach >= totalDist && (dist.x == 0 || dist.y == 0)))
             {
-                if (HitInfo.collider != null && HitInfo.collider.CompareTag("Player"))
-                    m_agent.SetDestination(MapGrid.Instance.GetCell(m_floor, m_gridPos.x, m_gridPos.y).Center.position);
+                m_agent.SetDestination(MapGrid.Instance.GetCell(m_floor, m_gridPos.x, m_gridPos.y).Center.position);
                 //système d'attaque
                 m_isCloseEnough = true;
             }
@@ -69,32 +71,9 @@ public class Boss1AI : MobAI
         }
 
     }
-
-    protected override IEnumerator AttackRoutine()
+    protected override void PlayAttackSFX()
     {
-        float timeSincePreviousAttack = 0;
-        while (true)
-        {
-            yield return new WaitUntil(() => m_isCloseEnough);
-            if (timeSincePreviousAttack > (10f / m_entityStats.Dexterity))
-            {
-                timeSincePreviousAttack = 0;
-                MapGrid.AllowedMovesMask AttackDir = MapGrid.Instance.GetRelativeDir(MapGrid.AllowedMovesMask.Top, transform.rotation.eulerAngles.y);
-                if (!m_projectileAttacks)
-                {
-
-                    AttackSystem.Instance.CQCAttack(m_gridPos, m_floor, AttackDir, m_entityStats.Strength, gameObject);
-                }
-                else
-                {
-                    AttackSystem.Instance.RangedAttack(m_gridPos, m_floor, AttackDir, m_entityStats.Strength, m_attackReach, m_entityStats.Dexterity, gameObject);
-                }
-                AudioManager.Instance.PlaySFX(AudioManager.Instance.Father_Attack);
-            }
-
-            timeSincePreviousAttack += Time.deltaTime;
-            yield return null;
-        }
+        m_audioManager.PlaySFXFather(m_audioManager.Father_Attack);
     }
 
     protected void NextPhaseCheck()

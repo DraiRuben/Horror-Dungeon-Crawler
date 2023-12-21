@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioManagerBaby : MonoBehaviour
 {
     [Header("------------AudioSource------------")]
 
-    [SerializeField] AudioSource m_SFXSourceBaby;
+    [SerializeField] private AudioSource m_SFXSourceBaby;
 
     [Header("------------AudioClip------------")]
 

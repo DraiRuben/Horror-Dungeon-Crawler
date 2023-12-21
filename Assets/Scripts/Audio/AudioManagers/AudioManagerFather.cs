@@ -4,7 +4,7 @@ public class AudioManagerFather : MonoBehaviour
 {
     [Header("------------AudioSource------------")]
 
-    [SerializeField] AudioSource m_SFXSourceFather;
+    [SerializeField] private AudioSource m_SFXSourceFather;
 
     [Header("------------AudioClip------------")]
 

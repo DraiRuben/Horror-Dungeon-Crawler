@@ -31,21 +31,12 @@ public class AudioManager : MonoBehaviour
     public AudioClip Dog_Damaged;
     public AudioClip Dog_Death;
 
-    [Header("Boss")]
-
-    public AudioClip Father_Phase1_Idle;
-    public AudioClip Father_Phase2_Idle;
-    public AudioClip Father_Attack;
-    public AudioClip Father_Damaged;
-    public AudioClip Father_Death;
-
-    [Header("------------Music------------")]
+    [Header("------------Menu Music------------")]
 
     public AudioClip Main_Menu;
     public AudioClip Victory_Menu;
     public AudioClip Defeat_Menu;
-    public AudioClip Basement;
-    
+
     private void Awake()
     {
         if (Instance == null) Instance = this;
