@@ -9,10 +9,7 @@ public class PlayerStats : EntityStats
     [SerializeField] private Image StressBarPlayer;
 
     private const int StressDamage = 50;
-    private const float StressIncreaseRate = 2.0f;
     private WaitForSeconds stressIncreaseDelay = new WaitForSeconds(10.0f);
-
-    private Coroutine stressCoroutine;
 
     void Start()
     {
@@ -24,7 +21,7 @@ public class PlayerStats : EntityStats
             StressBarPlayer.fillAmount = 0;
         }
         OnHealthChanged.AddListener(PlayerUpdateFill);
-        stressCoroutine = StartCoroutine(IncreaseStress());
+        StartCoroutine(IncreaseStress());
     }
 
     public override void TakeDamage(int damage)

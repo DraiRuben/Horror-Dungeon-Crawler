@@ -10,33 +10,48 @@ public class MobAI : MonoBehaviour
     [SerializeField] protected int m_floor;
     [SerializeField] protected int m_attackReach;
     [SerializeField] protected bool m_projectileAttacks;
-
     [SerializeField] protected float m_destinationUpdateFrequency;
     [Space(5)]
 
     protected bool m_isCloseEnough;
+    protected bool m_hasFoundPlayer;
     protected EntityStats m_entityStats;
 
-
     protected float m_previousDestinationSetTime;
+
+    private AudioManagerEnnemies m_audioManager;
     // Start is called before the first frame update
     void Awake()
     {
         m_agent = GetComponent<NavMeshAgent>();
         m_entityStats = GetComponent<EntityStats>();
+        m_audioManager = GetComponentInChildren<AudioManagerEnnemies>();
         StartCoroutine(AttackRoutine());
     }
     private void Start()
     {
         m_gridPos = MapGrid.Instance.GetClosestCell(m_floor, transform.position);
         MapGrid.Instance.GetCell(m_floor, m_gridPos.x, m_gridPos.y).OccupyingObject = gameObject;
+        StartCoroutine(TryFindPlayer());
+    }
+    protected IEnumerator TryFindPlayer()
+    {
+        while (!m_hasFoundPlayer)
+        {
+            Physics.Raycast(transform.position, PlayerMovement.Instance.transform.position - transform.position, out RaycastHit HitInfo, 10f);
+            if (HitInfo.collider != null && HitInfo.collider.CompareTag("Player"))
+            {
+                m_hasFoundPlayer = true;
+            }
+            yield return null;
+        }
     }
     // Update is called once per frame
     void Update()
     {
-        Physics.Raycast(transform.position, PlayerMovement.Instance.transform.position - transform.position, out RaycastHit HitInfo, 10f);
+
         if (m_floor == PlayerMovement.Instance.CurrentFloor
-            && HitInfo.collider != null && HitInfo.collider.CompareTag("Player"))
+            && m_hasFoundPlayer)
         {
             Vector2Int dist = MapGrid.Instance.DistanceBetweenCells(m_gridPos, PlayerMovement.Instance.GridPos);
             int totalDist = dist.x + dist.y;
@@ -57,8 +72,7 @@ public class MobAI : MonoBehaviour
             // if attack is CQC check if distance to player is <= 1 or if attack is Ranged, check if distance to player <= Reach and both are aligned
             if (m_attackReach <= 1 && totalDist <= 1 || (m_attackReach > 1 && m_attackReach >= totalDist && (dist.x == 0 || dist.y == 0)))
             {
-                if (HitInfo.collider != null && HitInfo.collider.CompareTag("Player"))
-                    m_agent.SetDestination(MapGrid.Instance.GetCell(m_floor, m_gridPos.x, m_gridPos.y).Center.position);
+                m_agent.SetDestination(MapGrid.Instance.GetCell(m_floor, m_gridPos.x, m_gridPos.y).Center.position);
                 //syst�me d'attaque
                 m_isCloseEnough = true;
 
@@ -66,8 +80,7 @@ public class MobAI : MonoBehaviour
             else
             {
                 m_isCloseEnough = false;
-                if (Time.time - m_previousDestinationSetTime > m_destinationUpdateFrequency
-                    && HitInfo.collider != null && HitInfo.collider.CompareTag("Player"))
+                if (Time.time - m_previousDestinationSetTime > m_destinationUpdateFrequency)
                 {
                     m_previousDestinationSetTime = Time.time;
 
@@ -95,11 +108,15 @@ public class MobAI : MonoBehaviour
                 {
                     AttackSystem.Instance.RangedAttack(m_gridPos, m_floor, AttackDir, m_entityStats.Strength, m_attackReach, m_entityStats.Dexterity, gameObject);
                 }
-                AudioManager.Instance.PlaySFX(AudioManager.Instance.Dog_Attack);
+                PlayAttackSFX();
             }
 
             timeSincePreviousAttack += Time.deltaTime;
             yield return null;
         }
+    }
+    protected virtual void PlayAttackSFX()
+    {
+        m_audioManager?.PlaySFXMob(m_audioManager.Dog_Attack);
     }
 }

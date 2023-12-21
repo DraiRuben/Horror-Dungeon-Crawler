@@ -17,16 +17,16 @@ public class Boss3AI : Boss1AI
     [Space(5)]
     private bool m_isInCharge;
 
-    public int CurrentFloor;
-    protected Vector2Int GridPos;
     protected float m_lastCharge;
-    private MapGrid.AllowedMovesMask RelativeMoveDir;
 
+    private AudioManagerBaby m_audioManager;
     void Awake()
     {
         m_agent = GetComponent<NavMeshAgent>();
         m_entityStats = GetComponent<EntityStats>();
+        m_audioManager = GetComponentInChildren<AudioManagerBaby>();
         StartCoroutine(AttackRoutine());
+
     }
     // Start is called before the first frame update
     void Start()
@@ -34,13 +34,14 @@ public class Boss3AI : Boss1AI
         m_gridPos = MapGrid.Instance.GetClosestCell(m_floor, transform.position);
         MapGrid.Instance.GetCell(m_floor, m_gridPos.x, m_gridPos.y).OccupyingObject = gameObject;
         m_entityStats.OnHealthChanged.AddListener(NextPhaseCheck);
+        StartCoroutine(TryFindPlayer());
     }
 
     // Update is called once per frame
     void Update()
     {
-        Physics.Raycast(transform.position, PlayerMovement.Instance.transform.position - transform.position, out RaycastHit HitInfo, 10f);
-        if (m_floor == PlayerMovement.Instance.CurrentFloor)
+        if (m_floor == PlayerMovement.Instance.CurrentFloor
+            && m_hasFoundPlayer)
         {
             Vector2Int dist = MapGrid.Instance.DistanceBetweenCells(m_gridPos, PlayerMovement.Instance.GridPos);
             int totalDist = dist.x + dist.y;
@@ -60,8 +61,7 @@ public class Boss3AI : Boss1AI
             // if attack is CQC check if distance to player is <= 1 or if attack is Ranged, check if distance to player <= Reach and both are aligned
             if (m_attackReach <= 1 && totalDist <= 1 || (m_attackReach > 1 && m_attackReach >= totalDist && (dist.x == 0 || dist.y == 0)))
             {
-                if (HitInfo.collider != null && HitInfo.collider.CompareTag("Player"))
-                    m_agent.SetDestination(MapGrid.Instance.GetCell(m_floor, m_gridPos.x, m_gridPos.y).Center.position);
+                m_agent.SetDestination(MapGrid.Instance.GetCell(m_floor, m_gridPos.x, m_gridPos.y).Center.position);
                 //système d'attaque
                 m_isCloseEnough = true;
                 if (m_isInCharge)
@@ -74,8 +74,7 @@ public class Boss3AI : Boss1AI
             else
             {
                 m_isCloseEnough = false;
-                if (Time.time - m_previousDestinationSetTime > m_destinationUpdateFrequency
-                    && HitInfo.collider != null && HitInfo.collider.CompareTag("Player"))
+                if (Time.time - m_previousDestinationSetTime > m_destinationUpdateFrequency)
                 {
                     m_previousDestinationSetTime = Time.time;
 
@@ -87,30 +86,9 @@ public class Boss3AI : Boss1AI
 
     }
 
-    protected override IEnumerator AttackRoutine()
+    protected override void PlayAttackSFX()
     {
-        float timeSincePreviousAttack = 0;
-        while (true)
-        {
-            yield return new WaitUntil(() => m_isCloseEnough);
-            if (timeSincePreviousAttack > (10f / m_entityStats.Dexterity))
-            {
-                timeSincePreviousAttack = 0;
-                MapGrid.AllowedMovesMask AttackDir = MapGrid.Instance.GetRelativeDir(MapGrid.AllowedMovesMask.Top, transform.rotation.eulerAngles.y);
-                if (!m_projectileAttacks)
-                {
-
-                    AttackSystem.Instance.CQCAttack(m_gridPos, m_floor, AttackDir, m_entityStats.Strength, gameObject);
-                }
-                else
-                {
-                    AttackSystem.Instance.RangedAttack(m_gridPos, m_floor, AttackDir, m_entityStats.Strength, m_attackReach, m_entityStats.Dexterity, gameObject);
-                }
-            }
-
-            timeSincePreviousAttack += Time.deltaTime;
-            yield return null;
-        }
+        m_audioManager.PlaySFXBaby(m_audioManager.Baby_Attack);
     }
 
     private void TryCharge(int totalDist)
@@ -129,17 +107,5 @@ public class Boss3AI : Boss1AI
         yield return new WaitForSeconds(2f);
         GetComponent<NavMeshAgent>().speed = normalSpeed;
         m_isInCharge = false;
-    }
-
-    protected void NextPhaseCheck()
-    {
-        if (m_entityStats.CurrentHealth < NextPhaseHP)
-        {
-            m_entityStats.Dexterity = NextPhaseDexterity;
-            m_entityStats.Strength = NextPhaseStrength;
-            m_entityStats.OnHealthChanged.RemoveListener(NextPhaseCheck);
-            father_Phase2 = true;
-            spriteRenderer.sprite = NextPhaseSprite;
-        }
     }
 }
