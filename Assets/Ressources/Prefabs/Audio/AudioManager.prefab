@@ -43,7 +43,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 6459837411654742597, guid: 3a0a623c5cd0a844387f61f1485e9e9c, type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -256,7 +256,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1 &8130720565689407037
+--- !u!1 &8067306546570269779
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -264,68 +264,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 818106478736065365}
-  - component: {fileID: 5003007207749039778}
-  - component: {fileID: 6697453901940755915}
+  - component: {fileID: 7816601861169176345}
+  - component: {fileID: 5529491865211831750}
   m_Layer: 0
-  m_Name: AudioManager
-  m_TagString: Audio
+  m_Name: FloorSongs
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &818106478736065365
+--- !u!4 &7816601861169176345
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8130720565689407037}
+  m_GameObject: {fileID: 8067306546570269779}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 54.13954, y: -4.588214, z: -21.783815}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1888495879706825149}
-  - {fileID: 2012485650375932253}
-  m_Father: {fileID: 0}
+  m_Children: []
+  m_Father: {fileID: 818106478736065365}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5003007207749039778
+--- !u!114 &5529491865211831750
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8130720565689407037}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e03721d16ea80c419832d8fce8afffc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_musicSource: {fileID: 3767467265414536596}
-  m_SFXSource: {fileID: 4450286520745344655}
-  Footstep_Concrete: {fileID: 8300000, guid: 1711470d1db13d3498f6b4b8492974c6, type: 3}
-  Footstep_Wood: {fileID: 8300000, guid: 47dcbccdcdc984f4084244191531748b, type: 3}
-  Click_Button: {fileID: 8300000, guid: 2597a84f6d8914a4290390c0a4fa8aad, type: 3}
-  Pickup_Items: {fileID: 8300000, guid: e3205c9e708893a4ead52aa7224b4fac, type: 3}
-  Door: {fileID: 8300000, guid: d60d773d6e57e6b46b3d220aedf54e1d, type: 3}
-  Prison_Door: {fileID: 8300000, guid: 12c7c718d20815e4ab12755856dc1bde, type: 3}
-  Corpses_Burning: {fileID: 8300000, guid: 14873c0e79b36714389137c736de1511, type: 3}
-  Dog_Idle: {fileID: 8300000, guid: 39ec2344dbed6474f8f1db94502f096c, type: 3}
-  Dog_Attack: {fileID: 8300000, guid: e0efba1aa4cc3524f900be6307ca0553, type: 3}
-  Dog_Damaged: {fileID: 8300000, guid: 2adb4c945139d354d8147ddcacf41606, type: 3}
-  Dog_Death: {fileID: 8300000, guid: e0690045c6f4c6542a6f3fe4a6de361d, type: 3}
-  Main_Menu: {fileID: 8300000, guid: f6e76323a89374c4dbb5ea6af9f2005f, type: 3}
-  Victory_Menu: {fileID: 8300000, guid: 0e1208679d3a2654581465d156525700, type: 3}
-  Defeat_Menu: {fileID: 8300000, guid: 5482735ecffde244a8e2ba8c43660760, type: 3}
---- !u!114 &6697453901940755915
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8130720565689407037}
+  m_GameObject: {fileID: 8067306546570269779}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bcac893630015fa42a3de50c908e0437, type: 3}
@@ -335,8 +304,11 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 8300000, guid: 1711470d1db13d3498f6b4b8492974c6, type: 3}
-    - {fileID: 8300000, guid: 47dcbccdcdc984f4084244191531748b, type: 3}
+    - {fileID: 8300000, guid: b9ff2a9c3b7ceb7489a641c0d8a9887f, type: 3}
+    - {fileID: 8300000, guid: 028d57da8c3fb554ba3113134fd60585, type: 3}
+    - {fileID: 8300000, guid: b9adc8d62e887ad45b4a018b5855ae17, type: 3}
+    - {fileID: 8300000, guid: f934264a21c55614093df64a526934fd, type: 3}
+    - {fileID: 8300000, guid: 7de0ef5683c7ed949b81493cc33b825c, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -388,7 +360,7 @@ MonoBehaviour:
       Data: 2
     - Name: $v
       Entry: 10
-      Data: 1
+      Data: 2
     - Name: 
       Entry: 8
       Data: 
@@ -400,7 +372,7 @@ MonoBehaviour:
       Data: 3
     - Name: $v
       Entry: 10
-      Data: 1
+      Data: 3
     - Name: 
       Entry: 8
       Data: 
@@ -412,7 +384,7 @@ MonoBehaviour:
       Data: 4
     - Name: $v
       Entry: 10
-      Data: 1
+      Data: 4
     - Name: 
       Entry: 8
       Data: 
@@ -422,3 +394,66 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+--- !u!1 &8130720565689407037
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 818106478736065365}
+  - component: {fileID: 5003007207749039778}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Audio
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &818106478736065365
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8130720565689407037}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 54.13954, y: -4.588214, z: -21.783815}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1888495879706825149}
+  - {fileID: 2012485650375932253}
+  - {fileID: 7816601861169176345}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5003007207749039778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8130720565689407037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e03721d16ea80c419832d8fce8afffc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_musicSource: {fileID: 3767467265414536596}
+  m_SFXSource: {fileID: 4450286520745344655}
+  Footstep_Concrete: {fileID: 8300000, guid: 1711470d1db13d3498f6b4b8492974c6, type: 3}
+  Footstep_Wood: {fileID: 8300000, guid: 47dcbccdcdc984f4084244191531748b, type: 3}
+  Click_Button: {fileID: 8300000, guid: 2597a84f6d8914a4290390c0a4fa8aad, type: 3}
+  Pickup_Items: {fileID: 8300000, guid: e3205c9e708893a4ead52aa7224b4fac, type: 3}
+  Door: {fileID: 8300000, guid: d60d773d6e57e6b46b3d220aedf54e1d, type: 3}
+  Prison_Door: {fileID: 8300000, guid: 12c7c718d20815e4ab12755856dc1bde, type: 3}
+  Corpses_Burning: {fileID: 8300000, guid: 14873c0e79b36714389137c736de1511, type: 3}
+  Dog_Idle: {fileID: 8300000, guid: 39ec2344dbed6474f8f1db94502f096c, type: 3}
+  Dog_Attack: {fileID: 8300000, guid: e0efba1aa4cc3524f900be6307ca0553, type: 3}
+  Dog_Damaged: {fileID: 8300000, guid: 2adb4c945139d354d8147ddcacf41606, type: 3}
+  Dog_Death: {fileID: 8300000, guid: e0690045c6f4c6542a6f3fe4a6de361d, type: 3}
+  Main_Menu: {fileID: 8300000, guid: f6e76323a89374c4dbb5ea6af9f2005f, type: 3}
+  Victory_Menu: {fileID: 8300000, guid: 0e1208679d3a2654581465d156525700, type: 3}
+  Defeat_Menu: {fileID: 8300000, guid: 5482735ecffde244a8e2ba8c43660760, type: 3}
