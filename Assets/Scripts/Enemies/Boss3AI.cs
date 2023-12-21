@@ -130,4 +130,16 @@ public class Boss3AI : Boss1AI
         GetComponent<NavMeshAgent>().speed = normalSpeed;
         m_isInCharge = false;
     }
+
+    protected void NextPhaseCheck()
+    {
+        if (m_entityStats.CurrentHealth < NextPhaseHP)
+        {
+            m_entityStats.Dexterity = NextPhaseDexterity;
+            m_entityStats.Strength = NextPhaseStrength;
+            m_entityStats.OnHealthChanged.RemoveListener(NextPhaseCheck);
+            father_Phase2 = true;
+            spriteRenderer.sprite = NextPhaseSprite;
+        }
+    }
 }

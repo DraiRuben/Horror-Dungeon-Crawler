@@ -9,7 +9,7 @@ public class PlayerStats : EntityStats
     [SerializeField] private Image StressBarPlayer;
 
     private const int StressDamage = 50;
-    private const float StressIncreaseRate = 2f;
+    private const float StressIncreaseRate = 0.2f;
     private WaitForSeconds stressIncreaseDelay = new WaitForSeconds(1.0f);
 
     private Coroutine stressCoroutine;

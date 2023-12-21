@@ -8,6 +8,8 @@ public class Boss1AI : MobAI
     [SerializeField] protected int NextPhaseHP;
     [SerializeField] protected int NextPhaseStrength;
     [SerializeField] protected int NextPhaseDexterity;
+    [SerializeField] public SpriteRenderer spriteRenderer;
+    [SerializeField] public Sprite NextPhaseSprite;
     public bool father_Phase2 = false;
 
     void Awake()
@@ -103,7 +105,7 @@ public class Boss1AI : MobAI
             m_entityStats.Strength = NextPhaseStrength;
             m_entityStats.OnHealthChanged.RemoveListener(NextPhaseCheck);
             father_Phase2 = true;
+            spriteRenderer.sprite = NextPhaseSprite;
         }
-
     }
 }
