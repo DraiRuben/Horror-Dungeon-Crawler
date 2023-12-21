@@ -26,4 +26,4 @@ MonoBehaviour:
   ProjectileSpeed: 1
   Range: 3
   Damage: 10
-  ReloadTime: 0.5
+  ReloadTime: 1
