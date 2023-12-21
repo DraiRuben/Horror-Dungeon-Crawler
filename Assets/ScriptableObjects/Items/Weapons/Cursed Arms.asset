@@ -24,6 +24,6 @@ MonoBehaviour:
   AutoEquip: 1
   ShootsProjectile: 0
   ProjectileSpeed: 0
-  Range: 1
+  Range: 2
   Damage: 15
-  ReloadTime: 0.2
+  ReloadTime: 1.5
