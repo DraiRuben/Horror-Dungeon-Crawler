@@ -156,6 +156,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2307770496142357907, guid: c4c37a5e3eceab14da312998c630ea6b, type: 3}
+      propertyPath: m_text
+      value: "Then, a deafening clash of metal. He now found himself locked in this
+        cold cellar, surrounded by decrepit bricks and damp mould, with only rats
+        and cockroaches for company ... or so he thought.\r"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307770496142357907, guid: c4c37a5e3eceab14da312998c630ea6b, type: 3}
       propertyPath: m_fontAsset
       value: 
       objectReference: {fileID: 11400000, guid: 59d52dad376369742924661aaf554eba, type: 2}
@@ -454,6 +460,12 @@ PrefabInstance:
     - target: {fileID: 8425994167397068198, guid: c4c37a5e3eceab14da312998c630ea6b, type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8678200828332867058, guid: c4c37a5e3eceab14da312998c630ea6b, type: 3}
+      propertyPath: m_text
+      value: The son didn't liked the family's strange ways, and, trying to hide,
+        avoiding the watchful eyes of the other inhabitants, he slipped into the
+        cellar.
       objectReference: {fileID: 0}
     - target: {fileID: 8678200828332867058, guid: c4c37a5e3eceab14da312998c630ea6b, type: 3}
       propertyPath: m_fontAsset
