@@ -29,7 +29,7 @@ public class FormationElement : MonoBehaviour, IBeginDragHandler, IEndDragHandle
     public void OnPointerUp(PointerEventData eventData)
     {
 
-        if(eventData.pointerEnter!= null)
+        if (eventData.pointerEnter != null)
         {
             int CurrentIndex = transform.GetSiblingIndex();
             int TargetIndex = eventData.pointerEnter.transform.GetSiblingIndex();

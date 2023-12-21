@@ -3,7 +3,6 @@ using UnityEngine.SceneManagement;
 
 public class Defeat_Menu : MonoBehaviour
 {
-    public GameObject defeat_Menu;
 
     public void Start()
     {
@@ -11,8 +10,9 @@ public class Defeat_Menu : MonoBehaviour
     }
     public void BackToMainMenu()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
-        defeat_Menu.SetActive(false);
+        Time.timeScale = 1.0f;
+        SceneManager.LoadScene(0);
+        gameObject.SetActive(false);
     }
 
     public void Quit()

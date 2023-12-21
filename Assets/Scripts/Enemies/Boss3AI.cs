@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -29,7 +28,7 @@ public class Boss3AI : Boss1AI
         m_entityStats = GetComponent<EntityStats>();
         StartCoroutine(AttackRoutine());
     }
-// Start is called before the first frame update
+    // Start is called before the first frame update
     void Start()
     {
         m_gridPos = MapGrid.Instance.GetClosestCell(m_floor, transform.position);
@@ -40,11 +39,11 @@ public class Boss3AI : Boss1AI
     // Update is called once per frame
     void Update()
     {
-        Physics.Raycast(transform.position, PlayerMovement.Instance.transform.position - transform.position, out var HitInfo, 10f);
+        Physics.Raycast(transform.position, PlayerMovement.Instance.transform.position - transform.position, out RaycastHit HitInfo, 10f);
         if (m_floor == PlayerMovement.Instance.CurrentFloor)
         {
-            var dist = MapGrid.Instance.DistanceBetweenCells(m_gridPos, PlayerMovement.Instance.GridPos);
-            var totalDist = dist.x + dist.y;
+            Vector2Int dist = MapGrid.Instance.DistanceBetweenCells(m_gridPos, PlayerMovement.Instance.GridPos);
+            int totalDist = dist.x + dist.y;
             transform.rotation = Quaternion.Euler(0, Quaternion.LookRotation(PlayerMovement.Instance.transform.position - transform.position).eulerAngles.y, 0);
             //updates grid pos only if it's not occupied by anything else, also empty previously occupied cell
             Vector2Int newGridPos = MapGrid.Instance.GetClosestCell(m_floor, transform.position, m_gridPos);
@@ -61,7 +60,7 @@ public class Boss3AI : Boss1AI
             // if attack is CQC check if distance to player is <= 1 or if attack is Ranged, check if distance to player <= Reach and both are aligned
             if (m_attackReach <= 1 && totalDist <= 1 || (m_attackReach > 1 && m_attackReach >= totalDist && (dist.x == 0 || dist.y == 0)))
             {
-                if(HitInfo.collider != null && HitInfo.collider.CompareTag("Player")) 
+                if (HitInfo.collider != null && HitInfo.collider.CompareTag("Player"))
                     m_agent.SetDestination(MapGrid.Instance.GetCell(m_floor, m_gridPos.x, m_gridPos.y).Center.position);
                 //système d'attaque
                 m_isCloseEnough = true;
@@ -85,7 +84,7 @@ public class Boss3AI : Boss1AI
                 TryCharge(totalDist);
             }
         }
-        
+
     }
 
     protected override IEnumerator AttackRoutine()
@@ -97,7 +96,7 @@ public class Boss3AI : Boss1AI
             if (timeSincePreviousAttack > (10f / m_entityStats.Dexterity))
             {
                 timeSincePreviousAttack = 0;
-                var AttackDir = MapGrid.Instance.GetRelativeDir(MapGrid.AllowedMovesMask.Top, transform.rotation.eulerAngles.y);
+                MapGrid.AllowedMovesMask AttackDir = MapGrid.Instance.GetRelativeDir(MapGrid.AllowedMovesMask.Top, transform.rotation.eulerAngles.y);
                 if (!m_projectileAttacks)
                 {
 
@@ -119,10 +118,10 @@ public class Boss3AI : Boss1AI
         if (totalDist <= m_maxRangeCharge && Time.time - m_lastCharge > m_cooldownCharge)
         {
             GetComponent<NavMeshAgent>().speed = chargeSpeed;
-            m_isInCharge = true;    
+            m_isInCharge = true;
             m_lastCharge = Time.time;
             StartCoroutine(ChargeBehaviour());
-        }    
+        }
     }
 
     private IEnumerator ChargeBehaviour()

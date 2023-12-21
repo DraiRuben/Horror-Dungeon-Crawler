@@ -1,7 +1,6 @@
 using Inventory.UI;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 
@@ -63,7 +62,7 @@ namespace Inventory.Model
             {
                 PlayerUISlotsManager.Instance.TryAutoEquipWeapon(((Weapon)item).CanUse, (Weapon)item);
             }
-            else if (item.index == 1|| item.index == 2)
+            else if (item.index == 1 || item.index == 2)
             {
                 PlayerUISlotsManager.Instance.AutoEquipUtility(item);
             }
@@ -93,7 +92,7 @@ namespace Inventory.Model
 
         public bool UseItemByIndex(int index)
         {
-            for(int i =0;i<inventoryItemsInstance.Length;i++)
+            for (int i = 0; i < inventoryItemsInstance.Length; i++)
             {
                 if (inventoryItemsInstance[i].item?.index == index)
                 {
@@ -133,7 +132,7 @@ namespace Inventory.Model
             }
             return new InventoryItem()
             {
-                item = newQuantity != 0?this.item:null,
+                item = newQuantity != 0 ? this.item : null,
                 quantity = newQuantity,
             };
         }

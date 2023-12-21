@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -12,7 +9,7 @@ public class PlayerSelector : Selectable
     [SerializeField] private PlayerStats toSelect;
     public override void OnDeselect(BaseEventData eventData)
     {
-        var castedData = (PointerEventData)eventData;
+        PointerEventData castedData = (PointerEventData)eventData;
         if (castedData.pointerEnter == null || !castedData.pointerEnter.CompareTag("HealingItems"))
         {
             base.OnDeselect(eventData);

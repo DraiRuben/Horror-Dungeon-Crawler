@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Linq;
 using UnityEngine;
 
 public class AttackSystem : MonoBehaviour
@@ -40,9 +39,9 @@ public class AttackSystem : MonoBehaviour
         //if there's no wall, inflict damage one cell in front
         if (MapGrid.Instance.ValidMovement(_floor, _gridAttackPos.x, _gridAttackPos.y, _attackDir))
         {
-            var position = MapGrid.Instance.GetCell(_floor, _gridAttackPos.x, _gridAttackPos.y).Center.position;
-            Destroy(Instantiate(m_slashPrefab,position, Quaternion.Euler(0,MapGrid.Moves.IndexOf(_attackDir)*90,90)).gameObject,4f);
-            
+            Vector3 position = MapGrid.Instance.GetCell(_floor, _gridAttackPos.x, _gridAttackPos.y).Center.position;
+            Destroy(Instantiate(m_slashPrefab, position, Quaternion.Euler(0, MapGrid.Moves.IndexOf(_attackDir) * 90, 90)).gameObject, 4f);
+
             Vector2Int DamagedCellPos = MapGrid.Instance.GetCellPosInDir(_gridAttackPos.x, _gridAttackPos.y, _attackDir);
             InflictDamageAtGridPos(DamagedCellPos, _floor, _damage, _origin);
         }
@@ -61,8 +60,8 @@ public class AttackSystem : MonoBehaviour
         Vector2Int currentGridPos = MapGrid.Instance.GetCellPosInDir(_gridAttackPos.x, _gridAttackPos.y, _attackDir);
         int currentCellDistance = 1;
         float timer = 0f;
-        var position = MapGrid.Instance.GetCell(_floor, _gridAttackPos.x, _gridAttackPos.y).Center.position;
-        var Visual = Instantiate(m_bulletPrefab, position, Quaternion.Euler(0, MapGrid.Moves.IndexOf(_attackDir) * 90, 0));
+        Vector3 position = MapGrid.Instance.GetCell(_floor, _gridAttackPos.x, _gridAttackPos.y).Center.position;
+        GameObject Visual = Instantiate(m_bulletPrefab, position, Quaternion.Euler(0, MapGrid.Moves.IndexOf(_attackDir) * 90, 0));
 
         while (currentCellDistance < _range)
         {

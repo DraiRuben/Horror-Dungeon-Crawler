@@ -34,7 +34,7 @@ public class MobAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Physics.Raycast(transform.position, PlayerMovement.Instance.transform.position - transform.position, out var HitInfo, 10f);
+        Physics.Raycast(transform.position, PlayerMovement.Instance.transform.position - transform.position, out RaycastHit HitInfo, 10f);
         if (m_floor == PlayerMovement.Instance.CurrentFloor
             && HitInfo.collider != null && HitInfo.collider.CompareTag("Player"))
         {
@@ -53,7 +53,7 @@ public class MobAI : MonoBehaviour
                 newCell.OccupyingObject = gameObject;
             }
             m_gridPos = newGridPos;
-            
+
             // if attack is CQC check if distance to player is <= 1 or if attack is Ranged, check if distance to player <= Reach and both are aligned
             if (m_attackReach <= 1 && totalDist <= 1 || (m_attackReach > 1 && m_attackReach >= totalDist && (dist.x == 0 || dist.y == 0)))
             {
