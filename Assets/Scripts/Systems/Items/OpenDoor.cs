@@ -16,6 +16,7 @@ public class OpenDoor : MonoBehaviour
     [field: SerializeField] int floorIndexFront;
     [SerializeField] bool NoKeyRequired;
     public bool isCadavre;
+    public bool isPrisonDoor;
     public bool isOpen = false;
 
 
@@ -39,7 +40,15 @@ public class OpenDoor : MonoBehaviour
                 animator.SetTrigger("ChangeState");
                 isOpen = true;
                 
-                AudioManager.Instance.PlaySFX(AudioManager.Instance.Door);
+                
+                if (!isPrisonDoor)
+                {
+                    AudioManager.Instance.PlaySFX(AudioManager.Instance.Door);
+                }
+                else
+                {
+                    AudioManager.Instance.PlaySFX(AudioManager.Instance.Prison_Door);
+                }
             }
             else
             {

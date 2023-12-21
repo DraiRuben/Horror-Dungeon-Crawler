@@ -21,6 +21,7 @@ public class Boss3AI : Boss1AI
     protected Vector2Int GridPos;
     protected float m_lastCharge;
     private MapGrid.AllowedMovesMask RelativeMoveDir;
+    
 
     void Awake()
     {
